@@ -196,45 +196,48 @@ sendButton.addEventListener('click', performSecretSantaDraw);
 
 // Function to send the email
 async function sendEmail(recipientEmail, messageText) {
-    const url = 'https://corsproxy.io/?' + encodeURIComponent('https://api.domain.com/v3/mail/send');
-    
-    const data = {
-        personalizations: [{
-            to: [{ email: recipientEmail }]
-        }],
-        from: {
-            email: "pustezug@gmail.com" // The email you verified in SendGrid
-        },
-        subject: "Your Secret Santa Lot",
-        content: [{
-            type: "text/plain",
-            value: messageText
-        }]
-    };
-
     try {
-        const response = await fetch(url, {
+        console.log('Sending request with:', { recipientEmail, messageText });
+        
+        const response = await fetch('/.netlify/functions/send-email', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': atob('QmVhcmVyIFNHLkdFdS1TU1F4VFEyV1NLdkYzeFhtQmcubUx0anM3VXRmS1FNdC11TXplMVNveFdMTkxXZUxXdk1pOTVWVXNqVG4yNA==')
             },
-            body: JSON.stringify(data)
+            body: JSON.stringify({
+                recipientEmail,
+                messageText
+            })
         });
+
+        console.log('Raw response:', response);
+        
+        // Log the raw response text
+        const responseText = await response.text();
+        console.log('Response text:', responseText);
+
+        // Try to parse it as JSON if it's valid
+        let data;
+        try {
+            data = JSON.parse(responseText);
+        } catch (e) {
+            console.error('Failed to parse JSON:', e);
+            alert('Server response was not valid JSON: ' + responseText);
+            return;
+        }
 
         if (response.ok) {
             alert('Email sent successfully!');
         } else {
-            alert('Failed to send email');
+            alert(`Failed to send email: ${data.error}`);
         }
     } catch (error) {
+        console.error('Full error:', error);
         alert('Error sending email: ' + error.message);
     }
 }
 
-
-
-
 sendEmail("wuschelschulz8@gmail.com", "This is a test NEW message")
+//console.log(process.env.SENDGRID_API_KEY)
 
 
