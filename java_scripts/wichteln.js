@@ -9,8 +9,6 @@ const addHouseholdButton = document.getElementById('add-household');
 const householdsList = document.getElementById('households-list');
 const sendButton = document.getElementById('send-button');
 
-emailjs.init("PricsRROSVpOdZ_cy"); // Replace with your actual public key
-
 // Add person
 addPersonForm.addEventListener('submit', function(e) {
     e.preventDefault();
@@ -184,18 +182,8 @@ function sendEmails(assignments) {
             .replace('[Recipient]', giver.name)
             .replace('[Lot]', receiver.name);
 
-        const templateParams = {
-            to_email: giver.email,
-            to_name: giver.name,
-            message: personalizedMessage
-        };
 
-        emailjs.send('service_focefqo', 'template_zwovjpp', templateParams)
-            .then(function(response) {
-                console.log('SUCCESS!', response.status, response.text);
-            }, function(error) {
-                console.log('FAILED...', error);
-            });
+        sendEmail(receiver.email, personalizedMessage);
     });
 }
 
@@ -206,28 +194,47 @@ sendButton.addEventListener('click', performSecretSantaDraw);
 
 
 
-
 // Function to send the email
-function sendEmail() {
-    // Template parameters
-    const templateParams = {
-        to_email: recipientEmail,
-        message: messageText,
-        // Add any other parameters your email template uses
+async function sendEmail(recipientEmail, messageText) {
+    const url = 'https://corsproxy.io/?' + encodeURIComponent('https://api.domain.com/v3/mail/send');
+    
+    const data = {
+        personalizations: [{
+            to: [{ email: recipientEmail }]
+        }],
+        from: {
+            email: "pustezug@gmail.com" // The email you verified in SendGrid
+        },
+        subject: "Your Secret Santa Lot",
+        content: [{
+            type: "text/plain",
+            value: messageText
+        }]
     };
 
-    // Send the email
-    emailjs.send(
-        "service_focefqo", // Your service ID
-        "template_zwovjpp", // Replace with your template ID
-        templateParams
-    )
-    .then(function(response) {
-        console.log("SUCCESS!", response.status, response.text);
-        // Handle success (e.g., show success message)
-    }, function(error) {
-        console.log("FAILED...", error);
-        // Handle error (e.g., show error message)
-    });
+    try {
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': atob('QmVhcmVyIFNHLkdFdS1TU1F4VFEyV1NLdkYzeFhtQmcubUx0anM3VXRmS1FNdC11TXplMVNveFdMTkxXZUxXdk1pOTVWVXNqVG4yNA==')
+            },
+            body: JSON.stringify(data)
+        });
+
+        if (response.ok) {
+            alert('Email sent successfully!');
+        } else {
+            alert('Failed to send email');
+        }
+    } catch (error) {
+        alert('Error sending email: ' + error.message);
+    }
 }
+
+
+
+
+sendEmail("wuschelschulz8@gmail.com", "This is a test NEW message")
+
 
