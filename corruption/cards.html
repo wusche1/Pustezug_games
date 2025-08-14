@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corruption Game - Card Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: white;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .description {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .stat-card {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #ffd700;
+        }
+        .stat-label {
+            font-size: 1.1em;
+            margin-top: 5px;
+        }
+        .generate-section {
+            text-align: center;
+            margin-top: 40px;
+        }
+        .generate-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 10px;
+            transition: transform 0.2s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        .generate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+        }
+        .instructions {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 30px;
+        }
+        .instructions h3 {
+            margin-top: 0;
+            color: #ffd700;
+        }
+        .instructions ol {
+            padding-left: 20px;
+        }
+        .instructions li {
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🃏 Corruption Game</h1>
+        <div class="description">
+            <p>A deck-building game of corporate influence and political corruption.</p>
+            <p>Generate printable cards for your physical game!</p>
+        </div>
+
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-number" id="civilSocietyCount">0</div>
+                <div class="stat-label">Civil Society Cards</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="privateActionCount">0</div>
+                <div class="stat-label">Private Action Cards</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="publicActionCount">0</div>
+                <div class="stat-label">Public Action Cards</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="totalCount">0</div>
+                <div class="stat-label">Total Cards</div>
+            </div>
+        </div>
+
+        <div class="generate-section">
+            <h2>Generate Printable Cards</h2>
+            <button class="generate-btn" onclick="downloadHTML(generateCivilSocietyHTML(), 'civil_society_cards.html')">
+                📊 Civil Society Cards
+            </button>
+            <button class="generate-btn" onclick="downloadHTML(generatePrivateActionHTML(), 'private_action_cards.html')">
+                🏢 Private Action Cards
+            </button>
+            <button class="generate-btn" onclick="downloadHTML(generatePublicActionHTML(), 'public_action_cards.html')">
+                🏛️ Public Action Cards
+            </button>
+            <br>
+            <button class="generate-btn" onclick="generateAllCards()" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); font-size: 1.3em; margin-top: 20px;">
+                🎯 Generate All Cards
+            </button>
+        </div>
+
+        <div class="instructions">
+            <h3>📋 How to Print Your Cards</h3>
+            <ol>
+                <li>Click any of the buttons above to download HTML files</li>
+                <li>Open the downloaded HTML files in your web browser</li>
+                <li>Use your browser's Print function (Ctrl+P / Cmd+P)</li>
+                <li>Choose "Save as PDF" or print directly to paper</li>
+                <li>Cut out the cards along the borders</li>
+                <li>Optional: Laminate or sleeve the cards for durability</li>
+            </ol>
+            <p><strong>💡 Tip:</strong> For best results, use thick paper (cardstock) and print in color!</p>
+        </div>
+    </div>
+
+    <script src="materials.js"></script>
+    <script src="generate_cards.js"></script>
+    <script>
+        // Update card counts when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('civilSocietyCount').textContent = civilSocietyCards.length;
+            document.getElementById('privateActionCount').textContent = privateActionCards.length;
+            document.getElementById('publicActionCount').textContent = publicActionCards.length;
+            document.getElementById('totalCount').textContent = 
+                civilSocietyCards.length + privateActionCards.length + publicActionCards.length;
+        });
+    </script>
+</body>
+</html>
