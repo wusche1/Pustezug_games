@@ -5,89 +5,129 @@ var player_number = 5;
 
 // Wallfacer categories and words database
 const wallfacerDatabase = {
-    "nations": {
-        "easy": ["Germany", "France", "Japan", "Brazil", "Australia", "India", "Russia", "Mexico", "Netherlands","South Korea", "China", "Canada", "Sweden"],
-        "hard": ["Austria", "Ireland", "Indonesia", "Madagascar", "South Africa", "New Zealand", "Philippines", "Thailand", "Turkey", "Vietnam", "Argentina"]
+    "bible_character": {
+        "easy": ["Moses", "Noah", "David", "Mary", "Jesus", "Adam", "Abraham", "Joseph", "Daniel", "Peter"],
+        "hard": ["Solomon", "Samson", "Ezekiel", "Isaiah", "Jeremiah", "Goliath", "Lazarus", "Barnabas"]
     },
-    "colors": {
-        "easy": ["Red", "Blue", "Green", "Yellow", "Purple", "Orange", "Pink", "Brown", "Black", "White"],
-        "hard": ["Turquoise", "Crimson", "dark blue", "Gold", "Silver", "Maroon"]
+    "american_politician": {
+        "easy": ["Biden", "Trump", "Obama", "Bush", "Clinton", "Reagan", "Kennedy", "Lincoln", "Washington", "Roosevelt"],
+        "hard": ["Nixon", "Carter", "Ford", "Johnson", "Eisenhower", "Truman", "Hoover", "Wilson"]
     },
-    "dishes": {
-        "easy": ["Pizza", "Pasta", "Sushi", "Burger", "Salad", "Soup", "Curry", "Sandwich", "Pudding", "Cake"],
-        "hard": ["Risotto", "Ramen", "Dumplings", "Goulash", "Chilli", "Pancakes"]
+    "historical_epoch": {
+        "easy": ["Stone Age", "Bronze Age", "Middle Ages", "Renaissance", "Industrial Revolution", "World War", "Cold War", "Ancient Rome"],
+        "hard": ["Iron Age", "Dark Ages", "Baroque", "Enlightenment", "Victorian Era", "Roaring Twenties", "Great Depression"]
     },
-    "german_cities": {
-        "easy": ["Berlin", "Munich", "Hamburg", "Cologne", "Frankfurt", "Stuttgart", "Dresden", "Leipzig", "Nuremberg"],
-        "hard": ["Essen", "Heidelberg", "Freiburg", "Rostock", "Kiel", "Bielefeld", "Duisburg", "Erfurt", "Mainz", "Saarbruecken"]
+    "famous_woman": {
+        "easy": ["Cleopatra", "Joan of Arc", "Marie Curie", "Mother Teresa", "Oprah", "Madonna", "Princess Diana", "Frida Kahlo"],
+        "hard": ["Rosa Parks", "Anne Frank", "Eleanor Roosevelt", "Margaret Thatcher", "Hillary Clinton", "Maya Angelou", "Virginia Woolf"]
     },
-    "rivers": {
-        "easy": ["Amazon", "Nile", "Thames", "Rhine", "Danube", "Mississippi", "Ganges", "Seine"],
-        "hard": [ "Euphrates", "Colorado", "Elbe", "Oder", "Volga"]
+    "gods": {
+        "easy": ["Zeus", "Thor", "God", "Jesus", "Buddha", "Apollo", "Odin", "Poseidon", "Hades", "Athena"],
+        "hard": ["Quetzalcoatl", "Anubis", "Vishnu", "Shiva", "Amaterasu", "Loki", "Freya", "Balder"]
     },
-    "professions": {
-        "easy": ["Doctor", "Teacher", "Engineer", "Lawyer", "Chef", "Artist", "Pilot", "Nurse", "Architect", "Journalist"],
-        "hard": ["Sommelier", "Cartographer", "Radiologist", "Geologist"]
+    "european_capital": {
+        "easy": ["Paris", "London", "Berlin", "Rome", "Madrid", "Amsterdam", "Vienna", "Prague", "Stockholm", "Athens"],
+        "hard": ["Tallinn", "Riga", "Vilnius", "Ljubljana", "Bratislava", "Valletta", "Nicosia"]
     },
-    "subjects": {
-        "easy": ["Mathematics", "Physics", "Chemistry", "Biology", "History", "Geography", "Literature", "Philosophy", "Psychology", "Economics", "Law", "Medicine"],
-        "hard": ["Cryptography"]
+    "island": {
+        "easy": ["Hawaii", "Sicily", "Ireland", "Cuba", "Japan", "Madagascar", "Iceland", "Cyprus", "Malta", "Sardinia"],
+        "hard": ["Socotra", "Faroe Islands", "Azores", "Seychelles", "Maldives", "Vanuatu", "Palau"]
     },
-    "pets": {
-        "easy": ["Dog", "Cat", "Rabbit", "Hamster", "Guinea Pig", "Turtle", "Parrot", "Goldfish", "Mouse"],
-        "hard": ["Ferret", "Snake", "Canary", "Hedgehog"]
+    "us_state": {
+        "easy": ["California", "Texas", "Florida", "New York", "Illinois", "Pennsylvania", "Ohio", "Georgia", "Michigan", "Virginia"],
+        "hard": ["Delaware", "Vermont", "Wyoming", "Montana", "North Dakota", "South Dakota", "Rhode Island"]
     },
-    "spices": {
-        "easy": ["Salt", "Pepper", "Cinnamon", "Ginger", "Paprika", "Oregano", "Basil", "Mint"],
-        "hard": ["Cardamom", "Nutmeg", "Cloves", "Turmeric", "Cumin", "Sage", "Lavender", "Saffron", "Thyme", "Rosemary"]
+    "shakespeare_character": {
+        "easy": ["Hamlet", "Romeo", "Juliet", "Macbeth", "Othello", "Ophelia", "Iago", "Lady Macbeth", "King Lear", "Portia"],
+        "hard": ["Shylock", "Puck", "Falstaff", "Desdemona", "Cassio", "Rosalind", "Benedick", "Beatrice"]
     },
-    "hobbies": {
-        "easy": ["Reading", "Cooking", "Gardening", "Painting", "Photography", "Hiking", "Swimming", "Dancing", "Singing", "Writing"],
-        "hard": ["Origami", "Calligraphy", "Geocaching", "Quilting", "Beekeeping", "Astronomy"]
+    "musician": {
+        "easy": ["Mozart", "Beethoven", "Bach", "Elvis", "Beatles", "Michael Jackson", "Madonna", "Bob Dylan", "Chopin", "Vivaldi"],
+        "hard": ["Handel", "Brahms", "Tchaikovsky", "Debussy", "Rachmaninoff", "Prince", "David Bowie", "Johnny Cash"]
     },
-    "sports": {
-        "easy": ["Football", "Basketball", "Tennis", "Swimming", "Running", "Cycling", "Golf", "Volleyball", "Hockey"],
-        "hard": [ "Squash", "Badminton", "Fencing", "Archery", "Bobsledding"]
+    "movies": {
+        "easy": ["Titanic", "Star Wars", "Avatar", "Jaws", "Rocky", "Casablanca", "Godfather", "Shrek", "Frozen", "Lion King"],
+        "hard": ["Pulp Fiction", "Goodfellas", "Apocalypse Now", "Citizen Kane", "Vertigo", "Psycho", "Taxi Driver"]
     },
-    "instruments": {
-        "easy": ["Piano", "Guitar", "Violin", "Drums", "Flute", "Trumpet", "Harp"],
-        "hard": ["Accordion", "Trombone", "Oboe", "Xylophone", "Bassoon", "Saxophone", "Cello", "Clarinet"]
+    "games": {
+        "easy": ["Chess", "Monopoly", "Scrabble", "Poker", "Minecraft", "Tetris", "Mario", "Pac-Man", "Checkers", "Risk"],
+        "hard": ["Go", "Backgammon", "Catan", "Twilight Struggle", "Through the Ages", "Terra Mystica"]
     },
-    "sea_creatures": {
+    "drinks": {
+        "easy": ["Water", "Coffee", "Tea", "Beer", "Wine", "Coca Cola", "Orange Juice", "Milk", "Martini", "Whiskey"],
+        "hard": ["Mojito", "Margarita", "Bloody Mary", "Manhattan", "Old Fashioned", "Cosmopolitan", "Pina Colada", "Daiquiri"]
+    },
+    "asian_country": {
+        "easy": ["China", "Japan", "India", "Thailand", "Vietnam", "South Korea", "Indonesia", "Philippines", "Malaysia", "Singapore"],
+        "hard": ["Bhutan", "Brunei", "Maldives", "Timor-Leste", "Kyrgyzstan", "Tajikistan", "Uzbekistan"]
+    },
+    "university_subject": {
+        "easy": ["Mathematics", "Physics", "Chemistry", "Biology", "History", "Psychology", "Economics", "Literature", "Philosophy", "Medicine"],
+        "hard": ["Epistemology", "Phenomenology", "Paleontology", "Cryptography", "Semiotics", "Hermeneutics"]
+    },
+    "mammal": {
+        "easy": ["Dog", "Cat", "Horse", "Cow", "Pig", "Lion", "Tiger", "Elephant", "Monkey", "Bear"],
+        "hard": ["Kangaroo", "Koala", "Platypus", "Armadillo", "Sloth", "Anteater", "Wombat", "Tapir"]
+    },
+    "insect": {
+        "easy": ["Bee", "Ant", "Butterfly", "Mosquito", "Fly", "Spider", "Ladybug", "Grasshopper", "Cricket", "Dragonfly"],
+        "hard": ["Praying Mantis", "Beetle", "Wasp", "Termite", "Cockroach", "Locust", "Firefly", "Caterpillar"]
+    },
+    "sport": {
+        "easy": ["Football", "Basketball", "Tennis", "Swimming", "Running", "Cycling", "Golf", "Volleyball", "Hockey", "Baseball"],
+        "hard": ["Squash", "Badminton", "Fencing", "Archery", "Bobsledding", "Curling", "Biathlon"]
+    },
+    "sea_creature": {
         "easy": ["Fish", "Shark", "Whale", "Dolphin", "Octopus", "Jellyfish", "Starfish", "Seahorse", "Crab", "Lobster"],
-        "hard": [ "Sea Cucumber", "Anglerfish", "Eel", "Stonefish", "Pufferfish"]
+        "hard": ["Sea Cucumber", "Anglerfish", "Eel", "Stonefish", "Pufferfish", "Nautilus", "Cuttlefish"]
     },
-    "kitchen_items": {
-        "easy": ["Knife", "Pan", "Pot", "Spoon", "Fork", "Plate", "Bowl", "Cup", "Cutting Board"],
-        "hard": [ "Zester", "Dough Scraper", "Kitchen Scale", "Thermometer", "Whisk"]
-    },
-    "furniture": {
-        "easy": ["Chair", "Table", "Sofa", "Bed", "Desk", "Bookshelf", "Wardrobe", "Lamp", "Mirror", "Cabinet"],
-        "hard": [ "Chaise Lounge", "Secretary"]
+    "kitchen_item": {
+        "easy": ["Knife", "Pan", "Pot", "Spoon", "Fork", "Plate", "Bowl", "Cup", "Cutting Board", "Oven"],
+        "hard": ["Zester", "Dough Scraper", "Kitchen Scale", "Thermometer", "Whisk", "Mandoline", "Mortar"]
     },
     "clothing": {
         "easy": ["Shirt", "Pants", "Dress", "Jacket", "Shoes", "Hat", "Socks", "Sweater", "Skirt", "Coat"],
-        "hard": ["Cravat", "Cardigan", "Blazer"]
-    },
-    "historical_figures": {
-        "easy": ["Napoleon", "Einstein", "Shakespeare", "Leonardo", "Cleopatra", "Caesar", "Gandhi", "Churchill", "Mozart", "Beethoven"],
-        "hard": ["Charlemagne", "Genghis Khan", "Hannibal", "Spartacus", "Confucius"]
-    },
-    "languages": {
-        "easy": ["English", "German", "French", "Spanish", "Italian", "Chinese", "Japanese", "Russian", "Arabic", "Portuguese"],
-        "hard": ["Swahili", "Korean", "Turkish", "Polish", "Dutch", "Elvish", "Klingon"]
+        "hard": ["Cravat", "Cardigan", "Blazer", "Waistcoat", "Breeches", "Bodice", "Corset"]
     },
     "body_parts": {
         "easy": ["Head", "Hand", "Foot", "Eye", "Nose", "Mouth", "Ear", "Arm", "Leg", "Heart"],
-        "hard": ["Fingers", "Toes", "Knees", "Elbow", "Shoulder", "Hip", "Ankle", "Wrist", "Thumb"]
-    },
-    "city_places": {
-        "easy": ["Zoo", "Bakery", "Hospital", "School", "Library", "Museum", "Park", "Restaurant", "Bank", "Post Office"],
-        "hard": [ "Observatory", "Planetarium", "Apothecary", "Foundry", "Basilica"]
+        "hard": ["Elbow", "Knee", "Shoulder", "Ankle", "Wrist", "Spine", "Ribs", "Skull"]
     },
     "fruits_vegetables": {
         "easy": ["Apple", "Banana", "Orange", "Carrot", "Tomato", "Potato", "Onion", "Lettuce", "Cucumber", "Pepper"],
-        "hard": [ "Kohlrabi", "Chard", "Fennel", "Turnip", "Artichoke"]
+        "hard": ["Kohlrabi", "Chard", "Fennel", "Turnip", "Artichoke", "Rutabaga", "Parsnip", "Leek"]
+    },
+    "car_brand": {
+        "easy": ["Toyota", "Ford", "BMW", "Mercedes", "Honda", "Volkswagen", "Audi", "Nissan", "Chevrolet", "Hyundai"],
+        "hard": ["Lamborghini", "Maserati", "Bugatti", "McLaren", "Bentley", "Rolls-Royce", "Ferrari", "Porsche"]
+    },
+    "dog_breed": {
+        "easy": ["Golden Retriever", "German Shepherd", "Labrador", "Bulldog", "Poodle", "Beagle", "Chihuahua", "Boxer"],
+        "hard": ["Weimaraner", "Rhodesian Ridgeback", "Vizsla", "Basenji", "Borzoi", "Bloodhound", "Afghan Hound"]
+    },
+    "superhero": {
+        "easy": ["Superman", "Batman", "Spider-Man", "Wonder Woman", "Iron Man", "Captain America", "Hulk", "Thor"],
+        "hard": ["Green Lantern", "The Flash", "Aquaman", "Doctor Strange", "Black Panther", "Daredevil", "Hawkeye"]
+    },
+    "planet_moon": {
+        "easy": ["Earth", "Mars", "Jupiter", "Saturn", "Venus", "Mercury", "Moon", "Sun", "Neptune", "Uranus"],
+        "hard": ["Europa", "Titan", "Ganymede", "Phobos", "Deimos", "Io", "Enceladus", "Callisto"]
+    },
+    "pizza_topping": {
+        "easy": ["Pepperoni", "Cheese", "Mushroom", "Sausage", "Peppers", "Onions", "Olives", "Ham", "Bacon"],
+        "hard": ["Prosciutto", "Arugula", "Anchovies", "Artichoke", "Capers", "Truffle", "Goat Cheese", "Pesto"]
+    },
+    "weather_phenomenon": {
+        "easy": ["Rain", "Snow", "Thunder", "Lightning", "Wind", "Fog", "Hail", "Sunshine", "Clouds"],
+        "hard": ["Tornado", "Hurricane", "Blizzard", "Drought", "Aurora", "Monsoon", "Cyclone", "Typhoon"]
+    },
+    "school_subject": {
+        "easy": ["Math", "English", "Science", "History", "Art", "PE", "Music", "Geography", "Reading"],
+        "hard": ["Trigonometry", "Chemistry", "Physics", "Calculus", "Biology", "Algebra", "Geometry", "Statistics"]
+    },
+    "tree_plant": {
+        "easy": ["Oak", "Pine", "Rose", "Daisy", "Sunflower", "Maple", "Willow", "Apple Tree", "Cherry Tree"],
+        "hard": ["Baobab", "Sequoia", "Eucalyptus", "Magnolia", "Rhododendron", "Jasmine", "Bonsai", "Bamboo"]
     }
 };
 
@@ -122,9 +162,17 @@ function initializePlayerSelection() {
         startGame(player_number);
     };
     
+    // Create rules button
+    const rulesButton = document.createElement('button');
+    rulesButton.textContent = 'Rules';
+    rulesButton.onclick = function() {
+        window.open('wallfacer_rules.html', '_blank');
+    };
+    
     startOptionsContainer.appendChild(playerLabel);
     startOptionsContainer.appendChild(playerInput);
     startOptionsContainer.appendChild(startButton);
+    startOptionsContainer.appendChild(rulesButton);
 }
 
 function startGame(player_number) {
