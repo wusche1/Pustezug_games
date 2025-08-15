@@ -122,9 +122,17 @@ function initializePlayerSelection() {
         startGame(player_number);
     };
     
+    // Create rules button
+    const rulesButton = document.createElement('button');
+    rulesButton.textContent = 'Rules';
+    rulesButton.onclick = function() {
+        window.open('wallfacer_rules.html', '_blank');
+    };
+    
     startOptionsContainer.appendChild(playerLabel);
     startOptionsContainer.appendChild(playerInput);
     startOptionsContainer.appendChild(startButton);
+    startOptionsContainer.appendChild(rulesButton);
 }
 
 function startGame(player_number) {

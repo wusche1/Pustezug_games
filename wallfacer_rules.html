@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" >
+    <title>Wallfacer - Rules</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- ... other styles or links ... -->
+    <!-- Header styles or other CSS rules can go here -->
+    <!-- For modern browsers - recommended: PNG format -->
+     
+    <link rel="apple-touch-icon" sizes="180x180" href="icon_folder/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="icon_folder/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="icon_folder/favicon-16x16.png">
+    <link rel="manifest" href="icon_folder/site.webmanifest">
+    <link rel="mask-icon" href="icon_folder/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <!-- Include your custom JS file -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="java_scripts/google_login.js" defer></script>
+</head>
+
+<body>
+    <header class="website_header">
+        <div class="leftpadding"></div>
+        <div class="daseingemachte">
+            <img src="images/Turtle_logo.png" alt="Pustezug Games" class="logo">
+            <span class="website_title">Pustezug Games</span>
+            <div class="spacer"></div>
+            <div id="g_id_onload"
+                 data-client_id="663759759562-koons6upuoj2n06l9ncf7of7c00b4qhf.apps.googleusercontent.com"
+                 data-callback="handleCredentialResponse">
+            </div>
+            <div class="g_id_signin" data-type="standard"></div>
+        </div>
+        <div class="rightpadding"></div>
+      </header>
+    <div class="website_content">
+        <div class="menu_bar">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#game_list">Games</a></li>
+                <li><a href="About.html">About</a></li>
+                <li><a href="Contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div class="leftpadding"></div>
+        <div class="daseingemachte">
+            <h1>Wallfacer - Rules</h1>
+            
+            <p><em>You are humanity's ambassador at the approaching alien fleet. You witness the dread power of their vastly superior technology, and you must warn your fellow humans about what the aliens have in store for them. Luckily for you, your hosts have grown fond of you and permit you to broadcast one last message back home - an innocent bedtime story that they will not expect to have strategic importance. Can you hide enough hints in your one shot at saving humanity to communicate your vital intel about the aliens' capabilities? Can humanity, by a combined generational effort of frantic bedtime story exegesis, decipher enough of your hints? Will the aliens be able to catch you in your attempt to give away their secrets?</em></p>
+            
+            <h2>Setup</h2>
+            <p>At the beginning of the game, each player receives one card. The card tells you about your character and any secret information that you have:</p>
+            <ul>
+                <li>Most players are <strong>civilians</strong> and do not have any secret knowledge.</li>
+                <li>One player is the <strong>alien</strong> and knows the category of the secret words (for example: "City in Germany")</li>
+                <li>One player is the <strong>wallfacer</strong> and knows both secret words: an <strong>easy word</strong> and a <strong>hard word</strong> (for example: "Munich" and "Nuremberg")</li>
+            </ul>
+            
+            <h2>Objective</h2>
+            <p>The goal of the wallfacer is to communicate both secret words to humanity without being caught by the alien. Humanity scores points based on which words they guess correctly:</p>
+            <ul>
+                <li><strong>Easy word</strong>: 1 point</li>
+                <li><strong>Hard word</strong>: 2 points</li>
+            </ul>
+            
+            <h2>How to Play</h2>
+            
+            <h3>Phase 1: Story Creation</h3>
+            <p>In the beginning of the game, one player thinks of a story format. Start with the format "Bedtime story". In later games you can get more creative: "Washing machine advertisement", "Bad date story", "Court ruling"...</p>
+            
+            <p>Start a timer for 2.5 minutes. In that time, each player thinks of a short story in the required format.</p>
+            
+            <h3>Phase 2: Storytelling</h3>
+            <p>Each player takes turns and tells their story.</p>
+            <p>After a player has finished, the alien may reveal themselves and execute that player:</p>
+            <ul>
+                <li>If the alien executes the wallfacer, the <strong>alien immediately wins</strong>.</li>
+                <li>If the alien executes a civilian, the <strong>alien immediately loses</strong>.</li>
+            </ul>
+            <p>If all players tell their story without the alien revealing itself, the game goes into the next phase.</p>
+            
+            <h3>Phase 3: Deciphering</h3>
+            <p>Now the wallfacer reveals themselves and also reveals the category of the secret words.</p>
+            <p>The wallfacer may not communicate for the remainder of this round.</p>
+            <p>A 10-minute timer is started, and the other players discuss what the secret words might have been.</p>
+            <p>In the end, the players can submit up to two words that they believe are the secret words.</p>
+            
+            <h2>Scoring and Winning Conditions</h2>
+            <p><strong>Scoring:</strong></p>
+            <ul>
+                <li>If humanity correctly guesses the <strong>easy word</strong>: +1 point</li>
+                <li>If humanity correctly guesses the <strong>hard word</strong>: +2 points</li>
+                <li>If humanity guesses no word correclty, the alien wins</li>
+            </ul>
+            
+            <p><strong>Game Outcomes:</strong></p>
+            <ul>
+                <li>If the alien correctly identifies and executes the wallfacer during Phase 2, the <strong>alien wins immediately</strong>.</li>
+                <li>If the alien executes a civilian during Phase 2, the <strong>alien loses immediately</strong>.</li>
+                <li>If the game reaches phase 3, the alien wins if humanity guesses no word correctly, and humanity wins if they guess one or both words correctly.</li>
+            </ul>
+        </div>
+        <div class="rightpadding"></div>
+    </div>
+</body>
+</html>
