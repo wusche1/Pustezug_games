@@ -8,58 +8,97 @@ function generateCivilSocietyHTML() {
     <meta charset="UTF-8">
     <title>Civil Society Cards</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 20px; }
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 0; 
+            padding: 10px;
+            background: white;
+        }
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 5px;
+            max-width: 100%;
+        }
         .card { 
             border: 2px solid #333; 
-            padding: 15px; 
-            margin: 10px; 
-            width: 250px; 
-            height: 350px; 
-            display: inline-block; 
-            vertical-align: top;
+            padding: 8px; 
+            width: 140px; 
+            height: 200px; 
             page-break-inside: avoid;
-            background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+            background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);
+            color: white;
             position: relative;
+            box-sizing: border-box;
         }
-        .card-title { font-size: 18px; font-weight: bold; margin-bottom: 10px; color: #2c3e50; }
-        .card-handle { font-size: 12px; color: #7f8c8d; margin-bottom: 15px; }
+        .card-title { 
+            font-size: 16px; 
+            font-weight: bold; 
+            margin-bottom: 10px; 
+            color: white; 
+            text-align: center;
+            line-height: 1.1;
+        }
         .card-strength { 
             font-size: 24px; 
             font-weight: bold; 
-            color: #e74c3c; 
+            color: #fff; 
             text-align: center; 
-            margin: 20px 0;
-            border: 2px solid #e74c3c;
-            padding: 10px;
+            margin: 10px auto;
+            border: 2px solid #fff;
+            padding: 8px;
             border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            line-height: 40px;
-            margin: 20px auto;
+            width: 40px;
+            height: 40px;
+            line-height: 24px;
+            background: rgba(255, 255, 255, 0.2);
         }
         .card-type { 
             position: absolute; 
             bottom: 10px; 
             right: 10px; 
             font-size: 10px; 
-            color: #95a5a6; 
+            color: #e0e0e0; 
         }
-        h1 { text-align: center; color: #2c3e50; }
+        .page-break {
+            page-break-before: always;
+        }
         @media print {
-            .card { margin: 5px; }
-            body { margin: 10px; }
+            body { margin: 0; padding: 5px; }
+            .cards-container { gap: 3px; }
+            .card { break-inside: avoid; }
+            .page-break { page-break-before: always; }
         }
     </style>
 </head>
 <body>
-    <h1>Civil Society Cards</h1>
-    ${civilSocietyCards.map(card => `
-    <div class="card">
-        <div class="card-title">${card.name}</div>
-        <div class="card-handle">(${card.handle})</div>
-        <div class="card-strength">${card.strength}</div>
-        <div class="card-type">Civil Society</div>
-    </div>`).join('')}
+    <div class="cards-container">
+    ${(() => {
+        let result = [];
+        civilSocietyCards.forEach((card, index) => {
+            // Page break every 30 cards
+            if (index > 0 && index % 30 === 0) {
+                result.push('<div class="page-break"></div>');
+            }
+            result.push(`
+        <div class="card">
+            <div class="card-title">${card.name}</div>
+            <div class="card-strength">${card.strength}</div>
+        </div>`);
+            
+            // Add 6 empty cards after every 30 cards, but only if there are more cards coming
+            if ((index + 1) % 30 === 0 && (index + 1) < civilSocietyCards.length) {
+                for (let i = 0; i < 6; i++) {
+                    result.push(`
+        <div class="card">
+        </div>`);
+                }
+            }
+        });
+        
+        return result.join('');
+    })()}
+    </div>
 </body>
 </html>`;
     return html;
@@ -72,87 +111,162 @@ function generatePrivateActionHTML() {
     <meta charset="UTF-8">
     <title>Private Action Cards</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 20px; }
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 0; 
+            padding: 10px;
+            background: white;
+        }
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 5px;
+            max-width: 100%;
+        }
         .card { 
             border: 2px solid #333; 
-            padding: 15px; 
-            margin: 10px; 
-            width: 250px; 
-            height: 350px; 
-            display: inline-block; 
-            vertical-align: top;
+            padding: 8px; 
+            width: 140px; 
+            height: 200px; 
             page-break-inside: avoid;
             position: relative;
+            background: linear-gradient(135deg, #8e44ad 0%, #6c3483 100%);
+            color: white;
+            box-sizing: border-box;
         }
-        .investment { background: linear-gradient(135deg, #3498db 0%, #2980b9 100%); color: white; }
-        .jobs { background: linear-gradient(135deg, #e67e22 0%, #d35400 100%); color: white; }
-        .practices { background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%); color: white; }
-        .projects { background: linear-gradient(135deg, #27ae60 0%, #229954 100%); color: white; }
+        .category-symbol {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            font-size: 24px;
+            opacity: 0.9;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            z-index: 10;
+        }
         
-        .card-title { font-size: 16px; font-weight: bold; margin-bottom: 8px; }
-        .card-handle { font-size: 10px; margin-bottom: 10px; opacity: 0.8; }
-        .card-category { 
+        .card-title { 
             font-size: 12px; 
             font-weight: bold; 
+            margin-bottom: 8px; 
+            margin-right: 30px;
+            text-align: center;
+            line-height: 1.1;
+            padding-top: 3px;
+        }
+        .card-category { 
+            font-size: 18px; 
+            font-weight: bold; 
             text-align: center; 
-            padding: 5px; 
-            margin-bottom: 10px; 
+            padding: 8px; 
+            margin-bottom: 15px; 
             background: rgba(255,255,255,0.2);
             border-radius: 5px;
         }
-        .card-cost { font-size: 14px; margin-bottom: 5px; }
-        .card-money { font-size: 14px; margin-bottom: 5px; }
-        .card-effects { font-size: 11px; margin-bottom: 10px; }
-        .card-general { font-size: 10px; font-style: italic; margin-top: 10px; }
-        h1 { text-align: center; color: #2c3e50; }
+        .card-stats { 
+            font-size: 14px; 
+            margin-bottom: 8px; 
+            text-align: center;
+            font-weight: bold;
+            line-height: 1.1;
+        }
+        .card-effects { 
+            font-size: 10px; 
+            margin-bottom: 5px; 
+            text-align: center;
+            line-height: 1.2;
+            font-weight: bold;
+        }
+        .card-general { 
+            font-size: 10px; 
+            font-style: italic; 
+            margin-top: 5px; 
+            background: rgba(255,255,255,0.2);
+            padding: 4px;
+            border-radius: 3px;
+            text-align: center;
+            line-height: 1.2;
+            font-weight: bold;
+        }
+        .page-break {
+            page-break-before: always;
+        }
         @media print {
-            .card { margin: 5px; }
-            body { margin: 10px; }
+            body { margin: 0; padding: 5px; }
+            .cards-container { gap: 3px; }
+            .card { break-inside: avoid; }
+            .page-break { page-break-before: always; }
         }
     </style>
 </head>
 <body>
-    <h1>Private Action Cards</h1>
-    ${privateActionCards.map(card => {
-        const categoryClass = card.category.toLowerCase();
-        let cardContent = `
-    <div class="card ${categoryClass}">
-        <div class="card-category">${card.category}</div>
-        <div class="card-title">${card.name}</div>
-        <div class="card-handle">(${card.handle})</div>`;
+    <div class="cards-container">
+    ${(() => {
+        let result = [];
+        privateActionCards.forEach((card, index) => {
+            // Define symbols for each category
+            const categorySymbols = {
+                'Production': '⚙️',
+                'Practices': '💼', 
+                'Jobs': '👷',
+                'Actions': '⚡',
+                'Projects': '🏗️'
+            };
+            const categorySymbol = categorySymbols[card.category] || '❓';
+            
+            // Page break every 30 cards
+            if (index > 0 && index % 30 === 0) {
+                result.push('<div class="page-break"></div>');
+            }
+            
+            let cardContent = `
+        <div class="card">
+            <div class="category-symbol">${categorySymbol}</div>
+            <div class="card-title">${card.name}</div>`;
         
-        if (card.cost > 0) {
-            cardContent += `        <div class="card-cost">💰 Cost: ${card.cost}</div>\n`;
+        // Stats line with cost and money
+        let stats = [];
+        if (card.cost > 0) stats.push(`💰${card.cost}`);
+        if (card.immediateMoney > 0) stats.push(`💵+${card.immediateMoney}`);
+        if (card.moneyPerTurn > 0) stats.push(`💸+${card.moneyPerTurn}/turn`);
+        if (card.permanent) stats.push('🔒');
+        
+        if (stats.length > 0) {
+            cardContent += `        <div class="card-stats">${stats.join(' ')}</div>\n`;
         }
         
-        if (card.immediateMoney > 0) {
-            cardContent += `        <div class="card-money">💵 Immediate: +${card.immediateMoney}</div>\n`;
-        }
-        
-        if (card.moneyPerTurn > 0) {
-            cardContent += `        <div class="card-money">💸 Per Turn: +${card.moneyPerTurn}</div>\n`;
-        }
-        
-        if (card.permanent) {
-            cardContent += '        <div class="card-money">🔒 Permanent</div>\n';
-        }
-        
+        // Interest group effects - only show the effects, not the label
         if (card.interestGroupEffects && Object.keys(card.interestGroupEffects).length > 0) {
-            cardContent += '        <div class="card-effects">Interest Group Effects:<br>';
+            const effects = [];
             for (const [group, effect] of Object.entries(card.interestGroupEffects)) {
                 const sign = effect > 0 ? '+' : '';
-                cardContent += `        • ${group}: ${sign}${effect}<br>`;
+                effects.push(`${group}: ${sign}${effect}`);
             }
-            cardContent += '        </div>\n';
+            cardContent += `        <div class="card-effects">${effects.join('<br>')}</div>\n`;
         }
         
-        if (card.generalEffects) {
+        // General effects text (check both 'effects' and 'generalEffects')
+        if (card.effects) {
+            cardContent += `        <div class="card-general">${card.effects}</div>\n`;
+        } else if (card.generalEffects) {
             cardContent += `        <div class="card-general">${card.generalEffects}</div>\n`;
         }
         
         cardContent += '    </div>';
-        return cardContent;
-    }).join('')}
+        result.push(cardContent);
+        
+        // Add 6 empty cards after every 30 cards, but only if there are more cards coming
+        if ((index + 1) % 30 === 0 && (index + 1) < privateActionCards.length) {
+            for (let i = 0; i < 6; i++) {
+                result.push(`
+        <div class="card">
+        </div>`);
+            }
+        }
+        });
+        
+        return result.join('');
+    })()}
+    </div>
 </body>
 </html>`;
     return html;
@@ -165,80 +279,137 @@ function generatePublicActionHTML() {
     <meta charset="UTF-8">
     <title>Public Action Cards</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 20px; }
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 0; 
+            padding: 10px;
+            background: white;
+        }
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 5px;
+            max-width: 100%;
+        }
         .card { 
             border: 2px solid #333; 
-            padding: 15px; 
-            margin: 10px; 
-            width: 250px; 
-            height: 350px; 
-            display: inline-block; 
-            vertical-align: top;
+            padding: 8px; 
+            width: 140px; 
+            height: 200px; 
             page-break-inside: avoid;
             position: relative;
-            background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+            background: linear-gradient(135deg, #e67e22 0%, #d35400 100%);
             color: white;
+            box-sizing: border-box;
         }
-        .card-title { font-size: 16px; font-weight: bold; margin-bottom: 8px; }
-        .card-handle { font-size: 10px; margin-bottom: 10px; opacity: 0.8; }
-        .card-cost { font-size: 14px; margin-bottom: 5px; }
-        .card-popularity { 
+        .card-title { 
+            font-size: 12px; 
+            font-weight: bold; 
+            margin-bottom: 8px; 
+            text-align: center;
+            line-height: 1.1;
+        }
+        .card-stats { 
             font-size: 14px; 
-            margin-bottom: 10px; 
+            margin-bottom: 8px; 
+            text-align: center;
             font-weight: bold;
+            line-height: 1.1;
         }
         .positive { color: #2ecc71; }
         .negative { color: #e74c3c; }
-        .card-effects { font-size: 11px; margin-bottom: 10px; }
+        .card-effects { 
+            font-size: 10px; 
+            margin-bottom: 5px; 
+            text-align: center;
+            line-height: 1.2;
+            font-weight: bold;
+        }
         .card-general { 
             font-size: 10px; 
             font-style: italic; 
-            margin-top: 10px; 
+            margin-top: 5px; 
             background: rgba(255,255,255,0.2);
-            padding: 5px;
+            padding: 4px;
             border-radius: 3px;
+            text-align: center;
+            line-height: 1.2;
+            font-weight: bold;
         }
-        h1 { text-align: center; color: #2c3e50; }
+
+        .page-break {
+            page-break-before: always;
+        }
         @media print {
-            .card { margin: 5px; }
-            body { margin: 10px; }
+            body { margin: 0; padding: 5px; }
+            .cards-container { gap: 3px; }
+            .card { break-inside: avoid; }
+            .page-break { page-break-before: always; }
         }
     </style>
 </head>
 <body>
-    <h1>Public Action Cards</h1>
-    ${publicActionCards.map(card => {
-        let cardContent = `
-    <div class="card">
-        <div class="card-title">${card.name}</div>
-        <div class="card-handle">(${card.handle})</div>`;
+    <div class="cards-container">
+    ${(() => {
+        let result = [];
+        publicActionCards.forEach((card, index) => {
+            // Page break every 30 cards
+            if (index > 0 && index % 30 === 0) {
+                result.push('<div class="page-break"></div>');
+            }
+            
+            let cardContent = `
+        <div class="card">
+            <div class="card-title">${card.name}</div>`;
         
+        // Stats line with cost and popularity
+        let stats = [];
         if (card.politicalCapitalCost > 0) {
-            cardContent += `        <div class="card-cost">🏛️ Political Cost: ${card.politicalCapitalCost}</div>\n`;
+            stats.push(`🏛️${card.politicalCapitalCost}`);
         }
-        
         if (card.overallPopularity !== undefined && card.overallPopularity !== 0) {
             const sign = card.overallPopularity > 0 ? '+' : '';
             const popClass = card.overallPopularity > 0 ? 'positive' : 'negative';
-            cardContent += `        <div class="card-popularity ${popClass}">📊 Popularity: ${sign}${card.overallPopularity}</div>\n`;
+            stats.push(`<span class="${popClass}">📊${sign}${card.overallPopularity}</span>`);
         }
         
+        if (stats.length > 0) {
+            cardContent += `        <div class="card-stats">${stats.join(' ')}</div>\n`;
+        }
+        
+        // Interest group effects - only show the effects, not the label
         if (card.interestGroupEffects && Object.keys(card.interestGroupEffects).length > 0) {
-            cardContent += '        <div class="card-effects">Interest Group Effects:<br>';
+            const effects = [];
             for (const [group, effect] of Object.entries(card.interestGroupEffects)) {
                 const sign = effect > 0 ? '+' : '';
-                cardContent += `        • ${group}: ${sign}${effect}<br>`;
+                effects.push(`${group}: ${sign}${effect}`);
             }
-            cardContent += '        </div>\n';
+            cardContent += `        <div class="card-effects">${effects.join('<br>')}</div>\n`;
         }
         
+        // General effects text (check both 'effects' and 'generalEffects')
         if (card.effects) {
             cardContent += `        <div class="card-general">${card.effects}</div>\n`;
+        } else if (card.generalEffects) {
+            cardContent += `        <div class="card-general">${card.generalEffects}</div>\n`;
         }
         
         cardContent += '    </div>';
-        return cardContent;
-    }).join('')}
+        result.push(cardContent);
+        
+        // Add 6 empty cards after every 30 cards, but only if there are more cards coming
+        if ((index + 1) % 30 === 0 && (index + 1) < publicActionCards.length) {
+            for (let i = 0; i < 6; i++) {
+                result.push(`
+        <div class="card">
+        </div>`);
+            }
+        }
+        });
+        
+        return result.join('');
+    })()}
+    </div>
 </body>
 </html>`;
     return html;

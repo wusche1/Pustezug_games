@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug Cards</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .card { 
+            border: 2px solid #333; 
+            padding: 15px; 
+            margin: 10px; 
+            width: 250px; 
+            height: 350px; 
+            display: inline-block; 
+            vertical-align: top;
+            page-break-inside: avoid;
+            position: relative;
+            background: linear-gradient(135deg, #8e44ad 0%, #6c3483 100%);
+            color: white;
+        }
+        .category-symbol {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 64px;
+            opacity: 0.9;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .card-title { 
+            font-size: 28px; 
+            font-weight: bold; 
+            margin-bottom: 15px; 
+            text-align: center;
+            line-height: 1.1;
+        }
+        .card-general { 
+            font-size: 14px; 
+            font-style: italic; 
+            margin-top: 10px; 
+            background: rgba(255,255,255,0.2);
+            padding: 8px;
+            border-radius: 5px;
+            text-align: center;
+            line-height: 1.2;
+        }
+        .debug { 
+            background: #333; 
+            color: white; 
+            padding: 10px; 
+            margin: 10px; 
+            font-family: monospace; 
+        }
+    </style>
+</head>
+<body>
+    <h1>Debug Cards</h1>
+    
+    <div class="debug">
+        <h3>Debug Info:</h3>
+        <div id="debug-info"></div>
+    </div>
+    
+    <div id="cards-container"></div>
+
+    <script src="materials.js"></script>
+    <script>
+        // Debug function to check what we have
+        function debugCards() {
+            const debugDiv = document.getElementById('debug-info');
+            const cardsDiv = document.getElementById('cards-container');
+            
+            debugDiv.innerHTML = `
+                <p>Private Action Cards Length: ${privateActionCards ? privateActionCards.length : 'undefined'}</p>
+                <p>First card category: ${privateActionCards && privateActionCards[0] ? privateActionCards[0].category : 'undefined'}</p>
+                <p>First card generalEffects: ${privateActionCards && privateActionCards[0] ? privateActionCards[0].generalEffects || 'none' : 'undefined'}</p>
+            `;
+            
+            if (privateActionCards && privateActionCards.length > 0) {
+                // Test with first few cards
+                const testCards = privateActionCards.slice(0, 5);
+                
+                testCards.forEach(card => {
+                    const categorySymbols = {
+                        'Production': '⚙️',
+                        'Practices': '💼', 
+                        'Jobs': '👷',
+                        'Actions': '⚡',
+                        'Projects': '🏗️'
+                    };
+                    const categorySymbol = categorySymbols[card.category] || '❓';
+                    
+                    let cardHTML = `
+                    <div class="card">
+                        <div class="category-symbol">${categorySymbol}</div>
+                        <div class="card-title">${card.name}</div>
+                        <div class="debug">Category: ${card.category}</div>
+                        <div class="debug">Symbol: ${categorySymbol}</div>`;
+                    
+                    if (card.generalEffects) {
+                        cardHTML += `<div class="card-general">${card.generalEffects}</div>`;
+                        cardHTML += `<div class="debug">Has generalEffects: YES</div>`;
+                    } else {
+                        cardHTML += `<div class="debug">Has generalEffects: NO</div>`;
+                    }
+                    
+                    cardHTML += `</div>`;
+                    cardsDiv.innerHTML += cardHTML;
+                });
+            } else {
+                cardsDiv.innerHTML = '<p>No cards found!</p>';
+            }
+        }
+        
+        // Run debug when page loads
+        document.addEventListener('DOMContentLoaded', debugCards);
+    </script>
+</body>
+</html>

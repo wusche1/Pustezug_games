@@ -18,552 +18,349 @@ const civilSocietyCards = [
 
 // Private Action Cards
 const privateActionCards = [
-    // Investment Cards (10)
+    // Production Cards (9) - Three types with 1, 2, or 3 production capacity each
+    // Military Production
     {
-        name: "New Factory",
-        handle: "factory",
-        category: "Investment",
+        name: "Arms Workshop",
+        handle: "arms_workshop",
+        category: "Production",
         cost: 4,
-        moneyPerTurn: 3,
-        permanent: true,
-        interestGroupEffects: { "climate": -4, "unions": 2 }
-    },
-    {
-        name: "Oil Refinery",
-        handle: "oil_refinery",
-        category: "Investment",
-        cost: 5,
-        moneyPerTurn: 4,
-        permanent: true,
-        interestGroupEffects: { "climate": -5, "farmers": 2 }
-    },
-    {
-        name: "Solar Farm",
-        handle: "solar_farm",
-        category: "Investment",
-        cost: 8,
-        moneyPerTurn: 2,
-        permanent: true,
-        interestGroupEffects: { "climate": 4, "academia": 1 }
-    },
-    {
-        name: "Strip Mining",
-        handle: "strip_mining",
-        category: "Investment",
-        cost: 3,
-        moneyPerTurn: 5,
-        permanent: true,
-        interestGroupEffects: { "climate": -5, "farmers": -2 }
-    },
-    {
-        name: "Casino",
-        handle: "casino",
-        category: "Investment",
-        cost: 6,
-        moneyPerTurn: 4,
-        permanent: true,
-        interestGroupEffects: { "church": -3, "pensioners": -2 }
-    },
-    {
-        name: "Luxury Resort",
-        handle: "luxury_resort",
-        category: "Investment",
-        cost: 9,
-        moneyPerTurn: 2,
-        permanent: true,
-        interestGroupEffects: { "landlords": 3, "farmers": -2 }
-    },
-    {
-        name: "Tobacco Farm",
-        handle: "tobacco_farm",
-        category: "Investment",
-        cost: 2,
-        moneyPerTurn: 3,
-        permanent: true,
-        interestGroupEffects: { "farmers": 3, "pensioners": -4, "church": -2 }
-    },
-    {
-        name: "Data Center",
-        handle: "data_center",
-        category: "Investment",
-        cost: 6,
-        moneyPerTurn: 3,
-        permanent: true,
-        interestGroupEffects: { "academia": 1, "climate": -2 }
-    },
-    {
-        name: "Shopping Mall",
-        handle: "shopping_mall",
-        category: "Investment",
-        cost: 7,
-        moneyPerTurn: 3,
-        permanent: true,
-        interestGroupEffects: { "landlords": 2, "climate": -1 }
-    },
-    {
-        name: "Recycling Plant",
-        handle: "recycling_plant",
-        category: "Investment",
-        cost: 7,
-        moneyPerTurn: 2,
-        permanent: true,
-        interestGroupEffects: { "climate": 3, "unions": 2 }
-    },
-
-    // Jobs Cards (10)
-    {
-        name: "Asset Liquidation",
-        handle: "asset_liquidation",
-        category: "Jobs",
-        immediateMoney: 12
-    },
-    {
-        name: "Automation Line",
-        handle: "automation_line",
-        category: "Jobs",
-        cost: 5,
-        moneyPerTurn: 4,
-        permanent: true,
-        interestGroupEffects: { "unions": -5, "academia": 2 }
-    },
-    {
-        name: "Union Busting",
-        handle: "union_busting",
-        category: "Jobs",
-        cost: 3,
-        moneyPerTurn: 3,
-        permanent: true,
-        interestGroupEffects: { "unions": -6 }
-    },
-    {
-        name: "Employee Benefits",
-        handle: "employee_benefits",
-        category: "Jobs",
-        cost: 7,
-        moneyPerTurn: 2,
-        permanent: true,
-        interestGroupEffects: { "unions": 4, "pensioners": 2 }
-    },
-    {
-        name: "Gig Economy Platform",
-        handle: "gig_economy",
-        category: "Jobs",
-        cost: 4,
-        moneyPerTurn: 3,
-        permanent: true,
-        interestGroupEffects: { "unions": -4, "service": -2 }
-    },
-    {
-        name: "Chaplain Program",
-        handle: "chaplain_program",
-        category: "Jobs",
-        cost: 3,
-        moneyPerTurn: 1,
-        permanent: true,
-        interestGroupEffects: { "church": 3, "unions": 2 }
-    },
-    {
-        name: "Senior Hiring Initiative",
-        handle: "senior_hiring",
-        category: "Jobs",
-        cost: 5,
-        moneyPerTurn: 2,
-        permanent: true,
-        interestGroupEffects: { "pensioners": 4, "unions": 2 }
-    },
-    {
-        name: "Internship Program",
-        handle: "internship_program",
-        category: "Jobs",
-        cost: 2,
-        moneyPerTurn: 2,
-        permanent: true,
-        interestGroupEffects: { "academia": 2, "unions": -1 }
-    },
-    {
-        name: "Temp Agency",
-        handle: "temp_agency",
-        category: "Jobs",
-        cost: 3,
-        moneyPerTurn: 3,
-        permanent: true,
-        interestGroupEffects: { "unions": -3 }
-    },
-    {
-        name: "Profit Sharing",
-        handle: "profit_sharing",
-        category: "Jobs",
-        cost: 8,
-        moneyPerTurn: 1,
-        permanent: true,
-        interestGroupEffects: { "unions": 5 }
-    },
-
-    // Practices Cards (10)
-    {
-        name: "Emergency Sale",
-        handle: "emergency_sale",
-        category: "Practices",
-        immediateMoney: 10
-    },
-    {
-        name: "Price Increase",
-        handle: "price_increase",
-        category: "Practices",
-        immediateMoney: 8
-    },
-    {
-        name: "Stock Buyback",
-        handle: "stock_buyback",
-        category: "Practices",
-        immediateMoney: 6
-    },
-    {
-        name: "Tax Avoidance",
-        handle: "tax_avoidance",
-        category: "Practices",
-        cost: 2,
-        moneyPerTurn: 3,
-        permanent: true,
-        interestGroupEffects: { "service": -3 }
-    },
-    {
-        name: "Regulatory Capture",
-        handle: "regulatory_capture",
-        category: "Practices",
-        cost: 6,
-        moneyPerTurn: 2,
-        permanent: true,
-        interestGroupEffects: { "service": 3, "paper": -3 }
-    },
-    {
-        name: "Church Donations",
-        handle: "church_donations",
-        category: "Practices",
-        cost: 4,
-        moneyPerTurn: 1,
-        permanent: true,
-        interestGroupEffects: { "church": 4, "pensioners": 1 }
-    },
-    {
-        name: "Academic Grants",
-        handle: "academic_grants",
-        category: "Practices",
-        cost: 5,
-        moneyPerTurn: 1,
-        permanent: true,
-        interestGroupEffects: { "academia": 3, "service": 1 }
-    },
-    {
-        name: "Farmer Subsidies",
-        handle: "farmer_subsidies",
-        category: "Practices",
-        cost: 3,
-        moneyPerTurn: 2,
-        permanent: true,
-        interestGroupEffects: { "farmers": 4 }
-    },
-    {
-        name: "Lobbying Campaign",
-        handle: "lobbying_campaign",
-        category: "Practices",
-        cost: 4,
-        moneyPerTurn: 1,
-        permanent: true,
-        interestGroupEffects: { "service": 2, "paper": -2 }
-    },
-    {
-        name: "Environmental Greenwashing",
-        handle: "greenwashing",
-        category: "Practices",
-        cost: 3,
-        moneyPerTurn: 1,
-        permanent: true,
-        interestGroupEffects: { "climate": 1, "paper": -2 }
-    },
-
-    // Projects Cards (10)
-    {
-        name: "Private Hospital",
-        handle: "private_hospital",
-        category: "Projects",
-        cost: 8,
-        moneyPerTurn: 3,
-        permanent: true,
-        interestGroupEffects: { "service": -2, "pensioners": 3 }
-    },
-    {
-        name: "University Sponsorship",
-        handle: "university_sponsorship",
-        category: "Projects",
-        cost: 6,
-        moneyPerTurn: 2,
-        permanent: true,
-        interestGroupEffects: { "academia": 3, "service": 1 }
-    },
-    {
-        name: "Church Renovation",
-        handle: "church_renovation",
-        category: "Projects",
-        cost: 5,
-        moneyPerTurn: 1,
-        permanent: true,
-        interestGroupEffects: { "church": 4, "pensioners": 2 }
-    },
-    {
-        name: "Newspaper Acquisition",
-        handle: "newspaper_acquisition",
-        category: "Projects",
-        cost: 7,
-        moneyPerTurn: 2,
-        permanent: true,
-        interestGroupEffects: { "paper": 3 }
-    },
-    {
-        name: "Retirement Community",
-        handle: "retirement_community",
-        category: "Projects",
-        cost: 9,
-        moneyPerTurn: 2,
-        permanent: true,
-        interestGroupEffects: { "pensioners": 4, "service": 1 }
-    },
-    {
-        name: "Agricultural Research",
-        handle: "agricultural_research",
-        category: "Projects",
-        cost: 5,
-        moneyPerTurn: 2,
-        permanent: true,
-        interestGroupEffects: { "farmers": 3, "academia": 2 }
-    },
-    {
-        name: "Private Prison",
-        handle: "private_prison",
-        category: "Projects",
-        cost: 6,
-        moneyPerTurn: 4,
-        permanent: true,
-        interestGroupEffects: { "service": -3 }
-    },
-    {
-        name: "Climate Research Center",
-        handle: "climate_research",
-        category: "Projects",
-        cost: 8,
-        moneyPerTurn: 1,
-        permanent: true,
-        interestGroupEffects: { "climate": 4, "academia": 3 }
-    },
-    {
-        name: "Land Development",
-        handle: "land_development",
-        category: "Projects",
-        cost: 6,
-        moneyPerTurn: 3,
-        permanent: true,
-        interestGroupEffects: { "landlords": 4, "climate": -2 }
-    },
-    {
-        name: "Community Center",
-        handle: "community_center",
-        category: "Projects",
-        cost: 8,
-        moneyPerTurn: 1,
-        permanent: true,
-        interestGroupEffects: { "pensioners": 3, "unions": 2 }
-    },
-
-    // Production Capacity Cards (6)
-    {
-        name: "Small Arms Factory",
-        handle: "small_arms_factory",
-        category: "Investment",
-        cost: 6,
         permanent: true,
         interestGroupEffects: { "army": 2, "unions": 1 },
         generalEffects: "Gain 1 military production capacity"
     },
     {
         name: "Defense Contractor",
-        handle: "defense_contractor",
-        category: "Investment",
-        cost: 12,
+        handle: "defense_contractor", 
+        category: "Production",
+        cost: 8,
         permanent: true,
         interestGroupEffects: { "army": 4, "unions": 2 },
         generalEffects: "Gain 2 military production capacity"
     },
     {
-        name: "Pharmaceutical Lab",
-        handle: "pharma_lab_small",
-        category: "Investment",
-        cost: 6,
+        name: "Military-Industrial Complex",
+        handle: "military_industrial",
+        category: "Production",
+        cost: 12,
+        permanent: true,
+        interestGroupEffects: { "army": 6, "unions": 3 },
+        generalEffects: "Gain 3 military production capacity"
+    },
+    
+    // Pharma Production
+    {
+        name: "Small Clinic",
+        handle: "small_clinic",
+        category: "Production",
+        cost: 4,
         permanent: true,
         interestGroupEffects: { "pensioners": 2, "academia": 1 },
         generalEffects: "Gain 1 pharma production capacity"
     },
     {
-        name: "Medical Research Complex",
-        handle: "medical_research_complex",
-        category: "Investment",
-        cost: 12,
+        name: "Pharmaceutical Lab",
+        handle: "pharma_lab",
+        category: "Production",
+        cost: 8,
         permanent: true,
         interestGroupEffects: { "pensioners": 4, "academia": 2 },
         generalEffects: "Gain 2 pharma production capacity"
     },
     {
-        name: "Tech Startup Incubator",
-        handle: "tech_startup",
-        category: "Investment",
-        cost: 6,
+        name: "Medical Research Empire",
+        handle: "medical_empire",
+        category: "Production",
+        cost: 12,
+        permanent: true,
+        interestGroupEffects: { "pensioners": 6, "academia": 3 },
+        generalEffects: "Gain 3 pharma production capacity"
+    },
+    
+    // Tech Production
+    {
+        name: "Startup Garage",
+        handle: "startup_garage",
+        category: "Production",
+        cost: 4,
         permanent: true,
         interestGroupEffects: { "academia": 2, "unions": -1 },
         generalEffects: "Gain 1 tech production capacity"
     },
     {
         name: "Tech Campus",
-        handle: "silicon_valley_campus",
-        category: "Investment",
+        handle: "tech_campus",
+        category: "Production",
+        cost: 8,
+        permanent: true,
+        interestGroupEffects: { "academia": 4, "unions": -2 },
+        generalEffects: "Gain 2 tech production capacity"
+    },
+    {
+        name: "Silicon Valley Empire",
+        handle: "silicon_empire",
+        category: "Production",
         cost: 12,
         permanent: true,
-        interestGroupEffects: { "academia": 3, "unions": -2 },
-        generalEffects: "Gain 2 tech production capacity"
+        interestGroupEffects: { "academia": 6, "unions": -3 },
+        generalEffects: "Gain 3 tech production capacity"
+    },
+
+    // Practices Cards (10) - Cheap but controversial
+    {
+        name: "Tax Evasion",
+        handle: "tax_evasion",
+        category: "Practices",
+        cost: 2,
+        moneyPerTurn: 3,
+        permanent: true,
+        interestGroupEffects: { "service": -4, "paper": -2 }
+    },
+    {
+        name: "Environmental Dumping",
+        handle: "environmental_dumping",
+        category: "Practices",
+        cost: 1,
+        moneyPerTurn: 2,
+        permanent: true,
+        interestGroupEffects: { "climate": -5, "farmers": -3 }
+    },
+    {
+        name: "Worker Exploitation",
+        handle: "worker_exploitation",
+        category: "Practices",
+        cost: 2,
+        moneyPerTurn: 3,
+        permanent: true,
+        interestGroupEffects: { "unions": -6, "pensioners": -2 }
+    },
+    {
+        name: "Price Fixing",
+        handle: "price_fixing",
+        category: "Practices",
+        cost: 3,
+        moneyPerTurn: 4,
+        permanent: true,
+        interestGroupEffects: { "service": -3, "paper": -3 }
+    },
+    {
+        name: "Predatory Lending",
+        handle: "predatory_lending",
+        category: "Practices",
+        cost: 2,
+        moneyPerTurn: 3,
+        permanent: true,
+        interestGroupEffects: { "pensioners": -4, "banks": 2 }
+    },
+    {
+        name: "Media Manipulation",
+        handle: "media_manipulation",
+        category: "Practices",
+        cost: 3,
+        moneyPerTurn: 2,
+        permanent: true,
+        interestGroupEffects: { "paper": -5, "academia": -2 }
+    },
+    {
+        name: "Regulatory Capture",
+        handle: "regulatory_capture",
+        category: "Practices",
+        cost: 4,
+        moneyPerTurn: 3,
+        permanent: true,
+        interestGroupEffects: { "service": -4, "paper": -3 }
+    },
+    {
+        name: "Child Labor",
+        handle: "child_labor",
+        category: "Practices",
+        cost: 1,
+        moneyPerTurn: 2,
+        permanent: true,
+        interestGroupEffects: { "unions": -5, "church": -4, "academia": -3 }
+    },
+    {
+        name: "Monopoly Formation",
+        handle: "monopoly_formation",
+        category: "Practices",
+        cost: 4,
+        moneyPerTurn: 4,
+        permanent: true,
+        interestGroupEffects: { "service": -3, "farmers": -2, "paper": -2 }
+    },
+    {
+        name: "Data Privacy Violation",
+        handle: "data_violation",
+        category: "Practices",
+        cost: 2,
+        moneyPerTurn: 3,
+        permanent: true,
+        interestGroupEffects: { "academia": -3, "paper": -4, "service": -2 }
+    },
+
+    // Jobs Cards (10) - More expensive but less controversial
+    {
+        name: "Employee Benefits Package",
+        handle: "employee_benefits",
+        category: "Jobs",
+        cost: 6,
+        moneyPerTurn: 2,
+        permanent: true,
+        interestGroupEffects: { "unions": 4, "pensioners": 3 }
+    },
+    {
+        name: "Skills Training Program",
+        handle: "skills_training",
+        category: "Jobs",
+        cost: 7,
+        moneyPerTurn: 2,
+        permanent: true,
+        interestGroupEffects: { "unions": 3, "academia": 2 }
+    },
+    {
+        name: "Green Jobs Initiative",
+        handle: "green_jobs",
+        category: "Jobs",
+        cost: 8,
+        moneyPerTurn: 2,
+        permanent: true,
+        interestGroupEffects: { "climate": 4, "unions": 2 }
+    },
+    {
+        name: "Senior Employment Program",
+        handle: "senior_employment",
+        category: "Jobs",
+        cost: 6,
+        moneyPerTurn: 2,
+        permanent: true,
+        interestGroupEffects: { "pensioners": 4, "unions": 1 }
+    },
+    {
+        name: "Rural Development Jobs",
+        handle: "rural_jobs",
+        category: "Jobs",
+        cost: 5,
+        moneyPerTurn: 2,
+        permanent: true,
+        interestGroupEffects: { "farmers": 4, "unions": 2 }
+    },
+    {
+        name: "Tech Education Center",
+        handle: "tech_education",
+        category: "Jobs",
+        cost: 7,
+        moneyPerTurn: 2,
+        permanent: true,
+        interestGroupEffects: { "academia": 3, "unions": 2 }
+    },
+    {
+        name: "Community Service Corps",
+        handle: "community_service",
+        category: "Jobs",
+        cost: 6,
+        moneyPerTurn: 1,
+        permanent: true,
+        interestGroupEffects: { "service": 3, "church": 2, "unions": 2 }
+    },
+    {
+        name: "Apprenticeship Program",
+        handle: "apprenticeship",
+        category: "Jobs",
+        cost: 5,
+        moneyPerTurn: 2,
+        permanent: true,
+        interestGroupEffects: { "unions": 3, "academia": 1 }
+    },
+    {
+        name: "Healthcare Worker Initiative",
+        handle: "healthcare_workers",
+        category: "Jobs",
+        cost: 8,
+        moneyPerTurn: 2,
+        permanent: true,
+        interestGroupEffects: { "pensioners": 3, "unions": 2, "service": 1 }
+    },
+    {
+        name: "Infrastructure Jobs Program",
+        handle: "infrastructure_jobs",
+        category: "Jobs",
+        cost: 9,
+        moneyPerTurn: 3,
+        permanent: true,
+        interestGroupEffects: { "unions": 4, "service": 2 }
+    },
+
+    // Actions Cards (5) - Free with small immediate money
+    {
+        name: "Asset Liquidation",
+        handle: "asset_liquidation",
+        category: "Actions",
+        cost: 0,
+        immediateMoney: 5
+    },
+    {
+        name: "Emergency Sale",
+        handle: "emergency_sale",
+        category: "Actions",
+        cost: 0,
+        immediateMoney: 6
+    },
+    {
+        name: "Stock Dividend",
+        handle: "stock_dividend",
+        category: "Actions",
+        cost: 0,
+        immediateMoney: 6
+    },
+    {
+        name: "Expense Cuts",
+        handle: "expense_cuts",
+        category: "Actions",
+        cost: 0,
+        immediateMoney: 5
+    },
+    {
+        name: "Quick Contract",
+        handle: "quick_contract",
+        category: "Actions",
+        cost: 0,
+        immediateMoney: 4
+    },
+
+    // Projects Cards (2)
+    {
+        name: "Revolving Door",
+        handle: "revolving_door",
+        category: "Projects",
+        cost: 8,
+        permanent: true,
+        generalEffects: "You can give one political donation, conditional on a public action card being played"
+    },
+    {
+        name: "Think Tank",
+        handle: "think_tank", 
+        category: "Projects",
+        cost: 6,
+        permanent: true,
+        generalEffects: "You can destroy one of the public cards and only give 5 to the parties"
+    },
+    {
+        name: "Shell Company",
+        handle: "shell_company",
+        category: "Projects", 
+        cost: 7,
+        permanent: true,
+        generalEffects: "This company cannot be targeted by any tax law"
     }
 ];
 
 // Public Action Cards
 const publicActionCards = [
-    // Popular/Expensive Cards
+    // Outlawing Cards (5) - Updated for new categories
     {
-        name: "Universal Healthcare",
-        handle: "universal_healthcare",
-        politicalCapitalCost: 8,
-        overallPopularity: 4,
-        interestGroupEffects: { "pensioners": 3, "banks": -2 },
-        effects: "Permanent healthcare system for all citizens"
-    },
-    {
-        name: "Free University Education",
-        handle: "free_university",
-        politicalCapitalCost: 7,
-        overallPopularity: 3,
-        interestGroupEffects: { "academia": 4 },
-        effects: "Permanent free higher education system"
-    },
-    {
-        name: "Green New Deal",
-        handle: "green_new_deal",
-        politicalCapitalCost: 9,
-        overallPopularity: 3,
-        interestGroupEffects: { "climate": 5, "banks": -3 },
-        effects: "Permanent massive environmental transformation program"
-    },
-    {
-        name: "Public Housing Program",
-        handle: "public_housing",
-        politicalCapitalCost: 6,
-        overallPopularity: 3,
-        interestGroupEffects: { "unions": 2, "landlords": -4 },
-        effects: "Permanent affordable housing construction program"
-    },
-    {
-        name: "Infrastructure Investment",
-        handle: "infrastructure_investment",
-        politicalCapitalCost: 5,
-        overallPopularity: 2,
-        interestGroupEffects: { "unions": 3, "service": 2 },
-        effects: "One-time major infrastructure spending boost"
-    },
-
-    // Moderate Cards
-    {
-        name: "Minimum Wage Increase",
-        handle: "minimum_wage",
-        politicalCapitalCost: 4,
-        overallPopularity: 2,
-        interestGroupEffects: { "unions": 3, "banks": -2 },
-        effects: "Permanent higher minimum wage law"
-    },
-    {
-        name: "Environmental Regulations",
-        handle: "environmental_regulations",
-        politicalCapitalCost: 5,
-        overallPopularity: 1,
-        interestGroupEffects: { "climate": 3, "banks": -2 },
-        effects: "Permanent stricter environmental standards"
-    },
-    {
-        name: "Education Funding",
-        handle: "education_funding",
-        politicalCapitalCost: 3,
-        overallPopularity: 2,
-        interestGroupEffects: { "academia": 3 },
-        effects: "One-time major education spending increase"
-    },
-    {
-        name: "Agricultural Subsidies",
-        handle: "agricultural_subsidies",
-        politicalCapitalCost: 3,
-        overallPopularity: 1,
-        interestGroupEffects: { "farmers": 4 },
-        effects: "Permanent farm support payments"
-    },
-    {
-        name: "Senior Benefits",
-        handle: "senior_benefits",
-        politicalCapitalCost: 4,
-        overallPopularity: 2,
-        interestGroupEffects: { "pensioners": 4 },
-        effects: "Permanent enhanced retirement benefits"
-    },
-
-    // Cheap/Popular Cards
-    {
-        name: "Tax Relief for Workers",
-        handle: "tax_relief_workers",
-        politicalCapitalCost: 2,
-        overallPopularity: 2,
-        interestGroupEffects: { "unions": 2 },
-        effects: "One-time tax rebate for working families"
-    },
-    {
-        name: "Church Tax Exemption",
-        handle: "church_tax_exemption",
-        politicalCapitalCost: 1,
-        overallPopularity: 1,
-        interestGroupEffects: { "church": 3 },
-        effects: "Permanent religious organization tax benefits"
-    },
-    {
-        name: "Press Freedom Act",
-        handle: "press_freedom",
-        politicalCapitalCost: 2,
-        overallPopularity: 1,
-        interestGroupEffects: { "paper": 3 },
-        effects: "Permanent media protection laws"
-    },
-    {
-        name: "Climate Awareness Campaign",
-        handle: "climate_awareness",
-        politicalCapitalCost: 1,
-        overallPopularity: 1,
-        interestGroupEffects: { "climate": 2 },
-        effects: "One-time public education initiative"
-    },
-    {
-        name: "Farmer Support Program",
-        handle: "farmer_support",
-        politicalCapitalCost: 2,
-        overallPopularity: 1,
-        interestGroupEffects: { "farmers": 3 },
-        effects: "One-time agricultural assistance package"
-    },
-
-    // Outlawing Cards
-    {
-        name: "Expropriation",
-        handle: "outlaw_investment",
-        effects: "Remove one Investment category private action card from play"
+        name: "Production Nationalization",
+        handle: "outlaw_production",
+        effects: "Remove one Production category private action card from play"
     },
     {
         name: "Labour Regulation",
@@ -575,13 +372,25 @@ const publicActionCards = [
         handle: "outlaw_practices",
         effects: "Remove one Practices category private action card from play"
     },
+
     {
         name: "Public Interest Protection",
         handle: "outlaw_projects",
         effects: "Remove one Projects category private action card from play"
     },
+    {
+        name: "Anti-Corruption Investigation",
+        handle: "anti_corruption",
+        effects: "The party currently having the most money immediately loses 2 political influence"
+    },
+    {
+        name: "Constitutional Challenge",
+        handle: "constitutional_challenge",
+        politicalCapitalCost: 5,
+        effects: "Remove any permanent private action card from play without triggering its interest group effects"
+    },
 
-    // Controversial Sector Support Cards
+    // Controversial Sector Support Cards (6) - Keep existing
     {
         name: "Border Conflict",
         handle: "border_conflict",
@@ -629,6 +438,152 @@ const publicActionCards = [
         overallPopularity: -3,
         interestGroupEffects: { "service": 2, "paper": -3, "unions": -2 },
         effects: "Give 6 money per tech production capacity"
+    },
+
+    // Tax Cards (3)
+    {
+        name: "Small Business Tax",
+        handle: "small_tax",
+        politicalCapitalCost: 2,
+        overallPopularity: 3,
+        interestGroupEffects: { "service": 2, "banks": -1 },
+        effects: "One company has to pay 2 money"
+    },
+    {
+        name: "Corporate Tax",
+        handle: "medium_tax",
+        politicalCapitalCost: 4,
+        overallPopularity: 4,
+        interestGroupEffects: { "service": 3, "banks": -2 },
+        effects: "Two companies have to pay 2 money each"
+    },
+    {
+        name: "Wealth Tax",
+        handle: "wealth_tax",
+        politicalCapitalCost: 5,
+        overallPopularity: 5,
+        interestGroupEffects: { "service": 3, "banks": -3, "unions": 2 },
+        effects: "One company has to pay 4 money"
+    },
+    {
+        name: "Progressive Tax",
+        handle: "progressive_tax",
+        politicalCapitalCost: 7,
+        overallPopularity: 4,
+        interestGroupEffects: { "service": 4, "banks": -4, "unions": 3 },
+        effects: "Two companies have to pay 4 money each"
+    },
+
+    // Wage and Practice Laws (2)
+    {
+        name: "Minimum Wage Law",
+        handle: "minimum_wage_law",
+        politicalCapitalCost: 4,
+        overallPopularity: 4,
+        interestGroupEffects: { "unions": 4, "banks": -3 },
+        effects: "In the next turn, companies make only half as much money via Jobs cards (rounding down)"
+    },
+    {
+        name: "Corporate Ethics Law",
+        handle: "ethics_law",
+        politicalCapitalCost: 5,
+        overallPopularity: 4,
+        interestGroupEffects: { "service": 3, "paper": 2, "banks": -3 },
+        effects: "In the next turn, companies make only half as much money via Practices cards (rounding down)"
+    },
+
+    // State Purchase Cards (6) - Party buys production elements
+    {
+        name: "Military Procurement",
+        handle: "buy_military_one",
+        politicalCapitalCost: 3,
+        overallPopularity: 0,
+        interestGroupEffects: { "army": 2, "unions": 1 },
+        effects: "Buy one specific military production for 2 money each"
+    },
+    {
+        name: "Defense Expansion",
+        handle: "buy_military_two",
+        politicalCapitalCost: 6,
+        overallPopularity: -1,
+        interestGroupEffects: { "army": 4, "unions": 2, "climate": -1 },
+        effects: "Buy two specific military production for 2 money each"
+    },
+    {
+        name: "Public Health Investment",
+        handle: "buy_pharma_one",
+        politicalCapitalCost: 4,
+        overallPopularity: 2,
+        interestGroupEffects: { "pensioners": 3, "service": 1 },
+        effects: "Buy one specific pharma production for 2 money each"
+    },
+    {
+        name: "National Health Service",
+        handle: "buy_pharma_two",
+        politicalCapitalCost: 8,
+        overallPopularity: 3,
+        interestGroupEffects: { "pensioners": 5, "service": 2, "banks": -2 },
+        effects: "Buy two specific pharma production for 2 money each"
+    },
+    {
+        name: "Digital Infrastructure",
+        handle: "buy_tech_one",
+        politicalCapitalCost: 3,
+        overallPopularity: 1,
+        interestGroupEffects: { "academia": 2, "service": 1 },
+        effects: "Buy one specific tech production for 2 money each"
+    },
+    {
+        name: "National Tech Initiative",
+        handle: "buy_tech_two",
+        politicalCapitalCost: 6,
+        overallPopularity: 1,
+        interestGroupEffects: { "academia": 4, "service": 2, "unions": 1 },
+        effects: "Buy two specific tech production for 2 money each"
+    },
+
+    // Interest Group Conflict Cards (6) - Pitting groups against each other
+    {
+        name: "Religious Education Reform",
+        handle: "religious_education",
+        politicalCapitalCost: 4,
+        overallPopularity: 0,
+        interestGroupEffects: { "church": 4, "academia": -3 }
+    },
+    {
+        name: "Land Redistribution",
+        handle: "land_redistribution",
+        politicalCapitalCost: 5,
+        overallPopularity: 1,
+        interestGroupEffects: { "farmers": 5, "landlords": -6 }
+    },
+    {
+        name: "Banking Deregulation",
+        handle: "banking_deregulation",
+        politicalCapitalCost: 3,
+        overallPopularity: -2,
+        interestGroupEffects: { "banks": 4, "pensioners": -4 }
+    },
+    {
+        name: "Military Housing Program",
+        handle: "military_housing",
+        politicalCapitalCost: 4,
+        overallPopularity: 0,
+        interestGroupEffects: { "army": 3, "landlords": -3 }
+    },
+    {
+        name: "Climate Emergency Powers",
+        handle: "climate_emergency",
+        politicalCapitalCost: 6,
+        overallPopularity: 2,
+        interestGroupEffects: { "climate": 5, "farmers": -4, "banks": -2 }
+    },
+    {
+        name: "Pension Fund Investment Rules",
+        handle: "pension_investment",
+        politicalCapitalCost: 3,
+        overallPopularity: 1,
+        interestGroupEffects: { "pensioners": 3, "banks": -2, "climate": 2 }
     }
 ];
 
@@ -636,3 +591,4 @@ const publicActionCards = [
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = { civilSocietyCards, privateActionCards, publicActionCards };
 }
+
