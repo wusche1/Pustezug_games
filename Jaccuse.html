@@ -1,71 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" >
-    <title>J'accuse!</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J'accuse! - Pustezug Games</title>
     <link rel="stylesheet" href="style.css">
-    <!-- ... other styles or links ... -->
-    <!-- Header styles or other CSS rules can go here -->
-    <!-- For modern browsers - recommended: PNG format -->
-     
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel="apple-touch-icon" sizes="180x180" href="icon_folder/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="icon_folder/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="icon_folder/favicon-16x16.png">
     <link rel="manifest" href="icon_folder/site.webmanifest">
     <link rel="mask-icon" href="icon_folder/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="theme-color" content="#ffffff">
-    <!-- Include your custom JS file -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
-    <script type="module" src="java_scripts/databank.js" defer></script>
-    <script type="module" src="java_scripts/Jaccuse.js" defer></script> 
-    <!-- <script src="jaccuse_words/everyday_places.js" defer></script>
-    <script src="jaccuse_words/abstract_places.js" defer></script>
-    <script src="jaccuse_words/specific_places.js" defer></script>
-    <script src="jaccuse_words/jonas_words.js" defer></script>
-    <script src="jaccuse_words/eva_words.js" defer></script>
-    <script src="jaccuse_words/ML4good.js" defer></script> -->
+    <meta name="theme-color" content="#1a2f3d">
     <script src="https://accounts.google.com/gsi/client" async defer></script>
     <script src="java_scripts/google_login.js" defer></script>
 </head>
-
-<body onload="main()">
-    <header class="website_header">
-        <div class="leftpadding"></div>
-        <div class="daseingemachte">
-            <img src="images/Turtle_logo.png" alt="Pustezug Games" class="logo">
-            <span class="website_title">Pustezug Games</span>
-            <div class="spacer"></div>
-            <div id="g_id_onload"
-                 data-client_id="663759759562-koons6upuoj2n06l9ncf7of7c00b4qhf.apps.googleusercontent.com"
-                 data-callback="handleCredentialResponse">
-            </div>
-            <div class="g_id_signin" data-type="standard"></div>
-        </div>
-        <div class="rightpadding"></div>
-      </header>
-    <div class="website_content">
-        <div class="menu_bar">
-            <ul>
+<body class="game-page">
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="images/Turtle_logo.png" alt="Pustezug Games Logo">
+                <span>Pustezug Games</span>
+            </a>
+            <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="index.html#game_list">Games</a></li>
-                <li><a href="About.html">About</a></li>
-                <li><a href="Contact.html">Contact</a></li>
+                <li><a href="index.html#games">Games</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
             </ul>
-        </div>
-        <div class="leftpadding"></div>
-        <div class="daseingemachte">
-            <h1>J'accuse Game Options</h1>
-            <div class="game_buttons">
-                <a href="Jaccuse_rules.html"><button type="button">Rules of J'accuse!</button></a>
-                <a href="Jaccuse_play.html"><button type="button">Play J'accuse!</button></a>
-                <a href="Jaccuse_words.html"><button type="button">Select Words</button></a>
-                <a href="Jaccuse_suggest.html"><button type="button">Suggest New Words</button></a>
+            <div class="nav-auth">
+                <div id="g_id_onload"
+                     data-client_id="663759759562-koons6upuoj2n06l9ncf7of7c00b4qhf.apps.googleusercontent.com"
+                     data-callback="handleCredentialResponse">
+                </div>
+                <div class="g_id_signin" data-type="standard"></div>
             </div>
         </div>
-        <div class="rightpadding"></div>
-    </div>
+    </nav>
+
+    <!-- Game Hero -->
+    <header class="game-hero">
+        <img src="images/hand_icon.png" alt="J'accuse!" class="game-hero-icon">
+        <h1>J'accuse!</h1>
+        <p class="game-hero-tagline">Convince the group, encrypt your knowledge</p>
+        <div class="hero-cta" style="margin-top: 2rem;">
+            <a href="Jaccuse_play.html" class="btn btn-primary">Play Now</a>
+            <a href="Jaccuse_words.html" class="btn btn-secondary">Word Library</a>
+        </div>
+    </header>
+
+    <!-- Game Content -->
+    <main class="game-content">
+        <!-- Intro -->
+        <section class="game-intro">
+            <p><strong>J'accuse!</strong> is a social deduction game where you don't know whether you should hunt or hide.</p>
+            <p>Play with 5-10 friends, accuse them of being in the minority team, or sneak around and steal their information.</p>
+        </section>
+
+        <!-- Core Concept -->
+        <section class="rules-section">
+            <h2>The Setup</h2>
+            <div class="rules-grid">
+                <div class="rule-card">
+                    <div class="rule-number">1</div>
+                    <div class="rule-content">
+                        <h3>Two Words</h3>
+                        <p>Each player receives a secret word. There are only 2 different words in the game — a <strong>majority word</strong> and a <strong>minority word</strong>.</p>
+                    </div>
+                </div>
+                <div class="rule-card">
+                    <div class="rule-number">2</div>
+                    <div class="rule-content">
+                        <h3>Hidden Identity</h3>
+                        <p>When you get your word, you <strong>don't know</strong> if it's the majority or minority word. You must figure it out!</p>
+                    </div>
+                </div>
+                <div class="rule-card">
+                    <div class="rule-number">3</div>
+                    <div class="rule-content">
+                        <h3>Your Goal</h3>
+                        <p><strong>Majority:</strong> Identify and condemn all minority members.<br><strong>Minority:</strong> Discover the majority word.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Turn Actions -->
+        <section class="rules-section">
+            <h2>On Your Turn</h2>
+            <div class="action-cards">
+                <div class="action-card">
+                    <img src="images/ask.png" alt="Ask" class="action-icon-img">
+                    <h3>Ask a Question</h3>
+                    <p>Ask any player a question to reveal information about their word. Questions can be about anything, and answers don't have to be truthful!</p>
+                    <p class="action-note">No insider information — don't reference private knowledge between you and that player.</p>
+                </div>
+                <div class="action-card">
+                    <img src="images/accuse.png" alt="Accuse" class="action-icon-img">
+                    <h3>Accuse Someone</h3>
+                    <p>Point your finger and trigger a vote! All non-condemned players vote yes or no. If more than half vote yes, the accused is <strong>condemned</strong>.</p>
+                    <p class="action-note">Condemned players can't talk, can't be asked questions, and skip their turns.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Buzzer -->
+        <section class="chant-section">
+            <h2>The Buzzer</h2>
+            <div class="chant-card">
+                <p>At any point (while not condemned), you can shout:</p>
+                <div class="chant-text">"BUZZER!"</div>
+                <p>You then have <strong>one minute</strong> to guess 3 words. If the majority word is among your guesses, <strong>the minority wins!</strong></p>
+                <p class="action-note" style="margin-top: 1rem;">Only use the Buzzer if you're confident you're in the minority!</p>
+            </div>
+        </section>
+
+        <!-- Win Conditions -->
+        <section class="rules-section">
+            <h2>How the Game Ends</h2>
+            <div class="win-conditions">
+                <div class="win-card majority">
+                    <h3>Majority Wins</h3>
+                    <p>All minority members are condemned</p>
+                </div>
+                <div class="win-card minority">
+                    <h3>Minority Wins</h3>
+                    <ul>
+                        <li>Two majority members are condemned, OR</li>
+                        <li>The majority word is guessed via Buzzer</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pro Tips -->
+        <section class="tips-section">
+            <h2>Pro Tips</h2>
+            <div class="tip-card">
+                <p>The best word pairs are <strong>somewhat related</strong> but not too similar — like "The Taj Mahal" and "The Kremlin" (both famous landmarks, different places).</p>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="game-cta">
+            <a href="Jaccuse_play.html" class="btn btn-primary btn-large">Start Playing</a>
+            <a href="Jaccuse_words.html" class="btn btn-secondary">Browse & Add Words</a>
+        </section>
+
+        <a href="index.html#games" class="back-link">← Back to Games</a>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <img src="images/Turtle_logo.png" alt="Pustezug Games">
+                <span>Pustezug Games</span>
+            </div>
+            <div class="footer-links">
+                <a href="index.html#games">Games</a>
+                <a href="index.html#contact">Contact</a>
+                <a href="https://www.admonymous.co/pustezug" target="_blank">Feedback</a>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
-
-

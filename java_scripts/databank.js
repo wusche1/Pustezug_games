@@ -238,4 +238,67 @@ async  function addJaccuseWord(word1, word2, author, tags) {
   });
 
 
-export { loadJaccuseWords, addJaccuseWord };
+function incrementPlays(compositeKey) {
+  const existingWordRef = ref(db, `jaccuse_words/${compositeKey}`);
+  get(existingWordRef).then((snapshot) => {
+    if (snapshot.exists()) {
+      const data = snapshot.val();
+      set(existingWordRef, {
+        ...data,
+        n_plays: (data.n_plays || 0) + 1
+      });
+      console.log('Play count incremented');
+    }
+  });
+}
+
+function incrementUpvote(compositeKey) {
+  const existingWordRef = ref(db, `jaccuse_words/${compositeKey}`);
+  get(existingWordRef).then((snapshot) => {
+    if (snapshot.exists()) {
+      const data = snapshot.val();
+      set(existingWordRef, {
+        ...data,
+        n_upvote: (data.n_upvote || 0) + 1
+      });
+      console.log('Upvote count incremented');
+    }
+  });
+}
+
+function incrementDownvote(compositeKey) {
+  const existingWordRef = ref(db, `jaccuse_words/${compositeKey}`);
+  get(existingWordRef).then((snapshot) => {
+    if (snapshot.exists()) {
+      const data = snapshot.val();
+      set(existingWordRef, {
+        ...data,
+        n_downvote: (data.n_downvote || 0) + 1
+      });
+      console.log('Downvote count incremented');
+    }
+  });
+}
+
+function addPlayedUser(compositeKey, userName) {
+  if (!userName) return;
+  
+  const existingWordRef = ref(db, `jaccuse_words/${compositeKey}`);
+  get(existingWordRef).then((snapshot) => {
+    if (snapshot.exists()) {
+      const data = snapshot.val();
+      const playedUsers = data.played_users || [];
+      
+      // Only add if not already in the list
+      if (!playedUsers.includes(userName)) {
+        set(existingWordRef, {
+          ...data,
+          played_users: [...playedUsers, userName]
+        });
+        console.log('User added to played_users:', userName);
+      }
+    }
+  });
+}
+
+export { loadJaccuseWords, addJaccuseWord, incrementPlays, incrementUpvote, incrementDownvote, addPlayedUser };

@@ -1,70 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" >
-    <title>J'accuse!</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Library - J'accuse! - Pustezug Games</title>
     <link rel="stylesheet" href="style.css">
-    <!-- ... other styles or links ... -->
-    <!-- Header styles or other CSS rules can go here -->
-    <!-- For modern browsers - recommended: PNG format -->
-     
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel="apple-touch-icon" sizes="180x180" href="icon_folder/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="icon_folder/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="icon_folder/favicon-16x16.png">
     <link rel="manifest" href="icon_folder/site.webmanifest">
     <link rel="mask-icon" href="icon_folder/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="theme-color" content="#ffffff">
-    <!-- Include your custom JS file -->
+    <meta name="theme-color" content="#1a2f3d">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
     <script type="module" src="java_scripts/databank.js" defer></script>
-    <script type="module" src="java_scripts/Jaccuse_words.js" defer></script> 
+    <script type="module" src="java_scripts/Jaccuse_words.js" defer></script>
     <script src="https://accounts.google.com/gsi/client" async defer></script>
     <script src="java_scripts/google_login.js" defer></script>
 </head>
-
-<body>
-    <header class="website_header">
-        <div class="leftpadding"></div>
-        <div class="daseingemachte">
-            <img src="images/Turtle_logo.png" alt="Pustezug Games" class="logo">
-            <span class="website_title">Pustezug Games</span>
-            <div class="spacer"></div>
-            <div id="g_id_onload"
-                 data-client_id="663759759562-koons6upuoj2n06l9ncf7of7c00b4qhf.apps.googleusercontent.com"
-                 data-callback="handleCredentialResponse">
-            </div>
-            <div class="g_id_signin" data-type="standard"></div>
-        </div>
-        <div class="rightpadding"></div>
-      </header>
-    <div class="website_content">
-        <div class="menu_bar">
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="index.html#game_list">Games</a></li>
-                <li><a href="About.html">About</a></li>
-                <li><a href="Contact.html">Contact</a></li>
+<body class="game-page words-page">
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="images/Turtle_logo.png" alt="Pustezug Games Logo">
+                <span>Pustezug Games</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="Jaccuse.html">J'accuse!</a></li>
+                <li><a href="Jaccuse_play.html">Play</a></li>
+                <li><a href="Jaccuse_words.html" class="active">Words</a></li>
             </ul>
+            <div class="nav-auth">
+                <div id="g_id_onload"
+                     data-client_id="663759759562-koons6upuoj2n06l9ncf7of7c00b4qhf.apps.googleusercontent.com"
+                     data-callback="handleCredentialResponse">
+                </div>
+                <div class="g_id_signin" data-type="standard"></div>
+            </div>
         </div>
-        <div class="leftpadding"></div>
-        <div class="daseingemachte">
-            <h1>All words for J'accuse!</h1>
-            <div id="search-container">
+    </nav>
+
+    <!-- Words Content -->
+    <main class="words-content">
+        <header class="words-header">
+            <h1>Word Library</h1>
+            <p>Browse existing word pairs or suggest your own</p>
+        </header>
+
+        <!-- Tabs -->
+        <div class="words-tabs">
+            <button class="tab-btn active" data-tab="browse">Browse Words</button>
+            <button class="tab-btn" data-tab="suggest">Suggest Words</button>
+        </div>
+
+        <!-- Browse Tab -->
+        <div id="browse-tab" class="tab-content active">
+            <div id="search-container" class="search-area">
                 <input type="text" id="search-input" placeholder="Search by tag or author...">
                 <button id="search-button">Search</button>
             </div>
-            <div id="sort-options">
-                <button id="sort-views">Sort by Most Views</button>
-                <button id="sort-upvotes">Sort by Most Upvotes</button>
-                <button id="sort-newest">Sort by Newest</button>
-
+            <div id="sort-options" class="sort-buttons">
+                <button id="sort-views">Most Played</button>
+                <button id="sort-upvotes">Most Upvoted</button>
+                <button id="sort-newest">Newest</button>
             </div>
             <main id="words-list">
                 <!-- Words will be populated here by JavaScript -->
             </main>
         </div>
-        <div class="rightpadding"></div>
-    </div>
+
+        <!-- Suggest Tab -->
+        <div id="suggest-tab" class="tab-content">
+            <div class="suggest-form">
+                <h2>Suggest a Word Pair</h2>
+                <p style="color: var(--color-text-muted); text-align: center; margin-bottom: 1.5rem;">
+                    Good word pairs are related but distinct — like "The Eiffel Tower" and "Big Ben"
+                </p>
+                <form id="suggestion-form">
+                    <div class="form-group" id="name-group" style="display: none;">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" placeholder="Enter your name">
+                    </div>
+                    <div class="form-group">
+                        <label for="word1">Word 1 (Majority)</label>
+                        <input type="text" id="word1" name="word1" placeholder="e.g., The Eiffel Tower" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="word2">Word 2 (Minority)</label>
+                        <input type="text" id="word2" name="word2" placeholder="e.g., Big Ben" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="tag-input">Tags (press Enter to add)</label>
+                        <input type="text" id="tag-input" name="tag-input" placeholder="e.g., landmarks, europe">
+                        <ul id="tag-list"></ul>
+                    </div>
+                    <button type="submit" id="suggest-button">Submit Word Pair</button>
+                    <p id="suggestion-status" style="text-align: center; margin-top: 1rem;"></p>
+                </form>
+            </div>
+        </div>
+
+        <a href="Jaccuse.html" class="back-link">← Back to J'accuse!</a>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <img src="images/Turtle_logo.png" alt="Pustezug Games">
+                <span>Pustezug Games</span>
+            </div>
+            <div class="footer-links">
+                <a href="index.html#games">Games</a>
+                <a href="index.html#contact">Contact</a>
+                <a href="https://www.admonymous.co/pustezug" target="_blank">Feedback</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Tab switching
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                btn.classList.add('active');
+                document.getElementById(btn.dataset.tab + '-tab').classList.add('active');
+            });
+        });
+
+        // Show name field if not logged in
+        if (localStorage.getItem('isLoggedIn') !== 'true') {
+            document.getElementById('name-group').style.display = 'block';
+        }
+    </script>
 </body>
 </html>
