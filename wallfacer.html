@@ -1,55 +1,195 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" >
-    <title>Wallfacer</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wallfacer - Pustezug Games</title>
     <link rel="stylesheet" href="style.css">
-    <!-- ... other styles or links ... -->
-    <!-- Header styles or other CSS rules can go here -->
-    <!-- For modern browsers - recommended: PNG format -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel="apple-touch-icon" sizes="180x180" href="icon_folder/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="icon_folder/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="icon_folder/favicon-16x16.png">
     <link rel="manifest" href="icon_folder/site.webmanifest">
     <link rel="mask-icon" href="icon_folder/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="theme-color" content="#ffffff">
+    <meta name="theme-color" content="#1a2f3d">
     <script src="https://accounts.google.com/gsi/client" async defer></script>
     <script src="java_scripts/google_login.js" defer></script>
     <script src="java_scripts/wallfacer.js" defer></script>
 </head>
-
-<body onload="main()">
-    <header class="website_header">
-        <div class="leftpadding"></div>
-        <div class="daseingemachte">
-            <img src="images/Turtle_logo.png" alt="Pustezug Games" class="logo">
-            <span class="website_title">Pustezug Games</span>
-            <div class="spacer"></div>
-            <div id="g_id_onload"
-                 data-client_id="663759759562-koons6upuoj2n06l9ncf7of7c00b4qhf.apps.googleusercontent.com"
-                 data-callback="handleCredentialResponse">
-            </div>
-            <div class="g_id_signin" data-type="standard"></div>
-        </div>
-        <div class="rightpadding"></div>
-      </header>
-    <div class="website_content">
-        <div class="menu_bar">
-            <ul>
+<body class="game-page" onload="main()">
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="images/Turtle_logo.png" alt="Pustezug Games Logo">
+                <span>Pustezug Games</span>
+            </a>
+            <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="index.html#game_list">Games</a></li>
-                <li><a href="About.html">About</a></li>
-                <li><a href="Contact.html">Contact</a></li>
+                <li><a href="index.html#games">Games</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
             </ul>
+            <div class="nav-auth">
+                <div id="g_id_onload"
+                     data-client_id="663759759562-koons6upuoj2n06l9ncf7of7c00b4qhf.apps.googleusercontent.com"
+                     data-callback="handleCredentialResponse">
+                </div>
+                <div class="g_id_signin" data-type="standard"></div>
+            </div>
         </div>
-        <div class="leftpadding"></div>
-        <div class="daseingemachte">
-            <h1>Wallfacer</h1>
-            <div id="start_options" class="game_buttons"></div>
-            <div id="player_cards"></div>
+    </nav>
+
+    <!-- Game Hero -->
+    <header class="game-hero">
+        <img src="images/alien_icon.png" alt="Wallfacer" class="game-hero-icon">
+        <h1>Wallfacer</h1>
+        <p class="game-hero-tagline">The Aliens are coming! Figure out their secret!</p>
+    </header>
+
+    <!-- Game Content -->
+    <main class="game-content">
+        <!-- Story Intro -->
+        <section class="game-intro story-intro">
+            <p><em>You are humanity's ambassador at the approaching alien fleet. You must warn your fellow humans about what the aliens have in store — but your hosts will only permit you to broadcast one innocent bedtime story. Can you hide enough hints to save humanity?</em></p>
+        </section>
+
+        <!-- Play Section -->
+        <section class="play-section">
+            <div id="start_options" class="game-controls"></div>
+            <div id="player_cards" class="player-cards-area"></div>
+        </section>
+
+        <!-- Rules Section (Collapsible) -->
+        <section class="rules-section">
+            <button id="toggle-rules" class="toggle-categories-btn">
+                <span>How to Play</span>
+                <span class="toggle-arrow">▼</span>
+            </button>
+            <div id="rules-panel" class="categories-panel collapsed">
+                
+                <!-- Setup -->
+                <div class="rule-block">
+                    <h3>Setup</h3>
+                    <p>At the beginning of the game, each player receives one card. The card tells you about your character and any secret information that you have:</p>
+                    <div class="role-cards">
+                        <div class="role-card civilian">
+                            <h4>Civilians</h4>
+                            <p>Most players are civilians and do not have any secret knowledge. Your job is to listen carefully to the stories and help decipher the Wallfacer's hints.</p>
+                        </div>
+                        <div class="role-card alien">
+                            <h4>The Alien</h4>
+                            <p>One player is the alien and knows the <strong>category</strong> of the secret words (for example: "City in Germany"). Use this to identify who is hiding hints in their story.</p>
+                        </div>
+                        <div class="role-card wallfacer">
+                            <h4>The Wallfacer</h4>
+                            <p>One player is the wallfacer and knows both secret words: an <strong>easy word</strong> (+1 point) and a <strong>hard word</strong> (+2 points). Example: "Munich" and "Nuremberg".</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Objective -->
+                <div class="rule-block">
+                    <h3>Objective</h3>
+                    <div class="objective-text">
+                        <p>The <strong>Wallfacer's goal</strong> is to communicate both secret words to humanity through their story — without being caught by the alien.</p>
+                        <p>The <strong>Alien's goal</strong> is to identify and execute the Wallfacer before they can pass on their message.</p>
+                        <p><strong>Humanity's goal</strong> is to correctly guess the secret words based on the Wallfacer's hints.</p>
+                    </div>
+                </div>
+
+                <!-- Phases -->
+                <div class="rule-block">
+                    <h3>Game Phases</h3>
+                    
+                    <div class="phase-detail">
+                        <h4>Phase 1: Story Creation (2.5 minutes)</h4>
+                        <p>One player announces a story format. Start with "Bedtime story" for your first game. In later games you can get creative: "Washing machine advertisement", "Bad date story", "Court ruling", etc.</p>
+                        <p>Start a timer for 2.5 minutes. During this time, each player thinks of a short story in the required format. The Wallfacer must try to hide hints about both secret words in their story!</p>
+                    </div>
+                    
+                    <div class="phase-detail">
+                        <h4>Phase 2: Storytelling</h4>
+                        <p>Each player takes turns telling their story to the group.</p>
+                        <p><strong>Important:</strong> After a player finishes their story, the alien may choose to reveal themselves and <strong>execute</strong> that player:</p>
+                        <ul>
+                            <li>If the alien executes the <strong>Wallfacer</strong> → The alien <strong>immediately wins</strong> the game!</li>
+                            <li>If the alien executes a <strong>civilian</strong> → The alien <strong>immediately loses</strong> the game!</li>
+                        </ul>
+                        <p>If all players tell their story without the alien revealing itself, the game proceeds to Phase 3.</p>
+                    </div>
+                    
+                    <div class="phase-detail">
+                        <h4>Phase 3: Deciphering (10 minutes)</h4>
+                        <p>The Wallfacer now reveals themselves and also reveals the <strong>category</strong> of the secret words.</p>
+                        <p><strong>Important:</strong> The Wallfacer may not communicate for the remainder of this phase!</p>
+                        <p>A 10-minute timer starts. The other players discuss what the secret words might have been, analyzing the Wallfacer's story for hidden clues.</p>
+                        <p>At the end, humanity can submit up to <strong>two guesses</strong> for the secret words.</p>
+                    </div>
+                </div>
+
+                <!-- Scoring -->
+                <div class="rule-block">
+                    <h3>Scoring & Winning</h3>
+                    <div class="win-conditions">
+                        <div class="win-card majority">
+                            <h4>Alien Wins If...</h4>
+                            <ul>
+                                <li>The alien correctly executes the Wallfacer during Phase 2</li>
+                                <li>Humanity fails to guess any word correctly in Phase 3</li>
+                            </ul>
+                        </div>
+                        <div class="win-card minority">
+                            <h4>Humanity Wins If...</h4>
+                            <ul>
+                                <li>The alien executes a civilian (instant win!)</li>
+                                <li>Humanity guesses the <strong>easy word</strong>: +1 point</li>
+                                <li>Humanity guesses the <strong>hard word</strong>: +2 points</li>
+                                <li>Any points = humanity wins!</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tips -->
+                <div class="rule-block">
+                    <h3>Tips for Playing</h3>
+                    <div class="tip-card">
+                        <p><strong>For the Wallfacer:</strong> Be subtle! Your hints should be clever enough that civilians can figure them out during deciphering, but not so obvious that the alien catches you immediately.</p>
+                        <p><strong>For the Alien:</strong> Pay attention to unusual details, metaphors, or references that seem out of place in someone's story.</p>
+                        <p><strong>For Civilians:</strong> Even if you have no secret knowledge, tell a creative story! This makes it harder for the alien to identify the Wallfacer.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <a href="index.html#games" class="back-link">← Back to Games</a>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <img src="images/Turtle_logo.png" alt="Pustezug Games">
+                <span>Pustezug Games</span>
+            </div>
+            <div class="footer-links">
+                <a href="index.html#games">Games</a>
+                <a href="index.html#contact">Contact</a>
+                <a href="https://www.admonymous.co/pustezug" target="_blank">Feedback</a>
+            </div>
         </div>
-        <div class="rightpadding"></div>
-    </div>
+    </footer>
+
+    <script>
+        // Toggle rules panel
+        document.getElementById('toggle-rules').addEventListener('click', function() {
+            const panel = document.getElementById('rules-panel');
+            panel.classList.toggle('collapsed');
+            this.classList.toggle('expanded');
+        });
+    </script>
 </body>
 </html>

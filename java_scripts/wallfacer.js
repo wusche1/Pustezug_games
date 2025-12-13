@@ -141,9 +141,13 @@ function initializePlayerSelection() {
     var startOptionsContainer = document.getElementById('start_options');
     startOptionsContainer.innerHTML = '';
     
-    // Create player number input
-    const playerLabel = document.createElement('label');
-    playerLabel.textContent = 'Number of players: ';
+    // Create player count container
+    const playerCountContainer = document.createElement('div');
+    playerCountContainer.className = 'player-count-container';
+    
+    const playerLabel = document.createElement('span');
+    playerLabel.className = 'player-count-label';
+    playerLabel.textContent = 'Players';
     
     const playerInput = document.createElement('input');
     playerInput.type = 'number';
@@ -151,28 +155,28 @@ function initializePlayerSelection() {
     playerInput.min = '3';
     playerInput.max = '15';
     playerInput.value = '5';
-    playerInput.className = 'player_number';
+    
+    playerCountContainer.appendChild(playerLabel);
+    playerCountContainer.appendChild(playerInput);
     
     // Create start button
     const startButton = document.createElement('button');
     startButton.textContent = 'Generate Cards';
+    startButton.id = 'start_button';
     startButton.onclick = function() {
         const inputValue = parseInt(document.getElementById('player_number_input').value);
         player_number = Math.max(3, Math.min(inputValue, 15));
         startGame(player_number);
     };
     
-    // Create rules button
-    const rulesButton = document.createElement('button');
-    rulesButton.textContent = 'Rules';
-    rulesButton.onclick = function() {
-        window.open('wallfacer_rules.html', '_blank');
-    };
-    
-    startOptionsContainer.appendChild(playerLabel);
-    startOptionsContainer.appendChild(playerInput);
+    startOptionsContainer.appendChild(playerCountContainer);
     startOptionsContainer.appendChild(startButton);
-    startOptionsContainer.appendChild(rulesButton);
+}
+
+function formatCategory(category) {
+    return category.split('_').map(word => 
+        word.charAt(0).toUpperCase() + word.slice(1)
+    ).join(' ');
 }
 
 function startGame(player_number) {
@@ -186,6 +190,7 @@ function startGame(player_number) {
     const categories = Object.keys(wallfacerDatabase);
     const randomCategory = categories[Math.floor(Math.random() * categories.length)];
     const categoryData = wallfacerDatabase[randomCategory];
+    const formattedCategory = formatCategory(randomCategory);
     
     // Select one easy and one hard word for the wallfacer
     const easyWord = categoryData.easy[Math.floor(Math.random() * categoryData.easy.length)];
@@ -210,6 +215,10 @@ function startGame(player_number) {
     
     // Create cards for each player
     for (let i = 0; i < player_number; i++) {
+        // Create card wrapper
+        const cardWrapper = document.createElement('div');
+        cardWrapper.className = 'card-wrapper';
+        
         // Create card elements
         const card = document.createElement('div');
         card.className = 'cards';
@@ -220,29 +229,56 @@ function startGame(player_number) {
         const cardBack = document.createElement('div');
         cardBack.className = 'card-back';
         
-        // Set card content based on role
-        let cardContent = "";
+        // Set card content based on role - minimal text only
+        let cardHTML = "";
+        
         if (roles[i] === "civilian") {
-            cardContent = "Role: Civilian";
+            cardHTML = `<div class="role-title civilian-role">Civilian</div>`;
         } else if (roles[i] === "alien") {
-            cardContent = `Role: Alien\nCategory: ${randomCategory}`;
+            cardHTML = `<div class="role-title alien-role">Alien</div>
+                        <div class="category-name">${formattedCategory}</div>`;
         } else if (roles[i] === "wallfacer") {
-            cardContent = `Role: Wallfacer\nCategory: ${randomCategory}\nEasy: ${easyWord}\nHard: ${hardWord}`;
+            cardHTML = `<div class="role-title wallfacer-role">Wallfacer</div>
+                        <div class="category-name">${formattedCategory}</div>
+                        <div class="words-container">
+                            <div class="word-box easy">
+                                <span class="word-label">Easy</span>
+                                <span class="secret-word">${easyWord}</span>
+                            </div>
+                            <div class="word-box hard">
+                                <span class="word-label">Hard</span>
+                                <span class="secret-word">${hardWord}</span>
+                            </div>
+                        </div>`;
         }
         
-        cardBack.innerHTML = cardContent.replace(/\n/g, '<br>');
+        cardBack.innerHTML = cardHTML;
+        
+        // Track if card has been viewed
+        let hasBeenViewed = false;
         
         // Add event listener to toggle card visibility
         card.addEventListener('click', function() {
             card.classList.toggle('flipped');
+            
+            // Make card transparent after first view (when closing)
+            if (hasBeenViewed && !card.classList.contains('flipped')) {
+                card.classList.add('deactivated_card');
+            }
+            
+            // Mark as viewed when opened
+            if (card.classList.contains('flipped')) {
+                hasBeenViewed = true;
+            }
         });
         
         // Assemble the card
         card.appendChild(cardFront);
         card.appendChild(cardBack);
+        cardWrapper.appendChild(card);
         
         // Add the card to the container
-        cardsContainer.appendChild(card);
+        cardsContainer.appendChild(cardWrapper);
     }
 }
 
