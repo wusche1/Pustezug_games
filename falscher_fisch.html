@@ -1,90 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" >
-    <title>Falscher Fisch</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Falscher Fisch - Pustezug Games</title>
     <link rel="stylesheet" href="style.css">
-    <!-- ... other styles or links ... -->
-    <!-- Header styles or other CSS rules can go here -->
-    <!-- For modern browsers - recommended: PNG format -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel="apple-touch-icon" sizes="180x180" href="icon_folder/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="icon_folder/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="icon_folder/favicon-16x16.png">
     <link rel="manifest" href="icon_folder/site.webmanifest">
     <link rel="mask-icon" href="icon_folder/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="theme-color" content="#ffffff">
+    <meta name="theme-color" content="#1a2f3d">
     <script src="https://accounts.google.com/gsi/client" async defer></script>
     <script src="java_scripts/google_login.js" defer></script>
 </head>
-<body>
-    <header class="website_header">
-        <div class="leftpadding"></div>
-        <div class="daseingemachte">
-            <img src="images/Turtle_logo.png" alt="Pustezug Games" class="logo">
-            <span class="website_title">Pustezug Games</span>
-            <div class="spacer"></div>
-            <div id="g_id_onload"
-                 data-client_id="663759759562-koons6upuoj2n06l9ncf7of7c00b4qhf.apps.googleusercontent.com"
-                 data-callback="handleCredentialResponse">
-            </div>
-            <div class="g_id_signin" data-type="standard"></div>
-        </div>
-        <div class="rightpadding"></div>
-      </header>
-    <div class="website_content">
-        <div class="menu_bar">
-            <ul>
+<body class="game-page">
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="images/Turtle_logo.png" alt="Pustezug Games Logo">
+                <span>Pustezug Games</span>
+            </a>
+            <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="index.html#game_list">Games</a></li>
-                <li><a href="About.html">About</a></li>
-                <li><a href="Contact.html">Contact</a></li>
+                <li><a href="index.html#games">Games</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
             </ul>
-        </div>
-        <div class="leftpadding"></div>
-        <div class="daseingemachte">
-            <h1>Falscher Fisch</h1>
-            <p>Falscher Fisch is a 2 player game, that might look like a simple game of chance, but hides a multitude of strategies and tactics.</p>
-            <p>The two contenders play a series of rounds, picking one of three symbols, and form that with their hands. Not unlike in the game rock-paper-scissors.</p>
-
-            <div class="image-row">
-                <figure>
-                    <img src="images/water_hand.png" alt="Hand with Water Symbol" class="symbol" height="200" width="250">
-                    <figcaption>Water</figcaption>
-                    <span class="hovertext">Form a closed fist, and rest it vertically on your other flat hand.</span>
-                </figure>
-                <figure>
-                    <img src="images/haken_hand.png" alt="Hand with Hook Symbol" class="symbol" height="200" width="250">
-                    <figcaption>Hook</figcaption>
-                    <span class="hovertext">Form a fist, rest it with the wrist up on your other flat hand, and extend your curved index finger.</span>
-                </figure>
-                <figure>
-                    <img src="images/fish_hand.png" alt="Hand with Fish Symbol" class="symbol" height="200" width="250">
-                    <figcaption>Fish</figcaption>
-                    <span class="hovertext">Form a curved surface with your hand, and put it with you wrist down on your flat hand.</span>
-                </figure>
+            <div class="nav-auth">
+                <div id="g_id_onload"
+                     data-client_id="663759759562-koons6upuoj2n06l9ncf7of7c00b4qhf.apps.googleusercontent.com"
+                     data-callback="handleCredentialResponse">
+                </div>
+                <div class="g_id_signin" data-type="standard"></div>
             </div>
-
-            <p>In one game you have:</p>
-            <ul>
-                <li>2 x water</li>
-                <li>3 x hook</li>
-                <li>1 x fish</li>
-            </ul>
-            <p>Your goal is, to play your fish first without getting caught.</p>
-            <p>If you play fish, and your opponent plays water you win.</p>
-            <p>If you play fish, and your opponent plays hook you lose.</p>
-            <p>If you play fish, and your opponent plays fish, the game is a draw, and you immediately begin a new game.</p>
-            <p></p>
-            <p>When counting down to your move, both players rythmically beat their fist into their flat hand, emphatically calling out <q>Fal-scher Fisch</q>, beating their hand with every stylable.
-            When enchanting the magical word <q>Fisch</q>, you form the symbol with your hand, that you want to play.</p>
-            
-
-
-
-        
         </div>
-        <div class="rightpadding"></div>
-    </div>
+    </nav>
+
+    <!-- Game Hero -->
+    <header class="game-hero">
+        <img src="images/fish_icon.png" alt="Falscher Fisch" class="game-hero-icon">
+        <h1>Falscher Fisch</h1>
+        <p class="game-hero-tagline">A tense one on one, a duel of the mind</p>
+    </header>
+
+    <!-- Game Content -->
+    <main class="game-content">
+        <section class="game-intro">
+            <p>Falscher Fisch is a 2 player game that might look like a simple game of chance, but hides a multitude of strategies and tactics.</p>
+            <p>The two contenders play a series of rounds, picking one of three symbols and forming them with their hands — not unlike rock-paper-scissors.</p>
+        </section>
+
+        <!-- Hand Symbols -->
+        <section class="symbols-section">
+            <h2>The Symbols</h2>
+            <div class="symbols-grid">
+                <div class="symbol-card">
+                    <img src="images/water_hand.png" alt="Water Symbol">
+                    <h3>Water</h3>
+                    <p>Form a closed fist and rest it vertically on your other flat hand.</p>
+                </div>
+                <div class="symbol-card">
+                    <img src="images/haken_hand.png" alt="Hook Symbol">
+                    <h3>Hook</h3>
+                    <p>Form a fist, rest it wrist-up on your flat hand, and extend your curved index finger.</p>
+                </div>
+                <div class="symbol-card">
+                    <img src="images/fish_hand.png" alt="Fish Symbol">
+                    <h3>Fish</h3>
+                    <p>Form a curved surface with your hand and put it wrist-down on your flat hand.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Rules -->
+        <section class="rules-section">
+            <h2>How to Play</h2>
+            <div class="rules-grid">
+                <div class="rule-card">
+                    <div class="rule-number">1</div>
+                    <div class="rule-content">
+                        <h3>Your Hand</h3>
+                        <p>Each game you have:</p>
+                        <ul>
+                            <li><strong>2×</strong> Water</li>
+                            <li><strong>3×</strong> Hook</li>
+                            <li><strong>1×</strong> Fish</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="rule-card">
+                    <div class="rule-number">2</div>
+                    <div class="rule-content">
+                        <h3>Your Goal</h3>
+                        <p>Play your fish first without getting caught!</p>
+                    </div>
+                </div>
+                <div class="rule-card">
+                    <div class="rule-number">3</div>
+                    <div class="rule-content">
+                        <h3>Outcomes</h3>
+                        <ul>
+                            <li>🐟 Fish vs 💧 Water → <strong>You win!</strong></li>
+                            <li>🐟 Fish vs 🪝 Hook → <strong>You lose!</strong></li>
+                            <li>🐟 Fish vs 🐟 Fish → <strong>Draw, new game!</strong></li>
+                            <li>Any other combo → <strong>Nothing, next round!</strong></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Chant -->
+        <section class="chant-section">
+            <h2>The Ritual</h2>
+            <div class="chant-card">
+                <p>When counting down to your move, both players rhythmically beat their fist into their flat hand, emphatically calling out:</p>
+                <div class="chant-text">"Fal-scher Fisch!"</div>
+                <p>Beat your hand with every syllable. When enchanting the magical word <strong>"Fisch"</strong>, form the symbol you want to play.</p>
+            </div>
+        </section>
+
+        <a href="index.html#games" class="back-link">← Back to Games</a>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <img src="images/Turtle_logo.png" alt="Pustezug Games">
+                <span>Pustezug Games</span>
+            </div>
+            <div class="footer-links">
+                <a href="index.html#games">Games</a>
+                <a href="index.html#contact">Contact</a>
+                <a href="https://www.admonymous.co/pustezug" target="_blank">Feedback</a>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
