@@ -179,7 +179,7 @@ function validateWordPair(word1, word2, author, tags = []) {
 
 // Export functions for use
 export { 
-    addJaccuseWordPair, 
+    addJaccuseWordPair,
     addMultipleWordPairs, 
     validateWordPair 
 };

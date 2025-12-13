@@ -1,67 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" >
-    <title>Pustezug</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pustezug Games</title>
     <link rel="stylesheet" href="style.css">
-    <!-- ... other styles or links ... -->
-    <!-- Header styles or other CSS rules can go here -->
-    <!-- For modern browsers - recommended: PNG format -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel="apple-touch-icon" sizes="180x180" href="icon_folder/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="icon_folder/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="icon_folder/favicon-16x16.png">
     <link rel="manifest" href="icon_folder/site.webmanifest">
     <link rel="mask-icon" href="icon_folder/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="theme-color" content="#ffffff">
+    <meta name="theme-color" content="#1a2f3d">
     <script src="https://accounts.google.com/gsi/client" async defer></script>
     <script src="java_scripts/google_login.js" defer></script>
 </head>
-<body>
-    <header class="website_header">
-      <div class="leftpadding"></div>
-      <div class="daseingemachte">
-          <img src="images/Turtle_logo.png" alt="Pustezug Games" class="logo">
-          <span class="website_title">Pustezug Games</span>
-          <div class="spacer"></div>
-          <div id="g_id_onload"
-               data-client_id="663759759562-koons6upuoj2n06l9ncf7of7c00b4qhf.apps.googleusercontent.com"
-               data-callback="handleCredentialResponse">
-          </div>
-          <div class="g_id_signin" data-type="standard"></div>
-      </div>
-      <div class="rightpadding"></div>
+<body class="home-page">
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="images/Turtle_logo.png" alt="Pustezug Games Logo">
+                <span>Pustezug Games</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="#games">Games</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="nav-auth">
+                <div id="g_id_onload"
+                     data-client_id="663759759562-koons6upuoj2n06l9ncf7of7c00b4qhf.apps.googleusercontent.com"
+                     data-callback="handleCredentialResponse">
+                </div>
+                <div class="g_id_signin" data-type="standard"></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="hero-welcome">Welcome to</span>
+                <span class="hero-brand">Pustezug Games</span>
+            </h1>
+            <p class="hero-description">
+                Handcrafted Partygames for the initiated and curious
+            </p>
+            <div class="hero-cta">
+                <a href="#games" class="btn btn-primary">Explore Games</a>
+                <a href="https://www.admonymous.co/pustezug" class="btn btn-secondary" target="_blank">Give Feedback</a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="floating-cards">
+                <div class="float-card card-1">
+                    <div class="float-card-inner">
+                        <div class="float-card-front"></div>
+                        <div class="float-card-back"><span>Social<br>Deduction</span></div>
+                    </div>
+                </div>
+                <div class="float-card card-2">
+                    <div class="float-card-inner">
+                        <div class="float-card-front"></div>
+                        <div class="float-card-back"><span>Mind<br>Games</span></div>
+                    </div>
+                </div>
+                <div class="float-card card-3">
+                    <div class="float-card-inner">
+                        <div class="float-card-front"></div>
+                        <div class="float-card-back"><span>Party<br>Games</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </header>
-    <div class="website_content">
-        <div class="menu_bar">
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="index.html#game_list">Games</a></li>
-                <li><a href="About.html">About</a></li>
-                <li><a href="Contact.html">Contact</a></li>
-            </ul>
+
+    <!-- Games Section -->
+    <section id="games" class="games-section">
+        <div class="section-header">
+            <h2>Game Collection</h2>
+            <p>Choose your adventure from our curated selection</p>
         </div>
-        <div class="leftpadding"></div>
-        <div class="daseingemachte">
-            <h1>Welcome to Pustezug Games</h1>
-            This is my personal website, where I present little games I made.
-            <p></p>
-            Feel free to look around, and <a href="https://www.admonymous.co/pustezug">give feedback</a>.
-            <p></p>
-            All games are free to play with no in-game purchases.
-            <p></p>
-            <h2 id = "game_list">List of Games</h2>
-            <ul>
-                <il><a href="falscher_fisch.html">Falscher Fisch</a><p></p></il>
-                <il><a href="Hunter_Shield.html">Hunter and Shield</a><p></p></il>
-                <il><a href="Jaccuse.html">J'accuse!</a><p></p></il>
-                <il><a href="wallfacer.html">Wallfacer</a><p></p></il>
-                <!-- <il><a href="Superhero.html">The Superhero Game</a><p></p></il> -->
-            </ul>
+        <div class="games-grid">
+            <a href="falscher_fisch.html" class="game-card" style="--delay: 0">
+                <img src="images/fish_icon.png" alt="Falscher Fisch" class="game-card-icon">
+                <div class="game-card-content">
+                    <h3>Falscher Fisch</h3>
+                    <p>A tense one on one, a duel of the mind</p>
+                </div>
+            </a>
+            <a href="Jaccuse.html" class="game-card" style="--delay: 1">
+                <img src="images/hand_icon.png" alt="J'accuse!" class="game-card-icon">
+                <div class="game-card-content">
+                    <h3>J'accuse!</h3>
+                    <p>Convince the group, encrypt your knowledge</p>
+                </div>
+            </a>
+            <a href="wallfacer.html" class="game-card" style="--delay: 2">
+                <img src="images/alien_icon.png" alt="Wallfacer" class="game-card-icon">
+                <div class="game-card-content">
+                    <h3>Wallfacer</h3>
+                    <p>The Aliens are coming! Figure out their secret!</p>
+                </div>
+            </a>
         </div>
-        <div class="rightpadding"></div>
-    </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="section-header">
+            <h2>Get in Touch</h2>
+            <p>Feedback, questions, or just want to say hi?</p>
+        </div>
+        <div class="contact-content">
+            <a href="https://www.admonymous.co/pustezug" class="contact-card" target="_blank">
+                <div class="contact-icon">💬</div>
+                <h3>Game Feedback</h3>
+                <p>Share your thoughts anonymously</p>
+            </a>
+            <a href="mailto:mail@julianschulz.eu" class="contact-card">
+                <div class="contact-icon">✉️</div>
+                <h3>Email Me</h3>
+                <p>mail@julianschulz.eu</p>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <img src="images/Turtle_logo.png" alt="Pustezug Games">
+                <span>Pustezug Games</span>
+            </div>
+            <div class="footer-links">
+                <a href="#games">Games</a>
+                <a href="#contact">Contact</a>
+                <a href="https://www.admonymous.co/pustezug" target="_blank">Feedback</a>
+            </div>
+        </div>
+    </footer>
 </body>
-
-
 </html>

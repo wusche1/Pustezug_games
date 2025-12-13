@@ -1,250 +1,821 @@
-    /* ... other styles ... */
-    /* * { border: thin solid pink } */
-    /* Header styles */
-    .website_header {
-        background-color: rgb(77,109,127); /* Set header background color */
-        /* text-align: center; /* Center the title */
-        display: flex; /* Use flexbox for layout */
-        align-items: center;
-        /* justify-content: left; /* Center content horizontally */
-        /* align-items: center; /* Center content vertically */
-        height: 60px; /* Set a fixed height */
-        margin-top: 30px;
-    }
+/* ==========================================
+   GLOBAL STYLES & VARIABLES
+   ========================================== */
 
-    body {
-        background-image: url("images/background_dark.png");
-        color : white;
-        zoom: 150%;
-        background-size: cover; /* Ensures the image covers the entire element */
-        background-repeat: no-repeat; /* Prevents the image from repeating */
-        background-attachment: fixed; /* The background image will not scroll with the page */
-    }
+:root {
+    --color-bg-dark: #0f1a22;
+    --color-bg-medium: #1a2f3d;
+    --color-bg-light: #2c4255;
+    --color-accent: #4d6d7f;
+    --color-accent-light: #6b9ab3;
+    --color-text: #ffffff;
+    --color-text-muted: rgba(255, 255, 255, 0.7);
+    --color-text-dim: rgba(255, 255, 255, 0.5);
+    --font-main: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-display: 'Playfair Display', Georgia, serif;
+    --transition-fast: 0.2s ease;
+    --transition-medium: 0.3s ease;
+    --transition-slow: 0.5s ease;
+}
 
-    a {
-        color: white;
-    }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    .leftpadding {
-        flex: 1; /* Use remaining space */
-    }
+html {
+    scroll-behavior: smooth;
+}
 
-    .small_leftpadding {
-        flex: 0.5; /* Use remaining space */
-    }
+body {
+    font-family: var(--font-main);
+    background: var(--color-bg-dark);
+    color: var(--color-text);
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
 
-    .website_header .daseingemachte {
-        display: flex; /* Use flexbox for layout */
-        justify-content: left; /* Center content horizontally */
-        align-items: center; /* Center content vertically */
-        width: 100%; /* add this line to make the container full-width */
-    }
-    .daseingemachte {
-        justify-content: space-between;
-    }
-    
-    .g_id_signin {
-        margin-left: auto; /* push the button to the right */
-        margin-right: 20px; /* adjust the distance from the right edge as needed */
-      }
+a {
+    color: var(--color-text);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
 
-    .rightpadding {
-        flex: 5; /* Use remaining space */
-    }
+a:hover {
+    color: var(--color-accent-light);
+}
 
-    .logo {
-        width: 100px; /* Set logo width */
-        height: 100px; /* Set logo height */
-        margin-right: 20px; /* Add some space between logo and title */
-    }
+/* ==========================================
+   NAVIGATION
+   ========================================== */
 
-    .website_title {
-        font-size: 48px;
-        color: #ffffff;
-    }
+.main-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(15, 26, 34, 0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
 
-    /* Content styles */
-    .website_content {
-        display: flex; /* Use flexbox for layout */
-        align-items: center;
-    }
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 
-    .website_content .leftpadding {
-        min-width: 150px; /* Set minimum width */
-    }
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-weight: 600;
+    font-size: 1.25rem;
+    letter-spacing: -0.02em;
+}
 
-    .website_content .menu_bar {
-        display: flex; /* Use flexbox for layout */
-        align-items: center;
-        background-color: rgb(77,109,127);
-        padding-right: 20px;
-        border-radius: 10px; /* Add round edges */
-        margin: 10px; /* Add black margin */
-        border: 5px solid rgb(44,66,85);
-        top: 100px;
-        position: fixed;
-        /* background-color: black; */
-    }
-    .image-row {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    
-    figure {
-        position: relative; /* Establishes a positioning context for absolute positioning of the hovertext */
-        text-align: center;
-        margin: 0 10px;
-    }
-    
-    .symbol {
+.nav-logo img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2.5rem;
+}
+
+.nav-links a {
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
+    position: relative;
+    padding: 0.5rem 0;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--color-accent-light);
+    transition: width var(--transition-medium);
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--color-text);
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
+}
+
+.nav-auth {
+    display: flex;
+    align-items: center;
+}
+
+/* ==========================================
+   HERO SECTION
+   ========================================== */
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 120px 5% 80px;
+    position: relative;
+    overflow: hidden;
+    background: 
+        radial-gradient(ellipse at 20% 50%, rgba(77, 109, 127, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 80%, rgba(107, 154, 179, 0.1) 0%, transparent 40%),
+        linear-gradient(180deg, var(--color-bg-dark) 0%, var(--color-bg-medium) 100%);
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("images/background_dark.png");
+    background-size: cover;
+    background-position: center;
+    opacity: 0.3;
+    z-index: 0;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.hero-title {
+    margin-bottom: 1.5rem;
+}
+
+.hero-welcome {
+    display: block;
+    font-family: var(--font-main);
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    font-weight: 400;
+    color: var(--color-accent-light);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+.hero-brand {
+    display: block;
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 700;
+    line-height: 1.3;
+    padding-bottom: 0.1em;
+    background: linear-gradient(135deg, #ffffff 0%, #6b9ab3 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero-description {
+    font-size: clamp(1rem, 1.5vw, 1.25rem);
+    color: var(--color-text-muted);
+    margin-bottom: 2.5rem;
+    max-width: 480px;
+}
+
+.hero-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 2rem;
+    font-family: var(--font-main);
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all var(--transition-medium);
+    border: none;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-light) 100%);
+    color: white;
+    box-shadow: 0 4px 20px rgba(77, 109, 127, 0.4);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(77, 109, 127, 0.5);
+    color: white;
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--color-text);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-secondary:hover {
+    border-color: var(--color-accent-light);
+    background: rgba(107, 154, 179, 0.1);
+    color: white;
+}
+
+/* Floating cards decoration */
+.hero-visual {
+    position: relative;
+    z-index: 1;
+    width: 400px;
+    height: 400px;
+    display: none;
+}
+
+@media (min-width: 1024px) {
+    .hero-visual {
         display: block;
-        margin-left: auto;
-        margin-right: auto;
     }
-    
-    figcaption {
-        font-style: italic;
-    }
-    
-    .hovertext {
-        position: absolute; /* Position the hovertext in relation to the figure */
-        bottom: 100%; /* Position it above the image */
-        left: 50%; /* Start at the middle of the figure */
-        transform: translateX(-50%); /* Center the hovertext */
-        white-space: nowrap; /* Ensure the text doesn't wrap */
-        visibility: hidden; /* Hide it by default */
+}
+
+.floating-cards {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.float-card {
+    position: absolute;
+    width: 180px;
+    height: 270px;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.float-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s ease;
+    transform-style: preserve-3d;
+}
+
+.float-card:hover .float-card-inner {
+    transform: rotateY(180deg);
+}
+
+.float-card-front,
+.float-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.float-card-front {
+    background-image: url("images/card_design-1.png");
+}
+
+.float-card-back {
+    background-image: url("images/card_design-2.png");
+    transform: rotateY(180deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.float-card-back span {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #d4af37;
+    text-align: center;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    padding: 1rem;
+}
+
+.card-1 {
+    top: 5%;
+    left: 0%;
+    animation: float 6s ease-in-out infinite;
+}
+
+.card-2 {
+    top: 25%;
+    right: 0%;
+    animation: float 6s ease-in-out infinite 1s;
+}
+
+.card-3 {
+    bottom: 0%;
+    left: 20%;
+    animation: float 6s ease-in-out infinite 2s;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(3deg); }
+}
+
+@keyframes fadeInUp {
+    from {
         opacity: 0;
-        transition: visibility 0s, opacity 0.5s ease-in-out; /* Smooth transition for the tooltip appearance */
-        background-color: black; /* Tooltip background */
-        color: white; /* Tooltip text color */
-        text-align: center;
-        border-radius: 5px;
-        padding: 5px;
-        /* Add more styling as needed (e.g., font size, padding, etc.) */
+        transform: translateY(30px);
     }
-    
-    figure:hover .hovertext {
-        visibility: visible; /* Show the hovertext on hover */
+    to {
         opacity: 1;
-        bottom: 110%; /* Adjust if needed to position the hovertext correctly */
+        transform: translateY(0);
     }
-    .game_buttons {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px; /* Adjust the space between buttons */
-        justify-content: center; /* Center the buttons container */
-        padding: 20px; /* Add some padding around the buttons */
-    }
+}
 
-    .game_buttons button {
-        padding: 10px 20px; /* Add some padding inside the buttons */
-        font-size: 16px; /* Adjust font size as needed */
-        color: rgb(0, 0, 0); /* Text color */
-        background-color: #ffffff; /* Default background color */
-        border: none; /* Remove default border */
-        border-radius: 5px; /* Rounded corners */
-        cursor: pointer; /* Change mouse cursor on hover */
-        transition: background-color 0.3s ease, transform 0.1s; /* Smooth transition for background color and transform */
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
-    }
+/* ==========================================
+   GAMES SECTION
+   ========================================== */
 
-    .game_buttons button:hover {
-        transform: translateY(-2px); /* Slightly raise the button */
-    }
+.games-section {
+    padding: 100px 5%;
+    background: var(--color-bg-medium);
+    position: relative;
+}
 
-    .game_buttons input[type="number"] {
-        padding: 10px 20px; /* Add some padding inside the buttons */
-        font-size: 16px; /* Adjust font size as needed */
-        color: rgb(0, 0, 0); /* Text color */
-        background-color: #ffffff; /* Default background color */
-        border: none; /* Remove default border */
-        border-radius: 5px; /* Rounded corners */
-        cursor: pointer; /* Change mouse cursor on hover */
-        transition: background-color 0.3s ease, transform 0.1s; /* Smooth transition for background color and transform */
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
-    }
+.games-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+}
 
-    .game {
-        /* Add any other styling as needed */
-        padding: 10px 20px; /* Add some padding inside the buttons */
-        
-    }
+.section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    animation: fadeInUp 0.6s ease-out;
+}
 
-    .game_container {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px; /* Adjust the space between buttons */
-        justify-content: center; /* Center the buttons container */
-        padding: 20px; /* Add some padding around the buttons */
-    }
+.section-header h2 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: 0.75rem;
+}
 
-    /* Container for the cards */
+.section-header p {
+    color: var(--color-text-muted);
+    font-size: 1.1rem;
+}
+
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.game-card {
+    background: linear-gradient(145deg, rgba(44, 66, 85, 0.5), rgba(26, 47, 61, 0.8));
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    transition: all var(--transition-medium);
+    animation: fadeInUp 0.6s ease-out backwards;
+    animation-delay: calc(var(--delay) * 0.1s);
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.game-card:hover {
+    transform: translateY(-4px);
+    background: linear-gradient(145deg, rgba(77, 109, 127, 0.4), rgba(44, 66, 85, 0.6));
+    border-color: rgba(107, 154, 179, 0.3);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    color: white;
+}
+
+img.game-card-icon {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.game-card-content {
+    flex: 1;
+}
+
+.game-card-content h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.game-card-content p {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    line-height: 1.5;
+}
+
+.game-card-arrow {
+    font-size: 1.5rem;
+    color: var(--color-text-dim);
+    transition: all var(--transition-medium);
+}
+
+.game-card:hover .game-card-arrow {
+    color: var(--color-accent-light);
+    transform: translateX(5px);
+}
+
+/* ==========================================
+   CONTACT SECTION
+   ========================================== */
+
+.contact-section {
+    padding: 60px 5%;
+    background: var(--color-bg-dark);
+    position: relative;
+}
+
+.contact-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+}
+
+.contact-section .section-header {
+    margin-bottom: 2rem;
+}
+
+.contact-section .section-header h2 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+.contact-content {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    max-width: 600px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.contact-card {
+    background: linear-gradient(145deg, rgba(44, 66, 85, 0.5), rgba(26, 47, 61, 0.8));
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 1.5rem;
+    text-align: center;
+    flex: 1;
+    min-width: 180px;
+    max-width: 250px;
+    transition: all var(--transition-medium);
+    text-decoration: none;
+}
+
+.contact-card:hover {
+    transform: translateY(-3px);
+    background: linear-gradient(145deg, rgba(77, 109, 127, 0.4), rgba(44, 66, 85, 0.6));
+    border-color: rgba(107, 154, 179, 0.3);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    color: white;
+}
+
+.contact-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.contact-card h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    color: var(--color-text);
+}
+
+.contact-card p {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+}
+
+/* ==========================================
+   FOOTER
+   ========================================== */
+
+.site-footer {
+    background: #000000;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 3rem 5%;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    text-align: center;
+}
+
+.footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.footer-brand img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+.footer-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.footer-links a {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+}
+
+.footer-links a:hover {
+    color: var(--color-text);
+}
+
+.footer-tagline {
+    color: var(--color-text-dim);
+    font-size: 0.85rem;
+}
+
+/* ==========================================
+   LEGACY STYLES (for other pages)
+   ========================================== */
+
+.website_header {
+    background-color: rgb(77,109,127);
+    display: flex;
+    align-items: center;
+    height: 60px;
+    margin-top: 30px;
+}
+
+.website_header .daseingemachte {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    width: 100%;
+}
+
+.daseingemachte {
+    justify-content: space-between;
+}
+
+.g_id_signin {
+    margin-left: auto;
+    margin-right: 20px;
+}
+
+.g_id_signin iframe {
+    color-scheme: normal;
+}
+
+.nav-auth .g_id_signin,
+.nav-auth [id^="g_"] {
+    color-scheme: normal;
+    background: transparent !important;
+    border: none !important;
+}
+
+.leftpadding {
+    flex: 1;
+}
+
+.small_leftpadding {
+    flex: 0.5;
+}
+
+.rightpadding {
+    flex: 5;
+}
+
+.logo {
+    width: 100px;
+    height: 100px;
+    margin-right: 20px;
+}
+
+.website_title {
+    font-size: 48px;
+    color: #ffffff;
+}
+
+.website_content {
+    display: flex;
+    align-items: center;
+}
+
+.website_content .leftpadding {
+    min-width: 150px;
+}
+
+.website_content .menu_bar {
+    display: flex;
+    align-items: center;
+    background-color: rgb(77,109,127);
+    padding-right: 20px;
+    border-radius: 10px;
+    margin: 10px;
+    border: 5px solid rgb(44,66,85);
+    top: 100px;
+    position: fixed;
+}
+
+.image-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+figure {
+    position: relative;
+    text-align: center;
+    margin: 0 10px;
+}
+
+.symbol {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+figcaption {
+    font-style: italic;
+}
+
+.hovertext {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s ease-in-out;
+    background-color: black;
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+figure:hover .hovertext {
+    visibility: visible;
+    opacity: 1;
+    bottom: 110%;
+}
+
+.game_buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    padding: 20px;
+}
+
+.game_buttons button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: rgb(0, 0, 0);
+    background-color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.game_buttons button:hover {
+    transform: translateY(-2px);
+}
+
+.game_buttons input[type="number"] {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: rgb(0, 0, 0);
+    background-color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.game {
+    padding: 10px 20px;
+}
+
+.game_container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    padding: 20px;
+}
+
 #player_cards {
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-  
-  /* Basic styling for each card */
-  .cards {
-    width: 100px; /* Card width */
-    height: 150px; /* Card height */
-    margin: 10px; /* Space between cards */
-    border-radius: 10px; /* Rounded corners for the cards */
-    perspective: 1000px; /* Depth effect for flipping */
-  }
-  
-  /* Front and back of the card */
-  .card-front, .card-back {
+}
+
+.cards {
+    width: 100px;
+    height: 150px;
+    margin: 10px;
+    border-radius: 10px;
+    perspective: 1000px;
+}
+
+.card-front, .card-back {
     width: 100%;
     height: 100%;
     position: absolute;
-    backface-visibility: hidden; /* Hide the back side when it's flipped */
-    border-radius: 10px; /* Rounded corners */
-    transition: transform 0.6s; /* Smooth flip transition */
-    background-size: cover; /* Cover the entire area of the card */
-    background-position: center; /* Center the image */
-    display: flex; /* Use Flexbox */
-    align-items: center; /* Align items vertically in the center */
-    justify-content: center; /* Align items horizontally in the center */
-    text-align: center; /* Ensure text within is centered as well */
-  }
-  
-  /* Front styling */
-  .card-front {
-    /* background: rgb(28, 116, 75);  */
-    background-image: url("images/card_design-1.png");
-    
-  }
-  
-  /* Back styling */
-  .card-back {
-    background-image: url("images/card_design-2.png");
-    transform: rotateY(180deg); /* Flip the back side */
-  }
-  
-  /* Flip effect on click */
-  .cards.flipped .card-front {
-    transform: rotateY(180deg); /* Flip to back */
-  }
-  
-  .cards.flipped .card-back {
-    transform: rotateY(0deg); /* Align back to front */
-
-  }
-
-  .deactivated_card {
-    opacity: 0.5;
-  }
-
- .person-icon {
-  width: 50px; /* Increased width */
-  height: 50px; /* Increased height */
-  margin-right: 20px; /* Added margin to separate from logo */
+    backface-visibility: hidden;
+    border-radius: 10px;
+    transition: transform 0.6s;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
-  
-  .login-button {
+
+.card-front {
+    background-image: url("images/card_design-1.png");
+}
+
+.card-back {
+    background-image: url("images/card_design-2.png");
+    transform: rotateY(180deg);
+}
+
+.cards.flipped .card-front {
+    transform: rotateY(180deg);
+}
+
+.cards.flipped .card-back {
+    transform: rotateY(0deg);
+}
+
+.deactivated_card {
+    opacity: 0.5;
+}
+
+.person-icon {
+    width: 50px;
+    height: 50px;
+    margin-right: 20px;
+}
+
+.login-button {
     position: absolute;
     top: 0;
     left: 0;
@@ -253,9 +824,9 @@
     padding: 0;
     margin: 0;
     cursor: pointer;
-  }
+}
 
-  .tag-input-container {
+.tag-input-container {
     margin-bottom: 10px;
 }
 
@@ -291,26 +862,13 @@
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.1s;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    text-decoration: none; /* Remove underline from links */
-    display: inline-block; /* Make the link behave more like a button */
+    text-decoration: none;
+    display: inline-block;
 }
 
 .game_buttons a.button:hover {
     transform: translateY(-2px);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 .words-table {
     width: 100%;
@@ -344,4 +902,13 @@
 
 .words-table .button:hover {
     background-color: #45a049;
+}
+
+/* Apply legacy body styles only to non-home pages */
+body:not(.home-page) {
+    background-image: url("images/background_dark.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    zoom: 150%;
 }
