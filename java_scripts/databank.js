@@ -26,7 +26,10 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
-const jaccuseWordsRef = ref(db, 'jaccuse_words');
+const MIDNIGHT = localStorage.getItem('midnightMode') === 'true';
+const WORDS_PATH = MIDNIGHT ? 'jaccuse_midnight_words' : 'jaccuse_words';
+
+const jaccuseWordsRef = ref(db, WORDS_PATH);
 
 function loadJaccuseWords() {
   return get(jaccuseWordsRef).then((snapshot) => {
@@ -51,7 +54,7 @@ async  function addJaccuseWord(word1, word2, author, tags) {
     const creationTime = Math.floor(Date.now() / 3600000) * 3600000; // Round to nearest hour
 
   
-    const existingWordRef = ref(db, `jaccuse_words/${compositeKey}`);
+    const existingWordRef = ref(db, `${WORDS_PATH}/${compositeKey}`);
     get(existingWordRef).then((snapshot) => {
       if (snapshot.exists()) {
         //console.log('Word already exists:', snapshot.val());
@@ -76,7 +79,7 @@ async  function addJaccuseWord(word1, word2, author, tags) {
 
 
   function add_played_user_to_word(compositeKey, user) {
-    const existingWordRef = ref(db, `jaccuse_words/${compositeKey}`);
+    const existingWordRef = ref(db, `${WORDS_PATH}/${compositeKey}`);
     get(existingWordRef).then((snapshot) => {
       if (snapshot.exists()) {
         //console.log('Word already exists:', snapshot.val());
@@ -122,9 +125,7 @@ async  function addJaccuseWord(word1, word2, author, tags) {
     ["Church","Courthouse",{ author: "Claude", tags: ["everyday", "place"] }],
     ["Playground","Arcade",{ author: "Claude", tags: ["everyday", "place"] }],
     ["Bowling alley","Mini-golf course",{ author: "Claude", tags: ["everyday", "place"] }],
-    ["Laundromat","Dry cleaner",{ author: "Claude", tags: ["everyday", "place"] }],
     ["Bakery","Ice cream parlor",{ author: "Claude", tags: ["everyday", "place"] }],
-    ["Post office","Courier service",{ author: "Claude", tags: ["everyday", "place"] }],
     ["Bank","Casino",{ author: "Claude", tags: ["everyday", "place"] }],
     ["Pharmacy","Health food store",{ author: "Claude", tags: ["everyday", "place"] }],
     ["Pet store","Animal shelter",{ author: "Claude", tags: ["everyday", "place"] }],
@@ -139,24 +140,16 @@ async  function addJaccuseWord(word1, word2, author, tags) {
     ["Furniture store","Flea market",{ author: "Claude", tags: ["everyday", "place"] }],
     ["Diner","Food truck",{ author: "Claude", tags: ["everyday", "place"] }],
     ["Daycare center","Senior center",{ author: "Claude", tags: ["everyday", "place"] }],
-    ["Barber shop","Beauty salon",{ author: "Claude", tags: ["everyday", "place"] }],
     ["Bookstore","Comic book shop",{ author: "Claude", tags: ["everyday", "place"] }],
-    ["Dentist office","Orthodontist office",{ author: "Claude", tags: ["everyday", "place"] }],
-    ["Karaoke bar","Piano bar",{ author: "Claude", tags: ["everyday", "place"] }],
     ["Butcher shop","Vegan cafe",{ author: "Claude", tags: ["everyday", "place"] }],
     ["Winery","Brewery",{ author: "Claude", tags: ["everyday", "place"] }],
     ["Shoe store","Hat shop",{ author: "Claude", tags: ["everyday", "place"] }],
     ["Pawn shop","Auction house",{ author: "Claude", tags: ["everyday", "place"] }],
-    ["Tanning salon","Spray tan booth",{ author: "Claude", tags: ["everyday", "place"] }],
-    ["Optometrist","Eyeglass store",{ author: "Claude", tags: ["everyday", "place"] }],
     ["Record store","Music school",{ author: "Claude", tags: ["everyday", "place"] }],
     ["Travel agency","Luggage store",{ author: "Claude", tags: ["everyday", "place"] }],
     ["Fishing pier","Hunting lodge",{ author: "Claude", tags: ["everyday", "place"] }],
-    ["Pottery studio","Glass blowing workshop",{ author: "Claude", tags: ["everyday", "place"] }],
     ["Escape room","Laser tag arena",{ author: "Claude", tags: ["everyday", "place"] }],
     ["Psychic reader","Fortune cookie factory",{ author: "Claude", tags: ["everyday", "place"] }],
-    ["Driving range","Miniature golf course",{ author: "Claude", tags: ["everyday", "place"] }],
-    ["Rock climbing gym","Bouldering cave",{ author: "Claude", tags: ["everyday", "place"] }],
     ["Trampoline park","Roller skating rink",{ author: "Claude", tags: ["everyday", "place"] }],
     ["The horizon","The sky",{ author: "Claude", tags: ["abstract"] }],
     ["The end of the universe","The event horizon",{ author: "Claude", tags: ["abstract"] }],
@@ -169,8 +162,6 @@ async  function addJaccuseWord(word1, word2, author, tags) {
     ["The fourth dimension","The space-time continuum",{ author: "Claude", tags: ["abstract"] }],
     ["Times Square","Red Square",{ author: "Claude", tags: ["specific", "place"] }],
     ["Hollywood Sign","London Eye",{ author: "Claude", tags: ["specific", "place"] }],
-    ["Central Park","Hyde Park",{ author: "Claude", tags: ["specific", "place"] }],
-    ["Notre Dame Cathedral","Westminster Abbey",{ author: "Claude", tags: ["specific", "place"] }],
     ["Mount Rushmore","Sphinx",{ author: "Claude", tags: ["specific", "place"] }],
     ["Leaning Tower of Pisa","CN Tower",{ author: "Claude", tags: ["specific", "place"] }],
     ["Vatican City","Mecca",{ author: "Claude", tags: ["specific", "place"] }],
@@ -179,19 +170,12 @@ async  function addJaccuseWord(word1, word2, author, tags) {
     ["Alcatraz","Tower of London",{ author: "Claude", tags: ["specific", "place"] }],
     ["Grand Canyon","Niagara Falls",{ author: "Claude", tags: ["specific", "place"] }],
     ["Statue of Liberty","Christ the Redeemer",{ author: "Claude", tags: ["specific", "place"] }],
-    ["Eiffel Tower","Tokyo Tower",{ author: "Claude", tags: ["specific", "place"] }],
-    ["Pyramids of Giza","Stonehenge",{ author: "Claude", tags: ["specific", "place"] }],
     ["Colosseum","Acropolis",{ author: "Claude", tags: ["specific", "place"] }],
     ["Great Wall of China","Berlin Wall",{ author: "Claude", tags: ["specific", "place"] }],
     ["Mount Everest","Alps",{ author: "Claude", tags: ["specific", "place"] }],
     ["Taj Mahal","Kremlin",{ author: "Claude", tags: ["specific", "place"] }],
-    ["Golden Gate Bridge","Brooklyn Bridge",{ author: "Claude", tags: ["specific", "place"] }],
     ["White House","Buckingham Palace",{ author: "Claude", tags: ["specific", "place"] }],
-    ["Louvre Museum","Hermitage Museum",{ author: "Claude", tags: ["specific", "place"] }],
     ["Yellowstone National Park","Serengeti National Park",{ author: "Claude", tags: ["specific", "place"] }],
-    ["Sagrada Familia","St. Peter's Basilica",{ author: "Claude", tags: ["specific", "place"] }],
-    ["Machu Picchu","Chichen Itza",{ author: "Claude", tags: ["specific", "place"] }],
-    ["Venice Canals","Amsterdam Canals",{ author: "Claude", tags: ["specific", "place"] }],
     ["Sistine Chapel","Hagia Sophia",{ author: "Claude", tags: ["specific", "place"] }],
     ["Galapagos Islands","Maldives",{ author: "Claude", tags: ["specific", "place"] }],
     ["Neuschwanstein Castle","Palace of Versailles",{ author: "Claude", tags: ["specific", "place"] }],
@@ -233,13 +217,21 @@ async  function addJaccuseWord(word1, word2, author, tags) {
     ["Bierzelt","Disco",{ author: "Eva", tags: ["everyday", "place", "german"] }],
 ];
   
-  words.forEach(([word1, word2, meta]) => {
+  const midnight_words = [
+    ["Threesome","Cuckolding",{ author: "wuschel", tags: ["midnight"] }],
+    ["Nudism","Polyamory",{ author: "wuschel", tags: ["midnight"] }],
+    ["Dominatrix","Sugar baby",{ author: "Claude", tags: ["midnight"] }],
+    ["Faking an orgasm","Ghosting",{ author: "Claude", tags: ["midnight"] }],
+    ["Morning-after pill","Paternity test",{ author: "Claude", tags: ["midnight"] }],
+  ];
+
+  (MIDNIGHT ? midnight_words : words).forEach(([word1, word2, meta]) => {
     addJaccuseWord(word1, word2, meta.author, meta.tags);
   });
 
 
 function incrementPlays(compositeKey) {
-  const existingWordRef = ref(db, `jaccuse_words/${compositeKey}`);
+  const existingWordRef = ref(db, `${WORDS_PATH}/${compositeKey}`);
   get(existingWordRef).then((snapshot) => {
     if (snapshot.exists()) {
       const data = snapshot.val();
@@ -253,7 +245,7 @@ function incrementPlays(compositeKey) {
 }
 
 function incrementUpvote(compositeKey) {
-  const existingWordRef = ref(db, `jaccuse_words/${compositeKey}`);
+  const existingWordRef = ref(db, `${WORDS_PATH}/${compositeKey}`);
   get(existingWordRef).then((snapshot) => {
     if (snapshot.exists()) {
       const data = snapshot.val();
@@ -267,7 +259,7 @@ function incrementUpvote(compositeKey) {
 }
 
 function incrementDownvote(compositeKey) {
-  const existingWordRef = ref(db, `jaccuse_words/${compositeKey}`);
+  const existingWordRef = ref(db, `${WORDS_PATH}/${compositeKey}`);
   get(existingWordRef).then((snapshot) => {
     if (snapshot.exists()) {
       const data = snapshot.val();
@@ -283,7 +275,7 @@ function incrementDownvote(compositeKey) {
 function addPlayedUser(compositeKey, userName) {
   if (!userName) return;
   
-  const existingWordRef = ref(db, `jaccuse_words/${compositeKey}`);
+  const existingWordRef = ref(db, `${WORDS_PATH}/${compositeKey}`);
   get(existingWordRef).then((snapshot) => {
     if (snapshot.exists()) {
       const data = snapshot.val();

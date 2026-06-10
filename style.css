@@ -8,6 +8,11 @@
     --color-bg-light: #2c4255;
     --color-accent: #4d6d7f;
     --color-accent-light: #6b9ab3;
+    --rgb-bg-dark: 15, 26, 34;
+    --rgb-bg-medium: 26, 47, 61;
+    --rgb-bg-light: 44, 66, 85;
+    --rgb-accent: 77, 109, 127;
+    --rgb-accent-light: 107, 154, 179;
     --color-text: #ffffff;
     --color-text-muted: rgba(255, 255, 255, 0.7);
     --color-text-dim: rgba(255, 255, 255, 0.5);
@@ -57,7 +62,7 @@ a:hover {
     left: 0;
     right: 0;
     z-index: 1000;
-    background: rgba(15, 26, 34, 0.85);
+    background: rgba(var(--rgb-bg-dark), 0.85);
     backdrop-filter: blur(20px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
@@ -140,8 +145,8 @@ a:hover {
     position: relative;
     overflow: hidden;
     background: 
-        radial-gradient(ellipse at 20% 50%, rgba(77, 109, 127, 0.15) 0%, transparent 50%),
-        radial-gradient(ellipse at 80% 80%, rgba(107, 154, 179, 0.1) 0%, transparent 40%),
+        radial-gradient(ellipse at 20% 50%, rgba(var(--rgb-accent), 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 80%, rgba(var(--rgb-accent-light), 0.1) 0%, transparent 40%),
         linear-gradient(180deg, var(--color-bg-dark) 0%, var(--color-bg-medium) 100%);
 }
 
@@ -188,7 +193,7 @@ a:hover {
     font-weight: 700;
     line-height: 1.3;
     padding-bottom: 0.1em;
-    background: linear-gradient(135deg, #ffffff 0%, #6b9ab3 100%);
+    background: linear-gradient(135deg, #ffffff 0%, var(--color-accent-light) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -224,12 +229,12 @@ a:hover {
 .btn-primary {
     background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-light) 100%);
     color: white;
-    box-shadow: 0 4px 20px rgba(77, 109, 127, 0.4);
+    box-shadow: 0 4px 20px rgba(var(--rgb-accent), 0.4);
 }
 
 .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(77, 109, 127, 0.5);
+    box-shadow: 0 8px 30px rgba(var(--rgb-accent), 0.5);
     color: white;
 }
 
@@ -241,7 +246,7 @@ a:hover {
 
 .btn-secondary:hover {
     border-color: var(--color-accent-light);
-    background: rgba(107, 154, 179, 0.1);
+    background: rgba(var(--rgb-accent-light), 0.1);
     color: white;
 }
 
@@ -399,7 +404,7 @@ a:hover {
 }
 
 .game-card {
-    background: linear-gradient(145deg, rgba(44, 66, 85, 0.5), rgba(26, 47, 61, 0.8));
+    background: linear-gradient(145deg, rgba(var(--rgb-bg-light), 0.5), rgba(var(--rgb-bg-medium), 0.8));
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 20px;
     padding: 2rem;
@@ -415,8 +420,8 @@ a:hover {
 
 .game-card:hover {
     transform: translateY(-4px);
-    background: linear-gradient(145deg, rgba(77, 109, 127, 0.4), rgba(44, 66, 85, 0.6));
-    border-color: rgba(107, 154, 179, 0.3);
+    background: linear-gradient(145deg, rgba(var(--rgb-accent), 0.4), rgba(var(--rgb-bg-light), 0.6));
+    border-color: rgba(var(--rgb-accent-light), 0.3);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
     color: white;
 }
@@ -494,7 +499,7 @@ img.game-card-icon {
 }
 
 .contact-card {
-    background: linear-gradient(145deg, rgba(44, 66, 85, 0.5), rgba(26, 47, 61, 0.8));
+    background: linear-gradient(145deg, rgba(var(--rgb-bg-light), 0.5), rgba(var(--rgb-bg-medium), 0.8));
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 16px;
     padding: 1.5rem;
@@ -508,8 +513,8 @@ img.game-card-icon {
 
 .contact-card:hover {
     transform: translateY(-3px);
-    background: linear-gradient(145deg, rgba(77, 109, 127, 0.4), rgba(44, 66, 85, 0.6));
-    border-color: rgba(107, 154, 179, 0.3);
+    background: linear-gradient(145deg, rgba(var(--rgb-accent), 0.4), rgba(var(--rgb-bg-light), 0.6));
+    border-color: rgba(var(--rgb-accent-light), 0.3);
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
     color: white;
 }
@@ -597,7 +602,7 @@ img.game-card-icon {
     padding: 140px 5% 60px;
     text-align: center;
     background: 
-        radial-gradient(ellipse at 50% 50%, rgba(77, 109, 127, 0.2) 0%, transparent 60%),
+        radial-gradient(ellipse at 50% 50%, rgba(var(--rgb-accent), 0.2) 0%, transparent 60%),
         var(--color-bg-dark);
 }
 
@@ -659,7 +664,7 @@ img.game-card-icon {
 }
 
 .symbol-card {
-    background: linear-gradient(145deg, rgba(44, 66, 85, 0.5), rgba(26, 47, 61, 0.8));
+    background: linear-gradient(145deg, rgba(var(--rgb-bg-light), 0.5), rgba(var(--rgb-bg-medium), 0.8));
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 20px;
     padding: 2rem;
@@ -669,7 +674,7 @@ img.game-card-icon {
 
 .symbol-card:hover {
     transform: translateY(-4px);
-    border-color: rgba(107, 154, 179, 0.3);
+    border-color: rgba(var(--rgb-accent-light), 0.3);
 }
 
 .symbol-card img {
@@ -702,7 +707,7 @@ img.game-card-icon {
 }
 
 .rule-card {
-    background: linear-gradient(145deg, rgba(44, 66, 85, 0.5), rgba(26, 47, 61, 0.8));
+    background: linear-gradient(145deg, rgba(var(--rgb-bg-light), 0.5), rgba(var(--rgb-bg-medium), 0.8));
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 20px;
     padding: 1.5rem;
@@ -750,7 +755,7 @@ img.game-card-icon {
 }
 
 .chant-card {
-    background: linear-gradient(145deg, rgba(44, 66, 85, 0.5), rgba(26, 47, 61, 0.8));
+    background: linear-gradient(145deg, rgba(var(--rgb-bg-light), 0.5), rgba(var(--rgb-bg-medium), 0.8));
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 20px;
     padding: 2.5rem;
@@ -790,7 +795,7 @@ img.game-card-icon {
 }
 
 .action-card {
-    background: linear-gradient(145deg, rgba(44, 66, 85, 0.5), rgba(26, 47, 61, 0.8));
+    background: linear-gradient(145deg, rgba(var(--rgb-bg-light), 0.5), rgba(var(--rgb-bg-medium), 0.8));
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 20px;
     padding: 2rem;
@@ -834,7 +839,7 @@ img.game-card-icon {
 }
 
 .win-card {
-    background: linear-gradient(145deg, rgba(44, 66, 85, 0.5), rgba(26, 47, 61, 0.8));
+    background: linear-gradient(145deg, rgba(var(--rgb-bg-light), 0.5), rgba(var(--rgb-bg-medium), 0.8));
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 20px;
     padding: 2rem;
@@ -842,7 +847,7 @@ img.game-card-icon {
 }
 
 .win-card.majority {
-    border-color: rgba(107, 154, 179, 0.3);
+    border-color: rgba(var(--rgb-accent-light), 0.3);
 }
 
 .win-card.minority {
@@ -881,7 +886,7 @@ img.game-card-icon {
 }
 
 .tip-card {
-    background: linear-gradient(145deg, rgba(44, 66, 85, 0.3), rgba(26, 47, 61, 0.5));
+    background: linear-gradient(145deg, rgba(var(--rgb-bg-light), 0.3), rgba(var(--rgb-bg-medium), 0.5));
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 16px;
     padding: 1.5rem 2rem;
@@ -926,7 +931,7 @@ img.game-card-icon {
 }
 
 .play-area {
-    background: linear-gradient(145deg, rgba(44, 66, 85, 0.3), rgba(26, 47, 61, 0.5));
+    background: linear-gradient(145deg, rgba(var(--rgb-bg-light), 0.3), rgba(var(--rgb-bg-medium), 0.5));
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 24px;
     padding: 2rem;
@@ -1093,12 +1098,12 @@ img.game-card-icon {
     border-radius: 50px;
     cursor: pointer;
     transition: all var(--transition-medium);
-    box-shadow: 0 4px 15px rgba(77, 109, 127, 0.3);
+    box-shadow: 0 4px 15px rgba(var(--rgb-accent), 0.3);
 }
 
 .game-controls #start_button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(77, 109, 127, 0.4);
+    box-shadow: 0 6px 20px rgba(var(--rgb-accent), 0.4);
 }
 
 .player-cards-area {
@@ -1428,7 +1433,7 @@ img.game-card-icon {
 
 /* Suggest Form Styles */
 .suggest-form {
-    background: linear-gradient(145deg, rgba(44, 66, 85, 0.3), rgba(26, 47, 61, 0.5));
+    background: linear-gradient(145deg, rgba(var(--rgb-bg-light), 0.3), rgba(var(--rgb-bg-medium), 0.5));
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 20px;
     padding: 2rem;
@@ -1488,7 +1493,7 @@ img.game-card-icon {
 
 .suggest-form button[type="submit"]:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(77, 109, 127, 0.4);
+    box-shadow: 0 4px 15px rgba(var(--rgb-accent), 0.4);
 }
 
 /* Tab Content */
@@ -1504,7 +1509,7 @@ img.game-card-icon {
 .words-page .words-table {
     width: 100%;
     border-collapse: collapse;
-    background: linear-gradient(145deg, rgba(44, 66, 85, 0.3), rgba(26, 47, 61, 0.5));
+    background: linear-gradient(145deg, rgba(var(--rgb-bg-light), 0.3), rgba(var(--rgb-bg-medium), 0.5));
     border-radius: 16px;
     overflow: hidden;
 }
@@ -1620,7 +1625,7 @@ img.game-card-icon {
 }
 
 .role-card {
-    background: linear-gradient(145deg, rgba(44, 66, 85, 0.5), rgba(26, 47, 61, 0.8));
+    background: linear-gradient(145deg, rgba(var(--rgb-bg-light), 0.5), rgba(var(--rgb-bg-medium), 0.8));
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 16px;
     padding: 1.5rem;
@@ -1639,7 +1644,7 @@ img.game-card-icon {
 }
 
 .objective-text {
-    background: linear-gradient(145deg, rgba(44, 66, 85, 0.3), rgba(26, 47, 61, 0.5));
+    background: linear-gradient(145deg, rgba(var(--rgb-bg-light), 0.3), rgba(var(--rgb-bg-medium), 0.5));
     border-radius: 16px;
     padding: 1.5rem;
     margin-top: 1rem;
@@ -1660,7 +1665,7 @@ img.game-card-icon {
 }
 
 .phase-detail {
-    background: linear-gradient(145deg, rgba(44, 66, 85, 0.3), rgba(26, 47, 61, 0.5));
+    background: linear-gradient(145deg, rgba(var(--rgb-bg-light), 0.3), rgba(var(--rgb-bg-medium), 0.5));
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 16px;
     padding: 1.5rem;
@@ -1727,7 +1732,7 @@ img.game-card-icon {
 }
 
 .phase-card {
-    background: linear-gradient(145deg, rgba(44, 66, 85, 0.5), rgba(26, 47, 61, 0.8));
+    background: linear-gradient(145deg, rgba(var(--rgb-bg-light), 0.5), rgba(var(--rgb-bg-medium), 0.8));
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 16px;
     padding: 1.5rem;
@@ -2172,4 +2177,50 @@ body:not(.home-page) {
     background-repeat: no-repeat;
     background-attachment: fixed;
     zoom: 150%;
+}
+
+/* ==========================================
+   MIDNIGHT MODE
+   ========================================== */
+
+body.midnight {
+    --color-bg-dark: #160507;
+    --color-bg-medium: #2b0a0f;
+    --color-bg-light: #471117;
+    --color-accent: #8a1f2b;
+    --color-accent-light: #c43b4b;
+    --rgb-bg-dark: 22, 5, 7;
+    --rgb-bg-medium: 43, 10, 15;
+    --rgb-bg-light: 71, 17, 23;
+    --rgb-accent: 138, 31, 43;
+    --rgb-accent-light: 196, 59, 75;
+}
+
+body.midnight:not(.home-page) {
+    background-color: #5a1420;
+    background-blend-mode: luminosity;
+}
+
+.btn-midnight {
+    background: transparent;
+    color: #c43b4b;
+    border: 2px solid #8a1f2b;
+}
+
+.btn-midnight:hover {
+    background: #8a1f2b;
+    color: white;
+}
+
+body.midnight .game-hero-icon,
+body.midnight .nav-logo img,
+body.midnight .footer-brand img,
+body.midnight .action-icon-img {
+    filter: sepia(1) hue-rotate(310deg) saturate(2.5);
+}
+
+body.midnight .card-front,
+body.midnight .card-back {
+    background-color: #5a1420;
+    background-blend-mode: luminosity;
 }
