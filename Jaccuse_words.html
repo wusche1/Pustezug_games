@@ -3,18 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Word Library - J'accuse! - Pustezug Games</title>
+    <title>J'accuse! word library – Julian Schulz</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="games.css">
+    <script src="java_scripts/theme.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
     <link rel="apple-touch-icon" sizes="180x180" href="icon_folder/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="icon_folder/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="icon_folder/favicon-16x16.png">
     <link rel="manifest" href="icon_folder/site.webmanifest">
-    <link rel="mask-icon" href="icon_folder/safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="theme-color" content="#1a2f3d">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
     <script type="module" src="java_scripts/databank.js" defer></script>
     <script type="module" src="java_scripts/Jaccuse_words.js" defer></script>
@@ -22,31 +21,90 @@
     <script src="java_scripts/google_login.js" defer></script>
     <script src="java_scripts/midnight.js" defer></script>
 </head>
-<body class="game-page words-page">
-    <!-- Navigation -->
-    <nav class="main-nav">
-        <div class="nav-container">
-            <a href="index.html" class="nav-logo">
-                <img src="images/Turtle_logo.png" alt="Pustezug Games Logo">
-                <span>Pustezug Games</span>
-            </a>
-            <ul class="nav-links">
-                <li><a href="Jaccuse.html">J'accuse!</a></li>
-                <li><a href="Jaccuse_play.html">Play</a></li>
-                <li><a href="Jaccuse_words.html" class="active">Words</a></li>
-            </ul>
-            <div class="nav-auth">
-                <div id="g_id_onload"
-                     data-client_id="663759759562-koons6upuoj2n06l9ncf7of7c00b4qhf.apps.googleusercontent.com"
-                     data-callback="handleCredentialResponse">
-                </div>
-                <div class="g_id_signin" data-type="standard"></div>
-            </div>
-        </div>
+<body class="game jaccuse">
+    <svg class="crest strip" viewBox="0 0 1600 110" preserveAspectRatio="xMidYMax slice" role="img" aria-label="A row of people, one of them under suspicion">
+        <title>Click to switch day and night</title>
+        <defs>
+            <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+                <stop class="s0" offset="0"/>
+                <stop class="s1" offset=".35"/>
+                <stop class="s2" offset=".65"/>
+                <stop class="s3" offset=".85"/>
+                <stop class="s4" offset="1"/>
+            </linearGradient>
+        </defs>
+        <rect width="1600" height="110" fill="url(#sky)"/>
+        <g class="night"><g class="stars">
+            <circle cx="487" cy="79" r="1.2"/>
+            <circle cx="267" cy="51" r="1.2"/>
+            <circle cx="970" cy="78" r="0.7"/>
+            <circle cx="1240" cy="5" r="0.9"/>
+            <circle cx="531" cy="74" r="0.7"/>
+            <circle cx="392" cy="64" r="1.2"/>
+            <circle cx="1125" cy="64" r="0.9"/>
+            <circle cx="1308" cy="23" r="0.7"/>
+            <circle cx="1300" cy="23" r="1.2"/>
+            <circle cx="798" cy="5" r="1.2"/>
+            <circle cx="1591" cy="12" r="0.7"/>
+            <circle cx="1552" cy="79" r="0.7"/>
+            <circle cx="616" cy="7" r="0.9"/>
+            <circle cx="968" cy="80" r="1.2"/>
+            <circle cx="793" cy="58" r="0.9"/>
+            <circle cx="1491" cy="77" r="0.9"/>
+            <circle cx="274" cy="50" r="0.7"/>
+            <circle cx="73" cy="21" r="0.9"/>
+            <circle cx="444" cy="37" r="1.2"/>
+            <circle cx="893" cy="42" r="0.9"/>
+            <circle cx="1038" cy="53" r="1.2"/>
+            <circle cx="718" cy="72" r="1.2"/>
+            <circle cx="834" cy="78" r="0.7"/>
+            <circle cx="689" cy="7" r="0.9"/>
+            <circle cx="1240" cy="24" r="1.2"/>
+            <circle cx="668" cy="73" r="1.2"/>
+            <circle cx="1165" cy="17" r="1.2"/>
+            <circle cx="1342" cy="31" r="1.2"/>
+            <circle cx="1174" cy="38" r="0.9"/>
+            <circle cx="254" cy="12" r="0.9"/>
+            <circle cx="1308" cy="65" r="0.7"/>
+            <circle cx="704" cy="12" r="0.9"/>
+            <circle cx="308" cy="6" r="0.9"/>
+            <circle cx="874" cy="57" r="0.7"/>
+            <circle cx="90" cy="9" r="0.9"/>
+            <circle cx="1471" cy="79" r="0.9"/>
+            <circle cx="1128" cy="39" r="1.2"/>
+            <circle cx="483" cy="8" r="0.9"/>
+            <circle cx="14" cy="13" r="0.7"/>
+            <circle cx="1228" cy="72" r="0.7"/>
+            <circle cx="404" cy="56" r="0.9"/>
+            <circle cx="1250" cy="37" r="0.7"/>
+            <circle cx="1412" cy="9" r="0.9"/>
+            <circle cx="642" cy="50" r="0.7"/>
+            <circle cx="773" cy="52" r="0.9"/>
+        </g></g>
+        <path class="spot" d="M-5 0 H5 L36 110 H-36Z"/>
+        <g class="person" transform="translate(520 106)"><circle cy="-34" r="9"/><path d="M-16 0 v-10 q0 -12 16 -12 q16 0 16 12 v10z"/></g>
+        <g class="person" transform="translate(590 106)"><circle cy="-34" r="9"/><path d="M-16 0 v-10 q0 -12 16 -12 q16 0 16 12 v10z"/></g>
+        <g class="person sus" transform="translate(660 106)"><circle cy="-34" r="9"/><path d="M-16 0 v-10 q0 -12 16 -12 q16 0 16 12 v10z"/></g>
+        <g class="person" transform="translate(730 106)"><circle cy="-34" r="9"/><path d="M-16 0 v-10 q0 -12 16 -12 q16 0 16 12 v10z"/></g>
+        <g class="person" transform="translate(800 106)"><circle cy="-34" r="9"/><path d="M-16 0 v-10 q0 -12 16 -12 q16 0 16 12 v10z"/></g>
+        <g class="person" transform="translate(870 106)"><circle cy="-34" r="9"/><path d="M-16 0 v-10 q0 -12 16 -12 q16 0 16 12 v10z"/></g>
+        <g class="person sus b" transform="translate(940 106)"><circle cy="-34" r="9"/><path d="M-16 0 v-10 q0 -12 16 -12 q16 0 16 12 v10z"/></g>
+        <g class="person" transform="translate(1010 106)"><circle cy="-34" r="9"/><path d="M-16 0 v-10 q0 -12 16 -12 q16 0 16 12 v10z"/></g>
+        <g class="person" transform="translate(1080 106)"><circle cy="-34" r="9"/><path d="M-16 0 v-10 q0 -12 16 -12 q16 0 16 12 v10z"/></g>
+        <rect class="near" y="106" width="1600" height="4"/>
+    </svg>
+
+    <nav class="site-nav">
+        <a href="index.html">Julian Schulz</a>
+        <a href="index.html#games">Games</a>
+        <a href="Jaccuse.html">J'accuse!</a>
+        <a href="Jaccuse_play.html">Play</a>
+        <a href="Jaccuse_words.html">Words</a>
+        <button class="theme-toggle" aria-label="Switch day and night"></button>
     </nav>
 
     <!-- Words Content -->
-    <main class="words-content">
+    <main>
         <header class="words-header">
             <h1>Word Library</h1>
             <p>Browse existing word pairs or suggest your own</p>
@@ -69,16 +127,15 @@
                 <button id="sort-upvotes">Most Upvoted</button>
                 <button id="sort-newest">Newest</button>
             </div>
-            <main id="words-list">
-                <!-- Words will be populated here by JavaScript -->
-            </main>
+            <div id="words-list">
+            </div>
         </div>
 
         <!-- Suggest Tab -->
         <div id="suggest-tab" class="tab-content">
             <div class="suggest-form">
                 <h2>Suggest a Word Pair</h2>
-                <p style="color: var(--color-text-muted); text-align: center; margin-bottom: 1.5rem;">
+                <p class="suggest-hint">
                     Good word pairs are related but distinct — like "The Eiffel Tower" and "Big Ben"
                 </p>
                 <form id="suggestion-form">
@@ -100,28 +157,24 @@
                         <ul id="tag-list"></ul>
                     </div>
                     <button type="submit" id="suggest-button">Submit Word Pair</button>
-                    <p id="suggestion-status" style="text-align: center; margin-top: 1rem;"></p>
+                    <p id="suggestion-status"></p>
                 </form>
             </div>
+        </div>
+
+        <div class="signin">
+            <div id="g_id_onload"
+                 data-client_id="663759759562-koons6upuoj2n06l9ncf7of7c00b4qhf.apps.googleusercontent.com"
+                 data-callback="handleCredentialResponse">
+            </div>
+            <div class="g_id_signin" data-type="standard"></div>
+            <span>Sign in to suggest word pairs under your name.</span>
         </div>
 
         <a href="Jaccuse.html" class="back-link">← Back to J'accuse!</a>
     </main>
 
-    <!-- Footer -->
-    <footer class="site-footer">
-        <div class="footer-content">
-            <div class="footer-brand">
-                <img src="images/Turtle_logo.png" alt="Pustezug Games">
-                <span>Pustezug Games</span>
-            </div>
-            <div class="footer-links">
-                <a href="index.html#games">Games</a>
-                <a href="index.html#contact">Contact</a>
-                <a href="https://www.admonymous.co/pustezug" target="_blank">Feedback</a>
-            </div>
-        </div>
-    </footer>
+    <footer>© Julian Schulz · <a href="https://www.admonymous.co/pustezug">Anonymous game feedback</a></footer>
 
     <script>
         // Tab switching

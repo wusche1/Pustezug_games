@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Julian Schulz – Curriculum Vitae</title>
+<style>
+  @page { size: A4; margin: 0; }
+  :root {
+    --ink: #16191d;
+    --soft: #4a525c;
+    --mute: #7a838e;
+    --rule: #d5dae0;
+    --accent: #1f4b8e;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: "Avenir Next", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 9.1pt;
+    line-height: 1.38;
+    color: var(--ink);
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    font-variant-numeric: tabular-nums;
+  }
+  .page { max-width: 210mm; margin: 0 auto; padding: 13mm 16mm 10mm; }
+  a { color: inherit; text-decoration: none; }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-bottom: 4.2mm;
+    border-bottom: 1.4pt solid var(--ink);
+  }
+  h1 {
+    margin: 0;
+    font-size: 27pt;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    line-height: 1;
+  }
+  h1 span { color: var(--accent); }
+  .kicker {
+    margin-top: 2.2mm;
+    font-size: 8pt;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--mute);
+  }
+  .contact {
+    text-align: right;
+    font-size: 8.3pt;
+    line-height: 1.5;
+    color: var(--soft);
+  }
+  .contact a { color: var(--accent); }
+  .contact .sep { color: var(--rule); padding: 0 0.45em; }
+
+  h2 {
+    display: flex;
+    align-items: center;
+    gap: 3mm;
+    margin: 4.7mm 0 2mm;
+    font-size: 7.9pt;
+    font-weight: 700;
+    letter-spacing: 0.17em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  h2::after { content: ""; flex: 1; border-top: 0.6pt solid var(--rule); }
+
+  .entry {
+    display: grid;
+    grid-template-columns: 28mm 1fr;
+    column-gap: 4mm;
+    align-items: baseline;
+    margin-bottom: 1.7mm;
+    break-inside: avoid;
+  }
+  .entry.tight { margin-bottom: 0.8mm; }
+  .date { font-size: 8.1pt; color: var(--mute); white-space: nowrap; }
+  .head { display: flex; justify-content: space-between; align-items: baseline; gap: 4mm; }
+  .title { font-weight: 600; }
+  .org { color: var(--soft); }
+  .org a, .title a { border-bottom: 0.5pt solid #c9d3e2; }
+  .org::before { content: "·"; padding: 0 0.5em; color: var(--mute); }
+  .loc { font-size: 8.1pt; color: var(--mute); white-space: nowrap; }
+  .desc { color: var(--soft); font-size: 8.6pt; }
+  .desc b { color: var(--ink); font-weight: 600; }
+  .desc a, .loc a { border-bottom: 0.5pt solid #c9d3e2; }
+  .venue { color: var(--accent); font-weight: 500; }
+  .award {
+    display: inline-block;
+    margin-left: 0.5em;
+    padding: 0 0.55em;
+    border: 0.6pt solid var(--accent);
+    border-radius: 2pt;
+    font-size: 7.1pt;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    line-height: 1.45;
+    color: var(--accent);
+    vertical-align: 0.06em;
+  }
+  .dot { color: var(--mute); padding: 0 0.45em; }
+
+  .skills { display: grid; grid-template-columns: 28mm 1fr; column-gap: 4mm; row-gap: 0.8mm; }
+  .skills dt { font-size: 8.1pt; color: var(--mute); margin: 0; }
+  .skills dd { margin: 0; }
+  dl { margin: 0; }
+</style>
+</head>
+<body>
+<div class="page">
+
+<header>
+  <div>
+    <h1>Julian <span>Schulz</span></h1>
+    <div class="kicker">Curriculum Vitae</div>
+  </div>
+  <div class="contact">
+    <div><a href="mailto:mail@julianschulz.eu">mail@julianschulz.eu</a><span class="sep">|</span><a href="index.html">julianschulz.eu</a></div>
+    <div><a href="https://www.linkedin.com/in/julian-schulz-020846201">LinkedIn</a><span class="sep">|</span><a href="https://github.com/wusche1">github.com/wusche1</a><span class="sep">|</span><a href="https://scholar.google.com/citations?user=lcBcBq8AAAAJ">Google Scholar</a></div>
+  </div>
+</header>
+
+<h2>Work Experience</h2>
+<div class="entry">
+  <div class="date">Oct 2025 – present</div>
+  <div>
+    <div class="head"><div><span class="title">AI Safety Researcher</span><span class="org"><a href="https://www.meridiancambridge.org/visiting-researchers">Meridian Visiting Researcher Programme</a></span></div><div class="loc">Cambridge</div></div>
+    <div class="desc">Research on LLMs learning encoded reasoning during RL. <a href="https://coefficientgiving.org/funds/navigating-transformative-ai/?search=Avoiding+Encoded+Reasoning#featured-grants">Supported by a grant from Coefficient Giving</a>.</div>
+  </div>
+</div>
+<div class="entry">
+  <div class="date">Nov 2024 – Jun 2025</div>
+  <div>
+    <div class="head"><div><span class="title">Machine Learning Engineer</span><span class="org"><a href="https://www.alexanderthamm.com/en/about-us/">Alexander Thamm GmbH</a></span></div><div class="loc">Berlin</div></div>
+    <div class="desc">Developing and deploying multi-agent systems; managing cloud infrastructure with Terraform.</div>
+  </div>
+</div>
+<div class="entry">
+  <div class="date">Apr 2024 – Jul 2024</div>
+  <div>
+    <div class="head"><div><span class="title">AI Safety Researcher</span><span class="org">Coefficient Giving Grant</span></div><div class="loc">London</div></div>
+    <div class="desc">Independent AI safety research on Sleeper Agents and Automated Feature Labeling.</div>
+  </div>
+</div>
+
+<h2>Publications</h2>
+<div class="entry">
+  <div class="date">Sep 2026</div>
+  <div>
+    <div class="title"><a href="https://arxiv.org/abs/2609.39838">Learning Steganography Is Easy, Learning Steganographic Reasoning Is Hard</a></div>
+    <div class="desc"><b>Julian Schulz</b>, Lukas Fülle, Rieke Fruengel<span class="dot">·</span><span class="venue">NeurIPS 2026 Workshop AI4GOOD</span><span class="award">ORAL</span></div>
+  </div>
+</div>
+<div class="entry">
+  <div class="date">Feb 2026</div>
+  <div>
+    <div class="title"><a href="https://arxiv.org/abs/2609.31121">Monitor Jailbreaking: Evading Chain-of-Thought Monitoring Without Encoded Reasoning</a></div>
+    <div class="desc"><b>Julian Schulz</b><span class="dot">·</span><span class="venue">COLM 2026 Workshop AdvML-Frontiers x CoTMA</span></div>
+  </div>
+</div>
+<div class="entry">
+  <div class="date">Oct 2025</div>
+  <div>
+    <div class="title"><a href="https://arxiv.org/abs/2510.19476">A Concrete Roadmap towards Safety Cases based on Chain-of-Thought Monitoring</a></div>
+    <div class="desc"><b>Julian Schulz</b><span class="dot">·</span><span class="venue"><a href="https://www.ukaiforum.com/ai-and-societal-robustness-conference-2025">AI &amp; Societal Robustness Conference</a></span><span class="award">BEST POSTER AWARD</span></div>
+  </div>
+</div>
+<div class="entry">
+  <div class="date">Mar 2025</div>
+  <div>
+    <div class="title"><a href="https://arxiv.org/abs/2504.00754">Automated Feature Labeling with Token-Space Gradient Descent</a></div>
+    <div class="desc"><b>Julian Schulz</b>, Seamus Fallows<span class="dot">·</span><span class="venue">ICLR 2025 Workshop Building Trust</span></div>
+  </div>
+</div>
+<div class="entry">
+  <div class="date">Dec 2023</div>
+  <div>
+    <div class="title"><a href="https://arxiv.org/abs/2312.06681">Steering Llama 2 via Contrastive Activation Addition</a></div>
+    <div class="desc">Nina Panickssery, Nick Gabrieli, <b>Julian Schulz</b>, Meg Tong, Evan Hubinger, Alexander Matt Turner<br><span class="venue">ACL 2024</span><span class="award">OUTSTANDING PAPER AWARD</span></div>
+  </div>
+</div>
+
+<h2>Teaching &amp; Mentoring</h2>
+<div class="entry">
+  <div class="date">Jul 2025 – present</div>
+  <div>
+    <div class="head"><div><span class="title"><a href="https://www.ml4good.org">ML4Good</a></span><span class="org">Head Teacher (part-time)</span></div><div class="loc">Europe, Canada, Singapore &amp; South Africa</div></div>
+    <div class="desc">Teaching and organizing the teaching team at 1 week AI-safety bootcamps.</div>
+  </div>
+</div>
+<div class="entry">
+  <div class="date">Apr 2026 – present</div>
+  <div>
+    <div class="head"><div><span class="title"><a href="https://www.iliad.ac">Iliad Intensive</a></span><span class="org">Teacher</span></div></div>
+    <div class="desc">Teaching Mechanistic Interpretability (Apr, Jun, Sep 2026) and Intro to ML Engineering (Jun, Sep 2026).</div>
+  </div>
+</div>
+<div class="entry">
+  <div class="date">Apr 2026 – Jul 2026</div>
+  <div>
+    <div class="head"><div><span class="title"><a href="https://safeaigermany.org/incubator">SAIGE Incubator</a></span><span class="org">Research Mentor</span><span class="org">Safe AI Germany</span></div><div class="loc">Remote</div></div>
+    <div class="desc">Mentored the team behind the steganography paper above (NeurIPS 2026 workshop, oral).</div>
+  </div>
+</div>
+<div class="entry">
+  <div class="date">2025, 2026</div>
+  <div>
+    <div class="head"><div><span class="title"><a href="https://caish.org/mars">MARS</a></span><span class="org">Research Mentor</span><span class="org">Mentorship for Alignment Research Students</span></div><div class="loc">Cambridge</div></div>
+    <div class="desc">Mentored research teams in MARS 2.0 and MARS V.</div>
+  </div>
+</div>
+
+<h2>Fellowships &amp; Training</h2>
+<div class="entry">
+  <div class="date">Jan 2024 – Feb 2024</div>
+  <div>
+    <div class="head"><div><span class="title">Machine Learning Bootcamp</span><span class="org"><a href="https://www.arena.education/">Alignment Research Engineer Accelerator (ARENA)</a></span></div><div class="loc">Remote</div></div>
+  </div>
+</div>
+<div class="entry">
+  <div class="date">Jun 2023 – Sep 2023</div>
+  <div>
+    <div class="head"><div><span class="title">Activation Addition</span><span class="org"><a href="https://www.matsprogram.org/">ML Alignment Theory Scholars Program (MATS)</a></span></div><div class="loc">Berkeley</div></div>
+    <div class="desc">Under the mentorship of Alex Turner.</div>
+  </div>
+</div>
+
+<h2>Education</h2>
+<div class="entry tight">
+  <div class="date">2021 – 2024</div>
+  <div class="head"><div><span class="title">M.Sc. <a href="https://mattertolife.maxplanckschools.org/de/home">Biophysics and Complex Systems</a></span><span class="org">Göttingen, Max Planck School Program</span></div><div class="loc">Grade 1.6<span class="dot">·</span><a href="transcripts/MSc.pdf">Transcript</a></div></div>
+</div>
+<div class="entry tight">
+  <div class="date">2017 – 2022</div>
+  <div class="head"><div><span class="title">B.A. Philosophy &amp; Physics</span><span class="org">Göttingen</span></div><div class="loc">Grade 1.3<span class="dot">·</span><a href="transcripts/BA.pdf">Transcript</a></div></div>
+</div>
+<div class="entry tight">
+  <div class="date">2017 – 2021</div>
+  <div class="head"><div><span class="title">B.Sc. Physics</span><span class="org">Göttingen</span></div><div class="loc">Grade 1.5<span class="dot">·</span><a href="transcripts/BSc.pdf">Transcript</a></div></div>
+</div>
+
+<h2>Scholarships</h2>
+<div class="entry tight">
+  <div class="date">2021 – 2024</div>
+  <div class="head"><div><span class="title">Full Master’s Scholarship</span><span class="org"><a href="https://mattertolife.maxplanckschools.org/home">Max Planck School of Matter to Life</a></span></div></div>
+</div>
+<div class="entry tight">
+  <div class="date">2018 – 2024</div>
+  <div class="head"><div><span class="title">Merit-based Scholarship</span><span class="org"><a href="https://en.wikipedia.org/wiki/Studienstiftung">Studienstiftung des deutschen Volkes</a></span></div></div>
+</div>
+
+<h2>Skills</h2>
+<dl class="skills">
+  <dt>Programming</dt><dd>Advanced Python (5+ years), Terraform, Azure, Claude Code</dd>
+  <dt>Machine Learning</dt><dd>PyTorch, RL (TRL, Tinker), W&amp;B, Mechanistic Interpretability</dd>
+</dl>
+
+</div>
+</body>
+</html>

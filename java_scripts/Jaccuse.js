@@ -113,17 +113,17 @@ function toggleFileSelection(topic) {
   
     switch (buttonStates[topic]) {
       case 0:
-        button.style.backgroundColor = 'white';
+        button.style.backgroundColor = '';
         if (ForbiddenTopics.includes(topic)) {
           ForbiddenTopics.splice(ForbiddenTopics.indexOf(topic), 1);
         }
         break;
       case 1:
-        button.style.backgroundColor = 'green';
+        button.style.backgroundColor = '#3f8f5f';
         MustHaveTopics.push(topic);
         break;
       case 2:
-        button.style.backgroundColor = 'red';
+        button.style.backgroundColor = '#b4532a';
         ForbiddenTopics.push(topic);
         MustHaveTopics.splice(MustHaveTopics.indexOf(topic), 1);
         break;

@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }).catch(error => {
             console.error("Error loading Jaccuse words:", error);
-            wordsList.innerHTML = '<p style="text-align: center; color: var(--color-text-muted);">Error loading words. Please try again later.</p>';
+            wordsList.innerHTML = '<p style="text-align: center; color: var(--muted);">Error loading words. Please try again later.</p>';
         });
     }
 
@@ -99,7 +99,7 @@ function renderTable(data) {
                 <td>${word.author}</td>
                 <td>${word.n_plays}</td>
                 <td>${word.n_upvote}</td>
-                <td>${word.tags.join(', ')}</td>
+                <td><span class="spoiler" onclick="this.classList.toggle('revealed')">${word.tags.join(', ')}</span></td>
                 <td>${creationTime}</td>
                 <td><button class="play-button" data-key="${word.key}">Play</button></td>
             </tr>

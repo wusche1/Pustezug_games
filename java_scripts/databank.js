@@ -215,6 +215,8 @@ async  function addJaccuseWord(word1, word2, author, tags) {
     ["Gewächshaus","Orangerie",{ author: "Eva", tags: ["everyday", "place", "german"] }],
     ["Lichterkette","Kronleuchter",{ author: "Eva", tags: ["everyday", "german"] }],
     ["Bierzelt","Disco",{ author: "Eva", tags: ["everyday", "place", "german"] }],
+    ["Surgeon","Tailor",{ author: "Claude", tags: ["everyday", "person"] }],
+    ["Volcano","Champagne bottle",{ author: "Claude", tags: ["abstract"] }],
 ];
   
   const midnight_words = [

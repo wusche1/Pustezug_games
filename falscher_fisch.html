@@ -3,53 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Falscher Fisch - Pustezug Games</title>
+    <title>Falscher Fisch – Julian Schulz</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="games.css">
+    <script src="java_scripts/theme.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
     <link rel="apple-touch-icon" sizes="180x180" href="icon_folder/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="icon_folder/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="icon_folder/favicon-16x16.png">
     <link rel="manifest" href="icon_folder/site.webmanifest">
-    <link rel="mask-icon" href="icon_folder/safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="theme-color" content="#1a2f3d">
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
-    <script src="java_scripts/google_login.js" defer></script>
 </head>
-<body class="game-page">
-    <!-- Navigation -->
-    <nav class="main-nav">
-        <div class="nav-container">
-            <a href="index.html" class="nav-logo">
-                <img src="images/Turtle_logo.png" alt="Pustezug Games Logo">
-                <span>Pustezug Games</span>
-            </a>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="index.html#games">Games</a></li>
-                <li><a href="index.html#contact">Contact</a></li>
-            </ul>
-            <div class="nav-auth">
-                <div id="g_id_onload"
-                     data-client_id="663759759562-koons6upuoj2n06l9ncf7of7c00b4qhf.apps.googleusercontent.com"
-                     data-callback="handleCredentialResponse">
-                </div>
-                <div class="g_id_signin" data-type="standard"></div>
-            </div>
-        </div>
+<body class="game">
+    <svg class="crest strip" viewBox="0 0 1600 110" preserveAspectRatio="xMidYMax slice" role="img" aria-label="A fish jumping next to a hook">
+        <title>Click to switch day and night</title>
+        <defs>
+            <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+                <stop class="s0" offset="0"/>
+                <stop class="s1" offset=".35"/>
+                <stop class="s2" offset=".65"/>
+                <stop class="s3" offset=".85"/>
+                <stop class="s4" offset="1"/>
+            </linearGradient>
+        </defs>
+        <rect width="1600" height="110" fill="url(#sky)"/>
+        <g class="sun"><circle cx="1150" cy="70" r="15"/></g>
+        <g class="night"><g class="stars">
+            <circle cx="487" cy="79" r="1.2"/>
+            <circle cx="267" cy="51" r="1.2"/>
+            <circle cx="970" cy="78" r="0.7"/>
+            <circle cx="1240" cy="5" r="0.9"/>
+            <circle cx="531" cy="74" r="0.7"/>
+            <circle cx="392" cy="64" r="1.2"/>
+            <circle cx="1125" cy="64" r="0.9"/>
+            <circle cx="1308" cy="23" r="0.7"/>
+            <circle cx="1300" cy="23" r="1.2"/>
+            <circle cx="798" cy="5" r="1.2"/>
+            <circle cx="1591" cy="12" r="0.7"/>
+            <circle cx="1552" cy="79" r="0.7"/>
+            <circle cx="616" cy="7" r="0.9"/>
+            <circle cx="968" cy="80" r="1.2"/>
+            <circle cx="793" cy="58" r="0.9"/>
+            <circle cx="1491" cy="77" r="0.9"/>
+            <circle cx="274" cy="50" r="0.7"/>
+            <circle cx="73" cy="21" r="0.9"/>
+            <circle cx="444" cy="37" r="1.2"/>
+            <circle cx="893" cy="42" r="0.9"/>
+            <circle cx="1038" cy="53" r="1.2"/>
+            <circle cx="718" cy="72" r="1.2"/>
+            <circle cx="834" cy="78" r="0.7"/>
+            <circle cx="689" cy="7" r="0.9"/>
+            <circle cx="1240" cy="24" r="1.2"/>
+            <circle cx="668" cy="73" r="1.2"/>
+            <circle cx="1165" cy="17" r="1.2"/>
+            <circle cx="1342" cy="31" r="1.2"/>
+            <circle cx="1174" cy="38" r="0.9"/>
+            <circle cx="254" cy="12" r="0.9"/>
+            <circle cx="1308" cy="65" r="0.7"/>
+            <circle cx="704" cy="12" r="0.9"/>
+            <circle cx="308" cy="6" r="0.9"/>
+            <circle cx="874" cy="57" r="0.7"/>
+            <circle cx="90" cy="9" r="0.9"/>
+            <circle cx="1471" cy="79" r="0.9"/>
+            <circle cx="1128" cy="39" r="1.2"/>
+            <circle cx="483" cy="8" r="0.9"/>
+            <circle cx="14" cy="13" r="0.7"/>
+            <circle cx="1228" cy="72" r="0.7"/>
+            <circle cx="404" cy="56" r="0.9"/>
+            <circle cx="1250" cy="37" r="0.7"/>
+            <circle cx="1412" cy="9" r="0.9"/>
+            <circle cx="642" cy="50" r="0.7"/>
+            <circle cx="773" cy="52" r="0.9"/>
+        </g></g>
+        <path class="wave b l2" d="M-160 74 q20 -5 40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 V110 H-160Z"/>
+        <g class="hook"><path d="M880 -10 V50 v9 a7 7 0 0 1 -14 0 l3 3"/></g>
+        <path class="fish" d="M17 0 c-8 -9 -24 -9 -34 0 l-8 -6 v12 l8 -6 c10 9 26 9 34 0z"/>
+        <path class="wave l4" d="M-160 84 q20 -6 40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 V110 H-160Z"/>
+        <path class="wave c near" d="M-160 96 q20 -5 40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 V110 H-160Z"/>
+    </svg>
+
+    <nav class="site-nav">
+        <a href="index.html">Julian Schulz</a>
+        <a href="index.html#games">Games</a>
+        <button class="theme-toggle" aria-label="Switch day and night"></button>
     </nav>
 
-    <!-- Game Hero -->
-    <header class="game-hero">
-        <img src="images/fish_icon.png" alt="Falscher Fisch" class="game-hero-icon">
-        <h1>Falscher Fisch</h1>
-        <p class="game-hero-tagline">A tense one on one, a duel of the mind</p>
-    </header>
+    <main>
+        <header class="game-hero">
+            <img src="images/fish_icon.png" alt="Falscher Fisch" class="game-hero-icon">
+            <div>
+                <h1>Falscher Fisch</h1>
+                <p class="game-hero-tagline">A tense one on one, a duel of the mind</p>
+            </div>
+        </header>
 
-    <!-- Game Content -->
-    <main class="game-content">
         <section class="game-intro">
             <p>Falscher Fisch is a 2 player game that might look like a simple game of chance, but hides a multitude of strategies and tactics.</p>
             <p>The two contenders play a series of rounds, picking one of three symbols and forming them with their hands — not unlike rock-paper-scissors.</p>
@@ -125,22 +173,9 @@
             </div>
         </section>
 
-        <a href="index.html#games" class="back-link">← Back to Games</a>
+        <a href="index.html#games" class="back-link">← All games</a>
     </main>
 
-    <!-- Footer -->
-    <footer class="site-footer">
-        <div class="footer-content">
-            <div class="footer-brand">
-                <img src="images/Turtle_logo.png" alt="Pustezug Games">
-                <span>Pustezug Games</span>
-            </div>
-            <div class="footer-links">
-                <a href="index.html#games">Games</a>
-                <a href="index.html#contact">Contact</a>
-                <a href="https://www.admonymous.co/pustezug" target="_blank">Feedback</a>
-            </div>
-        </div>
-    </footer>
+    <footer>© Julian Schulz · <a href="https://www.admonymous.co/pustezug">Anonymous game feedback</a></footer>
 </body>
 </html>

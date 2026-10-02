@@ -3,147 +3,483 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pustezug Games</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Julian Schulz</title>
+    <meta name="description" content="Julian Schulz – AI safety researcher and teacher based in Berlin.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
     <link rel="apple-touch-icon" sizes="180x180" href="icon_folder/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="icon_folder/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="icon_folder/favicon-16x16.png">
-    <link rel="manifest" href="icon_folder/site.webmanifest">
-    <link rel="mask-icon" href="icon_folder/safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="theme-color" content="#1a2f3d">
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
-    <script src="java_scripts/google_login.js" defer></script>
+    <script src="java_scripts/theme.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
-<body class="home-page">
-    <!-- Navigation -->
-    <nav class="main-nav">
-        <div class="nav-container">
-            <a href="index.html" class="nav-logo">
-                <img src="images/Turtle_logo.png" alt="Pustezug Games Logo">
-                <span>Pustezug Games</span>
-            </a>
-            <ul class="nav-links">
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="#games">Games</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <div class="nav-auth">
-                <div id="g_id_onload"
-                     data-client_id="663759759562-koons6upuoj2n06l9ncf7of7c00b4qhf.apps.googleusercontent.com"
-                     data-callback="handleCredentialResponse">
-                </div>
-                <div class="g_id_signin" data-type="standard"></div>
-            </div>
-        </div>
+<body>
+    <svg class="crest" viewBox="0 0 1600 320" preserveAspectRatio="xMidYMax slice" role="img" aria-label="Berlin skyline seen from a rooftop in Friedrichshain. Click to switch between day and night.">
+        <title>Click to switch day and night</title>
+        <defs>
+            <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+                <stop class="s0" offset="0"/>
+                <stop class="s1" offset=".3"/>
+                <stop class="s2" offset=".55"/>
+                <stop class="s3" offset=".7"/>
+                <stop class="s4" offset=".78"/>
+            </linearGradient>
+            <radialGradient id="glow" cx="782" cy="236" r="460" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#ffe2a0" stop-opacity=".95"/>
+                <stop offset=".35" stop-color="#ffc977" stop-opacity=".45"/>
+                <stop offset="1" stop-color="#ffc977" stop-opacity="0"/>
+            </radialGradient>
+            <linearGradient id="haze" x1="0" y1="150" x2="0" y2="250" gradientUnits="userSpaceOnUse">
+                <stop class="s4" offset="0" stop-opacity="0"/>
+                <stop class="s4" offset="1" stop-opacity=".55"/>
+            </linearGradient>
+            <linearGradient id="cloud" x1="0" y1="0" x2="0" y2="1">
+                <stop class="ca" offset=".25"/>
+                <stop class="cb" offset="1"/>
+            </linearGradient>
+            <linearGradient id="rim" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0" stop-color="#ffb26b" stop-opacity=".75"/>
+                <stop offset=".45" stop-color="#ffb26b" stop-opacity="0"/>
+            </linearGradient>
+            <linearGradient id="flood" x1="0" y1="1" x2="0" y2="0">
+                <stop offset="0" stop-color="#ffc98a" stop-opacity=".4"/>
+                <stop offset="1" stop-color="#ffc98a" stop-opacity="0"/>
+            </linearGradient>
+            <filter id="soft" x="-30%" y="-300%" width="160%" height="700%"><feGaussianBlur stdDeviation="5"/></filter>
+            <filter id="blur" x="-50%" y="-200%" width="200%" height="500%"><feGaussianBlur stdDeviation="12"/></filter>
+            <pattern id="win" width="10" height="12" patternUnits="userSpaceOnUse"><rect class="win" x="3" y="2" width="3.4" height="5.4"/></pattern>
+            <pattern id="lit" width="70" height="48" patternUnits="userSpaceOnUse">
+                <rect class="lit" x="3" y="2" width="3.4" height="5.4"/>
+                <rect class="lit" x="33" y="14" width="3.4" height="5.4"/>
+                <rect class="lit" x="53" y="2" width="3.4" height="5.4"/>
+                <rect class="lit" x="13" y="38" width="3.4" height="5.4"/>
+                <rect class="lit" x="43" y="26" width="3.4" height="5.4"/>
+            </pattern>
+            <pattern id="lit2" width="110" height="60" patternUnits="userSpaceOnUse">
+                <rect class="lit warm" x="23" y="2" width="3.4" height="5.4"/>
+                <rect class="lit tv" x="63" y="26" width="3.4" height="5.4"/>
+                <rect class="lit warm" x="93" y="38" width="3.4" height="5.4"/>
+                <rect class="lit warm" x="3" y="50" width="3.4" height="5.4"/>
+            </pattern>
+            <g id="tower">
+                <rect x="-30" y="-34" width="60" height="34"/>
+                <rect x="-33" y="-38" width="66" height="4"/>
+                <rect x="-24" y="-62" width="48" height="24"/>
+                <rect x="-27" y="-66" width="54" height="4"/>
+                <path d="M-26 -66 v-8 l1.5 -3 l1.5 3 v8z M23 -66 v-8 l1.5 -3 l1.5 3 v8z"/>
+                <rect x="-19" y="-70" width="38" height="4"/>
+                <path d="M-18 -70 v-26 h2.6 v26z M-12.4 -70 v-26 h2.6 v26z M-6.8 -70 v-26 h2.6 v26z M-1.3 -70 v-26 h2.6 v26z M4.3 -70 v-26 h2.6 v26z M9.9 -70 v-26 h2.6 v26z M15.4 -70 v-26 h2.6 v26z"/>
+                <rect x="-10" y="-96" width="20" height="26"/>
+                <rect x="-20" y="-101" width="40" height="5"/>
+                <path class="dome" d="M-18 -101 C-18 -122 -8 -128 0 -129 C8 -128 18 -122 18 -101Z"/>
+                <path class="rib" d="M0 -129 V-101 M-9 -125 Q-11.5 -113 -11.5 -101 M9 -125 Q11.5 -113 11.5 -101"/>
+                <rect x="-4.5" y="-139" width="9" height="11"/>
+                <path class="dome" d="M-5.5 -139 Q0 -148 5.5 -139Z"/>
+                <rect x="-.8" y="-160" width="1.6" height="16"/>
+                <circle cy="-150" r="2"/>
+                <path class="twin" d="M-21 -8 v-14 a4 4 0 0 1 8 0 v14z M-4 -8 v-14 a4 4 0 0 1 8 0 v14z M13 -8 v-14 a4 4 0 0 1 8 0 v14z M-16 -43 v-14 h4.5 v14z M-2.25 -43 v-14 h4.5 v14z M11.5 -43 v-14 h4.5 v14z"/>
+            </g>
+            <g id="crane"><path d="M0 0 V-64 M-14 -56 H38 M0 -64 L-14 -56 M0 -64 L38 -56 M-14 -56 v6 h6 v-6 M24 -56 v14"/></g>
+            <g id="bike" fill="none" stroke-width=".9">
+                <circle cx="-3.5" cy="-2.2" r="2.2"/><circle cx="3.5" cy="-2.2" r="2.2"/>
+                <path d="M-3.5 -2.2 L0 -5 L3.5 -2.2 M0 -5 L1 -9"/><circle cx="1.4" cy="-10.3" r="1.1"/>
+            </g>
+        </defs>
+
+        <rect width="1600" height="320" fill="url(#sky)"/>
+        <g class="sunset"><rect class="glow" width="1600" height="320" fill="url(#glow)"/></g>
+        <g class="sun"><circle cx="782" cy="228" r="17"/></g>
+
+        <!-- night sky -->
+        <g class="night">
+            <g class="stars">
+                <circle cx="663" cy="42" r="1" opacity="0.5"/>
+                <circle cx="148" cy="141" r="0.6" opacity="0.9"/>
+                <circle cx="1193" cy="18" r="1.3" opacity="0.7"/>
+                <circle cx="76" cy="26" r="1" opacity="1"/>
+                <circle cx="143" cy="65" r="0.6" opacity="1"/>
+                <circle cx="121" cy="148" r="0.6" opacity="0.7"/>
+                <circle cx="1291" cy="164" r="1.3" opacity="0.5"/>
+                <circle cx="1181" cy="153" r="1" opacity="0.5"/>
+                <circle cx="452" cy="15" r="1.3" opacity="0.7"/>
+                <circle cx="593" cy="111" r="0.8" opacity="0.5"/>
+                <circle cx="1169" cy="82" r="1.3" opacity="0.7"/>
+                <circle cx="211" cy="152" r="1.3" opacity="0.7"/>
+                <circle cx="762" cy="28" r="1.3" opacity="0.5"/>
+                <circle cx="1155" cy="19" r="1.3" opacity="0.7"/>
+                <circle cx="1016" cy="178" r="1.3" opacity="1"/>
+                <circle cx="1591" cy="84" r="1" opacity="1"/>
+                <circle cx="740" cy="80" r="0.8" opacity="0.7"/>
+                <circle cx="1431" cy="203" r="0.8" opacity="0.5"/>
+                <circle cx="1176" cy="80" r="1.3" opacity="1"/>
+                <circle cx="703" cy="190" r="1" opacity="0.9"/>
+                <circle cx="1247" cy="22" r="0.6" opacity="1"/>
+                <circle cx="337" cy="197" r="0.8" opacity="0.7"/>
+                <circle cx="1001" cy="111" r="0.6" opacity="0.5"/>
+                <circle cx="1565" cy="146" r="1.3" opacity="0.9"/>
+                <circle cx="696" cy="181" r="0.8" opacity="1"/>
+                <circle cx="1187" cy="120" r="0.6" opacity="0.5"/>
+                <circle cx="552" cy="125" r="0.6" opacity="0.5"/>
+                <circle cx="1497" cy="183" r="0.8" opacity="1"/>
+                <circle cx="582" cy="187" r="1" opacity="0.9"/>
+                <circle cx="46" cy="122" r="0.8" opacity="0.7"/>
+                <circle cx="1251" cy="33" r="1" opacity="0.5"/>
+                <circle cx="446" cy="200" r="0.8" opacity="0.7"/>
+                <circle cx="1512" cy="67" r="1" opacity="1"/>
+                <circle cx="1016" cy="24" r="0.8" opacity="1"/>
+                <circle cx="822" cy="144" r="0.8" opacity="0.7"/>
+                <circle cx="881" cy="144" r="0.8" opacity="1"/>
+                <circle cx="734" cy="178" r="1" opacity="0.7"/>
+                <circle cx="309" cy="25" r="0.8" opacity="0.7"/>
+                <circle cx="475" cy="172" r="0.8" opacity="0.5"/>
+                <circle cx="993" cy="154" r="0.8" opacity="0.9"/>
+                <circle cx="577" cy="5" r="0.8" opacity="1"/>
+                <circle cx="1094" cy="98" r="1.3" opacity="0.9"/>
+                <circle cx="257" cy="180" r="1.3" opacity="0.5"/>
+                <circle cx="935" cy="203" r="1.3" opacity="1"/>
+                <circle cx="815" cy="106" r="1" opacity="0.5"/>
+                <circle cx="986" cy="166" r="1" opacity="0.5"/>
+                <circle cx="390" cy="21" r="0.8" opacity="1"/>
+                <circle cx="332" cy="32" r="0.8" opacity="0.5"/>
+                <circle cx="209" cy="4" r="1.3" opacity="0.7"/>
+                <circle cx="1098" cy="29" r="0.8" opacity="0.5"/>
+                <circle cx="144" cy="57" r="1.3" opacity="1"/>
+                <circle cx="304" cy="166" r="0.8" opacity="0.9"/>
+                <circle cx="1233" cy="97" r="1" opacity="0.5"/>
+                <circle cx="236" cy="128" r="1" opacity="1"/>
+                <circle cx="990" cy="83" r="0.6" opacity="0.7"/>
+                <circle cx="209" cy="195" r="0.8" opacity="0.9"/>
+                <circle cx="980" cy="181" r="0.8" opacity="0.5"/>
+                <circle cx="420" cy="139" r="0.8" opacity="0.7"/>
+                <circle cx="1413" cy="143" r="0.6" opacity="0.9"/>
+                <circle cx="1316" cy="27" r="0.8" opacity="0.9"/>
+                <circle cx="342" cy="95" r="0.8" opacity="0.9"/>
+                <circle cx="1303" cy="61" r="1.3" opacity="0.7"/>
+                <circle cx="490" cy="106" r="0.8" opacity="0.7"/>
+                <circle cx="1060" cy="130" r="0.8" opacity="0.5"/>
+                <circle cx="57" cy="75" r="1" opacity="0.9"/>
+                <circle cx="396" cy="181" r="1.3" opacity="0.9"/>
+                <circle cx="915" cy="189" r="0.8" opacity="0.9"/>
+                <circle cx="164" cy="60" r="0.6" opacity="0.7"/>
+                <circle cx="962" cy="54" r="0.8" opacity="0.7"/>
+                <circle cx="988" cy="163" r="1.3" opacity="0.5"/>
+                <circle cx="981" cy="171" r="0.8" opacity="0.5"/>
+                <circle cx="1352" cy="34" r="1" opacity="0.7"/>
+                <circle cx="979" cy="49" r="1" opacity="0.9"/>
+                <circle cx="177" cy="188" r="1" opacity="1"/>
+                <circle cx="822" cy="194" r="0.6" opacity="0.7"/>
+                <circle cx="348" cy="36" r="0.6" opacity="0.7"/>
+                <circle cx="1209" cy="123" r="0.8" opacity="1"/>
+                <circle cx="1346" cy="93" r="0.8" opacity="0.7"/>
+                <circle cx="43" cy="7" r="0.6" opacity="0.7"/>
+                <circle cx="888" cy="53" r="0.8" opacity="0.5"/>
+            </g>
+            <path class="shooting" d="M0 0 l-34 12"/>
+            <g class="moon">
+                <circle cx="1268" cy="66" r="30" filter="url(#blur)" opacity=".35"/>
+                <path d="M1264 48 a18 18 0 1 0 16 28 a14.5 14.5 0 1 1 -16 -28z"/>
+            </g>
+            <path class="beam" d="M535 285 L520 30 L550 30Z"/>
+            <path class="beam b" d="M535 285 L520 30 L550 30Z"/>
+        </g>
+
+        <g class="clouds" filter="url(#soft)" fill="url(#cloud)">
+            <g class="cloud"><ellipse cx="170" cy="20" rx="250" ry="8"/><ellipse cx="330" cy="28" rx="140" ry="6"/></g>
+            <g class="cloud"><ellipse cx="300" cy="98" rx="230" ry="13"/><ellipse cx="430" cy="110" rx="190" ry="10"/><ellipse cx="190" cy="90" rx="110" ry="8"/></g>
+            <g class="cloud"><ellipse cx="700" cy="128" rx="250" ry="9"/><ellipse cx="610" cy="120" rx="120" ry="8"/></g>
+            <g class="cloud"><ellipse cx="1340" cy="92" rx="230" ry="9"/><ellipse cx="1450" cy="84" rx="120" ry="7"/></g>
+            <g class="cloud"><ellipse cx="960" cy="150" rx="170" ry="6"/><ellipse cx="1080" cy="56" rx="150" ry="6"/></g>
+        </g>
+
+        <g class="plane"><path class="day trail" d="M-70 0 H0"/><circle class="night blinker" r="1.3"/></g>
+        <g class="day">
+            <path class="bird" d="M0 70 q5 -6 10 0 q5 -6 10 0"/>
+            <path class="bird b" d="M0 108 q4 -5 8 0 q4 -5 8 0"/>
+            <path class="bird c" d="M0 50 q4 -5 8 0 q4 -5 8 0 M14 58 q3.5 -4 7 0 q3.5 -4 7 0"/>
+        </g>
+
+        <!-- distant haze -->
+        <g class="p1"><path class="l1" d="M-40 320 V236 H10 V230 H60 V234 H130 V226 H170 V232 H260 V228 H330 V236 H420 V229 H480 V233 H640 V227 H700 V234 H800 V228 H870 V222 H910 V230 H980 V236 H1180 V228 H1240 V233 H1320 V225 H1370 V231 H1640 V320Z"/></g>
+
+        <!-- Alexanderplatz -->
+        <g class="p2">
+            <g class="day balloon">
+                <path d="M880 150 V245" stroke-width=".5"/>
+                <circle cx="880" cy="140" r="8"/>
+                <path class="stripe" d="M872.3 138 a8 8 0 0 1 15.4 0z"/>
+                <rect x="878" y="149.5" width="4" height="3"/>
+            </g>
+            <g class="l2">
+                <path d="M30 320 V208 H62 V214 H96 V320Z M262 320 V204 H296 V210 H330 V216 H372 V320Z M626 320 V214 H652 V320Z M694 320 V222 H724 V228 H752 V320Z"/>
+                <path d="M414 320 V226 L420 198 L426 226 V320Z M419.4 200 v-9 h1.2 v9z"/>
+                <path d="M452 320 V226 H458 V220 Q470 198 482 220 V226 H488 V320Z M468.8 205 v-9 h2.4 v9z"/>
+                <path d="M506 320 V202 h4 v-10 h6 v10 h4 V320Z M512.4 192 v-9 h1.2 v9z"/>
+                <path d="M596 320 V172 H616 V320Z M605 172 v-11 h1.6 v11z"/>
+                <path d="M567.5 320 L571.2 132 H574.8 L578.5 320Z"/>
+                <circle cx="573" cy="122" r="10"/>
+                <path d="M571 113 L571.9 92 H574.1 L575 113Z"/>
+                <rect x="572.2" y="44" width="1.6" height="50"/>
+                <use href="#crane" class="crane" transform="translate(668 245)"/>
+                <use href="#crane" class="crane" transform="translate(140 245) scale(-.8 .8)"/>
+                <use href="#crane" class="crane" transform="translate(350 245) scale(.7)"/>
+            </g>
+            <rect class="band" x="563.3" y="121" width="19.4" height="2.4"/>
+            <circle class="sunset" cx="568.5" cy="118" r="2.6" fill="#ffd9a0" opacity=".8"/>
+            <path class="stripes" d="M573 92 V44" stroke-dasharray="6 6"/>
+            <circle class="beacon" cx="573" cy="43" r="2"/>
+            <circle class="beacon night" cx="605.8" cy="160" r="1.3"/>
+            <rect width="1600" height="320" fill="url(#haze)"/>
+        </g>
+
+        <!-- Karl-Marx-Allee, S-Bahn, bikes -->
+        <g class="p3">
+            <path class="l3" d="M-40 320 V246 H120 V241 H400 V247 H640 V243 H812 V224 H860 V217 H905 V224 H1031 V320Z"/>
+            <rect x="-40" y="252" width="850" height="48" fill="url(#win)"/>
+            <rect x="816" y="228" width="212" height="72" fill="url(#win)"/>
+            <g class="lights">
+                <rect x="-40" y="252" width="850" height="48" fill="url(#lit)"/>
+                <rect x="-40" y="252" width="850" height="48" fill="url(#lit2)"/>
+                <rect x="816" y="228" width="212" height="72" fill="url(#lit)"/>
+            </g>
+            <g class="train">
+                <path fill="#d6a23f" d="M1 266 h33 v3.4 h-34 v-2.4z M36.500 266 h34 v3.4 h-34z M73 266 h34 v3.4 h-34z M109.500 266 h33 l1 1 v2.400 h-34z"/>
+                <path fill="#a5312b" d="M0 269.400 h34 v3.600 h-34z M36.500 269.400 h34 v3.600 h-34z M73 269.400 h34 v3.600 h-34z M109.500 269.400 h34 v3.600 h-34z"/>
+                <path class="trainwin" d="M3 267 h29 v1.800 h-29z M39.500 267 h28 v1.800 h-28z M76 267 h28 v1.800 h-28z M112.500 267 h28 v1.800 h-28z"/>
+            </g>
+            <g class="day">
+                <g class="bike"><use href="#bike" y="281"/></g>
+                <g class="bike b"><use href="#bike" y="281"/></g>
+                <g class="bike c"><use href="#bike" y="281" transform="scale(-1 1)"/></g>
+            </g>
+            <path class="tree" d="M196 300 v-22 a9 9 0 0 1 6 -15 a10 10 0 0 1 18 -2 a9 9 0 0 1 12 12 a8 8 0 0 1 -6 13 v14z M262 300 v-20 a8 8 0 0 1 4 -14 a9 9 0 0 1 16 0 a8 8 0 0 1 4 14 v20z M588 300 v-18 a8 8 0 0 1 3 -14 a10 10 0 0 1 18 -1 a9 9 0 0 1 10 13 a7 7 0 0 1 -5 10 v10z M650 300 v-16 a7 7 0 0 1 4 -12 a8 8 0 0 1 14 0 a7 7 0 0 1 4 12 v16z M846 300 v-16 a8 8 0 0 1 4 -14 a9 9 0 0 1 16 0 a8 8 0 0 1 5 14 v16z"/>
+        </g>
+
+        <!-- Frankfurter Tor -->
+        <g class="p4">
+            <g class="l4">
+                <path d="M1028 320 V200 H1040 V180 H1116 V200 H1139 V320Z"/>
+                <use href="#tower" transform="translate(1078 180) scale(.85)"/>
+                <path d="M1139 320 V226 H1160 V210 H1178 V196 H1640 V320Z M1430 196 V178 H1508 V196Z M1252 196 v-9 l2 -3 l2 3 v9z M1334 196 v-9 l2 -3 l2 3 v9z M1560 196 v-9 l2 -3 l2 3 v9z"/>
+                <path class="balustrade" d="M1178 193.500 H1640" stroke-dasharray="2 3"/>
+                <use href="#tower" transform="translate(1469 178) scale(.76)"/>
+            </g>
+            <g class="sunset">
+                <use href="#tower" fill="url(#rim)" transform="translate(1078 180) scale(.85)"/>
+                <use href="#tower" fill="url(#rim)" transform="translate(1469 178) scale(.76)"/>
+                <path fill="url(#rim)" d="M1028 320 V200 H1040 V180 H1116 V200 H1139 V320Z"/>
+            </g>
+            <g class="night">
+                <use href="#tower" fill="url(#flood)" transform="translate(1078 180) scale(.85)"/>
+                <use href="#tower" fill="url(#flood)" transform="translate(1469 178) scale(.76)"/>
+            </g>
+            <rect x="1042" y="204" width="88" height="96" fill="url(#win)"/>
+            <rect x="1182" y="204" width="458" height="96" fill="url(#win)"/>
+            <g class="lights">
+                <rect x="1042" y="204" width="88" height="96" fill="url(#lit)"/>
+                <rect x="1182" y="204" width="458" height="96" fill="url(#lit)"/>
+                <rect x="1182" y="204" width="458" height="96" fill="url(#lit2)"/>
+            </g>
+            <!-- street light at night -->
+            <g class="night">
+                <g class="hue">
+                    <ellipse class="party" cx="20" cy="286" rx="45" ry="26" fill="#5bff9a"/>
+                    <ellipse class="party b" cx="245" cy="288" rx="55" ry="30" fill="#ff3fa4"/>
+                    <ellipse class="party c" cx="630" cy="290" rx="75" ry="32" fill="#3fd0ff"/>
+                    <ellipse class="party b" cx="868" cy="290" rx="45" ry="28" fill="#a05bff"/>
+                </g>
+                <g class="police" filter="url(#blur)"><ellipse class="siren" cy="286" rx="85" ry="32"/></g>
+            </g>
+        </g>
+
+        <!-- rooftops behind -->
+        <g class="p5">
+            <g class="l5">
+                <path d="M-40 320 V270 H30 V262 H36 V270 H60 L85 256 L110 270 H190 V278 H300 V268 H330 V260 H338 V268 H420 L440 258 H500 L520 268 H560 V282 H700 V266 H760 V258 H768 V266 H830 V280 H910 V320Z"/>
+                <path class="wire" d="M470 258 V236 M462 240 H478 M464 245 H476 M725 266 V248 M719 252 H731"/>
+                <ellipse cx="465" cy="238.800" rx="2" ry="1.300"/><ellipse cx="473" cy="238.800" rx="2" ry="1.300"/>
+            </g>
+            <g class="night">
+                <rect class="nwin" x="76" y="262" width="4" height="5"/>
+                <rect class="nwin tv" x="352" y="272" width="4" height="5"/>
+                <rect class="nwin" x="455" y="263" width="4" height="5"/>
+                <rect class="nwin" x="738" y="270" width="4" height="5"/>
+            </g>
+        </g>
+
+        <!-- rooftops and terrace in front -->
+        <g class="p6">
+            <g class="near">
+                <path d="M-40 320 V290 H20 V284 H120 V276 H128 V284 H150 L175 272 L200 284 H240 V294 H330 V288 H420 V280 H426 V288 H470 V296 H610 V290 H640 L660 278 L680 290 H740 V284 H800 V298 H1640 V320Z"/>
+                <!-- two people watching the sunset -->
+                <circle cx="62" cy="274.500" r="2"/><path d="M59 284 v-5 q3 -4 6 0 v5z"/>
+                <circle cx="70.500" cy="275.500" r="1.900"/><path d="M67.500 284 v-4.500 q3 -4 6 0 v4.500z"/>
+                <!-- cat -->
+                <path d="M700 290 c-1 -4 0 -7 3 -8 c-.6 -1.600 -.4 -3 0 -4.200 l1.200 1.400 h1.600 l1.200 -1.400 c.5 1.500 .5 3 -.2 4.400 c1.600 1.600 2 4.800 1.600 7.800z"/>
+                <path class="wire" d="M700.500 289 c-3.500 0 -4.500 -2 -3.500 -4.500" stroke-width="1.200"/>
+                <!-- terrace -->
+                <rect x="900" y="274" width="740" height="2"/>
+                <path class="railing" d="M900 287 H1640" stroke-dasharray="1.500 9"/>
+                <path d="M899 298 V250 h2 V298Z M1074 298 V250 h2 V298Z M1249 298 V250 h2 V298Z M1424 298 V250 h2 V298Z M1599 298 V250 h2 V298Z"/>
+                <path class="wire" d="M900 252 Q987 272 1075 252 Q1162 272 1250 252 Q1337 272 1425 252 Q1512 272 1600 252"/>
+                <path d="M926 298 l-2 -9 h12 l-2 9z M930 289 c-6 -6 -7 -12 -5 -17 c3 4 5 9 5 17 c0 -9 2 -16 6 -20 c1 7 -1 14 -6 20z"/>
+                <path d="M1552 298 l-2 -8 h11 l-2 8z M1555.500 290 c-5 -5 -6 -10 -4 -14 c3 3 4 8 4 14 c0 -8 2 -13 5 -16 c1 6 -1 11 -5 16z"/>
+            </g>
+            <g class="night">
+                <path class="bulbs" d="M900 252 Q987 272 1075 252 Q1162 272 1250 252 Q1337 272 1425 252 Q1512 272 1600 252" stroke-dasharray="0 30"/>
+                <path class="bulbs b" d="M900 252 Q987 272 1075 252 Q1162 272 1250 252 Q1337 272 1425 252 Q1512 272 1600 252" stroke-dasharray="0 30" stroke-dashoffset="15"/>
+                <rect class="nwin" x="40" y="298" width="4" height="6"/>
+                <rect class="nwin" x="270" y="302" width="4" height="6"/>
+                <rect class="nwin tv" x="520" y="304" width="4" height="6"/>
+                <rect class="nwin" x="760" y="296" width="4" height="6"/>
+            </g>
+        </g>
+    </svg>
+
+    <nav class="site-nav">
+        <a href="#research">Research</a>
+        <a href="#teaching">Teaching</a>
+        <a href="#tools">Tools</a>
+        <a href="#games">Games</a>
+        <button class="theme-toggle" aria-label="Switch day and night"></button>
     </nav>
 
-    <!-- Hero Section -->
-    <header class="hero">
-        <div class="hero-content">
-            <h1 class="hero-title">
-                <span class="hero-welcome">Welcome to</span>
-                <span class="hero-brand">Pustezug Games</span>
-            </h1>
-            <p class="hero-description">
-                Handcrafted Partygames for the initiated and curious
-            </p>
-            <div class="hero-cta">
-                <a href="#games" class="btn btn-primary">Explore Games</a>
-                <a href="https://www.admonymous.co/pustezug" class="btn btn-secondary" target="_blank">Give Feedback</a>
-            </div>
-        </div>
-        <div class="hero-visual">
-            <div class="floating-cards">
-                <div class="float-card card-1">
-                    <div class="float-card-inner">
-                        <div class="float-card-front"></div>
-                        <div class="float-card-back"><span>Social<br>Deduction</span></div>
-                    </div>
-                </div>
-                <div class="float-card card-2">
-                    <div class="float-card-inner">
-                        <div class="float-card-front"></div>
-                        <div class="float-card-back"><span>Mind<br>Games</span></div>
-                    </div>
-                </div>
-                <div class="float-card card-3">
-                    <div class="float-card-inner">
-                        <div class="float-card-front"></div>
-                        <div class="float-card-back"><span>Party<br>Games</span></div>
-                    </div>
+    <main>
+        <div class="intro">
+            <img class="portrait" src="images/portrait.jpg" alt="Julian Schulz">
+            <div>
+                <h1>Julian Schulz</h1>
+                <p class="tagline">AI safety researcher &amp; teacher · Berlin</p>
+                <div class="social">
+                    <a href="https://github.com/wusche1" title="GitHub"><img src="images/icons/github.svg" alt="GitHub"></a>
+                    <a href="https://www.lesswrong.com/users/wuschel-schulz" title="LessWrong"><img src="images/icons/lesswrong.png" alt="LessWrong"></a>
+                    <a href="https://x.com/Wuschel_Schulz" title="Twitter"><img src="images/icons/twitter.svg" alt="Twitter"></a>
+                    <a href="https://www.linkedin.com/in/julian-schulz-020846201" title="LinkedIn"><img src="images/icons/linkedin.svg" alt="LinkedIn"></a>
+                    <a href="https://scholar.google.com/citations?user=lcBcBq8AAAAJ" title="Google Scholar"><img src="images/icons/googlescholar.svg" alt="Google Scholar"></a>
+                    <a href="mailto:mail@julianschulz.eu" title="Email"><img src="images/icons/email.svg" alt="Email"></a>
+                    <a class="cv" href="cv.html">CV</a>
                 </div>
             </div>
         </div>
-    </header>
+        <div class="about"></div>
 
-    <!-- Games Section -->
-    <section id="games" class="games-section">
-        <div class="section-header">
-            <h2>Game Collection</h2>
-            <p>Choose your adventure from our curated selection</p>
-        </div>
-        <div class="games-grid">
-            <a href="falscher_fisch.html" class="game-card" style="--delay: 0">
-                <img src="images/fish_icon.png" alt="Falscher Fisch" class="game-card-icon">
-                <div class="game-card-content">
-                    <h3>Falscher Fisch</h3>
-                    <p>A tense one on one, a duel of the mind</p>
+        <section id="research">
+            <h2>Research</h2>
+            <div class="paper item">
+                <img src="images/papers/steganography.png" alt="">
+                <div>
+                    <div class="item-title"><a href="https://arxiv.org/abs/2609.39838">Learning Steganography Is Easy, Learning Steganographic Reasoning Is Hard</a></div>
+                    <div class="item-meta"><b>Julian Schulz</b>, Lukas Fülle, Rieke Fruengel</div>
+                    <div class="item-meta">NeurIPS 2026 Workshop AI4GOOD<span class="badge">Oral</span></div>
                 </div>
-            </a>
-            <a href="Jaccuse.html" class="game-card" style="--delay: 1">
-                <img src="images/hand_icon.png" alt="J'accuse!" class="game-card-icon">
-                <div class="game-card-content">
-                    <h3>J'accuse!</h3>
-                    <p>Convince the group, encrypt your knowledge</p>
-                </div>
-            </a>
-            <a href="wallfacer.html" class="game-card" style="--delay: 2">
-                <img src="images/alien_icon.png" alt="Wallfacer" class="game-card-icon">
-                <div class="game-card-content">
-                    <h3>Wallfacer</h3>
-                    <p>The Aliens are coming! Figure out their secret!</p>
-                </div>
-            </a>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact-section">
-        <div class="section-header">
-            <h2>Get in Touch</h2>
-            <p>Feedback, questions, or just want to say hi?</p>
-        </div>
-        <div class="contact-content">
-            <a href="https://www.admonymous.co/pustezug" class="contact-card" target="_blank">
-                <div class="contact-icon">[ ]</div>
-                <h3>Game Feedback</h3>
-                <p>Share your thoughts anonymously</p>
-            </a>
-            <a href="mailto:mail@julianschulz.eu" class="contact-card">
-                <div class="contact-icon">@</div>
-                <h3>Email Me</h3>
-                <p>mail@julianschulz.eu</p>
-            </a>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="site-footer">
-        <div class="footer-content">
-            <div class="footer-brand">
-                <img src="images/Turtle_logo.png" alt="Pustezug Games">
-                <span>Pustezug Games</span>
             </div>
-            <div class="footer-links">
-                <a href="#games">Games</a>
-                <a href="#contact">Contact</a>
-                <a href="https://www.admonymous.co/pustezug" target="_blank">Feedback</a>
+            <div class="paper item">
+                <img src="images/papers/monitor_jailbreaking.png" alt="">
+                <div>
+                    <div class="item-title"><a href="https://arxiv.org/abs/2609.31121">Monitor Jailbreaking: Evading Chain-of-Thought Monitoring Without Encoded Reasoning</a></div>
+                    <div class="item-meta"><b>Julian Schulz</b></div>
+                    <div class="item-meta">COLM 2026 Workshop AdvML-Frontiers x CoTMA</div>
+                </div>
             </div>
-        </div>
-    </footer>
+            <div class="paper item">
+                <img src="images/papers/cot_safety_case.png" alt="">
+                <div>
+                    <div class="item-title"><a href="https://arxiv.org/abs/2510.19476">A Concrete Roadmap towards Safety Cases based on Chain-of-Thought Monitoring</a></div>
+                    <div class="item-meta"><b>Julian Schulz</b></div>
+                    <div class="item-meta"><a href="https://www.ukaiforum.com/ai-and-societal-robustness-conference-2025">AI &amp; Societal Robustness Conference 2025</a><span class="badge">Best Poster Award</span></div>
+                </div>
+            </div>
+            <div class="paper item">
+                <img src="images/papers/feature_labeling.png" alt="">
+                <div>
+                    <div class="item-title"><a href="https://arxiv.org/abs/2504.00754">Automated Feature Labeling with Token-Space Gradient Descent</a></div>
+                    <div class="item-meta"><b>Julian Schulz</b>, Seamus Fallows</div>
+                    <div class="item-meta">ICLR 2025 Workshop Building Trust</div>
+                </div>
+            </div>
+            <div class="paper item">
+                <img src="images/papers/caa.png" alt="">
+                <div>
+                    <div class="item-title"><a href="https://arxiv.org/abs/2312.06681">Steering Llama 2 via Contrastive Activation Addition</a></div>
+                    <div class="item-meta">Nina Panickssery, Nick Gabrieli, <b>Julian Schulz</b>, Meg Tong, Evan Hubinger, Alexander Matt Turner</div>
+                    <div class="item-meta">ACL 2024<span class="badge">Outstanding Paper Award</span></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="teaching">
+            <h2>Teaching</h2>
+            <div class="item">
+                <div class="item-title"><a href="https://www.ml4good.org">ML4Good</a></div>
+                <div class="item-meta">Head Teacher · since 2025 · Europe, Canada, Singapore &amp; South Africa</div>
+                <div class="item-meta">Teaching and organizing the teaching team at one-week AI safety bootcamps.</div>
+            </div>
+            <div class="item">
+                <div class="item-title"><a href="https://www.iliad.ac">Iliad Intensive</a></div>
+                <div class="item-meta">Teacher · since 2026</div>
+                <div class="item-meta">Mechanistic Interpretability and Intro to ML Engineering.</div>
+            </div>
+            <div class="item">
+                <div class="item-title"><a href="https://safeaigermany.org/incubator">SAIGE Incubator</a> · <a href="https://caish.org/mars">MARS</a></div>
+                <div class="item-meta">Research Mentor · 2025, 2026</div>
+            </div>
+        </section>
+
+        <section id="tools">
+            <h2>Productivity Tools</h2>
+            <div class="grid">
+                <div class="item">
+                    <div class="item-title"><a href="https://github.com/wusche1/cursor-latex-zotero-template">Paper template</a></div>
+                    <div class="item-meta">Claude Code + LaTeX + Zotero + RAG for academic writing.</div>
+                </div>
+                <div class="item">
+                    <div class="item-title"><a href="https://github.com/wusche1/ml-research-template">ML research template</a></div>
+                    <div class="item-meta">Template repository for ML experiments.</div>
+                </div>
+                <div class="item">
+                    <div class="item-title"><a href="https://github.com/jr-brown/research-scaffold">Research scaffold</a></div>
+                    <div class="item-meta">Run experiments from YAML configs with composition, sweeps and remote execution. Developed with Jason Brown.</div>
+                </div>
+                <div class="item">
+                    <div class="item-title"><a href="https://github.com/wusche1/dotfiles">dotfiles</a></div>
+                    <div class="item-meta">My forkable terminal, Neovim and Claude Code setup.</div>
+                </div>
+                <div class="item">
+                    <div class="item-title"><a href="https://github.com/wusche1/jless.nvim">jless.nvim</a></div>
+                    <div class="item-meta">Read JSON Lines files as a human, inside Neovim.</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="games">
+            <h2>Games</h2>
+            <div class="grid">
+                <div class="item">
+                    <div class="item-title"><a href="falscher_fisch.html">Falscher Fisch</a></div>
+                    <div class="item-meta">A tense one on one, a duel of the mind.</div>
+                </div>
+                <div class="item">
+                    <div class="item-title"><a href="Jaccuse.html">J'accuse!</a></div>
+                    <div class="item-meta">Convince the group, encrypt your knowledge.</div>
+                </div>
+                <div class="item">
+                    <div class="item-title"><a href="wallfacer.html">Wallfacer</a></div>
+                    <div class="item-meta">The aliens are coming. Figure out their secret.</div>
+                </div>
+                <div class="item">
+                    <div class="item-title"><a href="https://wusche1.github.io/gipf-zero/">GIPF Zero</a></div>
+                    <div class="item-meta">Play GIPF in the browser against an AI trained by self-play.</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>© Julian Schulz</footer>
+    <script>
+        fetch('about.md').then(r => r.text()).then(t => document.querySelector('.about').innerHTML = marked.parse(t));
+        const crest = document.querySelector('.crest');
+        crest.onmousemove = e => crest.style.setProperty('--mx', e.clientX / innerWidth - .5);
+    </script>
 </body>
 </html>
